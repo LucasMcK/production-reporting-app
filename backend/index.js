@@ -1,19 +1,29 @@
 const express = require('express');
-const path = require('path');
+const cors = require('cors');
+const multer = require('multer');
+
 const app = express();
-const uploadRoutes = require('./routes/uploadRoutes');
 
-app.use(express.json());
-app.use('/upload', uploadRoutes);
+// Enable CORS for your frontend origin
+app.use(cors({ origin: 'http://localhost:3000' }));
 
-// Serve frontend static files
-app.use(express.static(path.join(__dirname, '../frontend/build')));
+// Configure multer for file upload (in-memory storage or disk)
+const upload = multer({ dest: 'uploads/' }); // saves files to 'uploads' folder
 
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, '../frontend/build', 'index.html'));
+// POST route to receive file upload
+app.post('/upload', upload.single('file'), (req, res) => {
+  if (!req.file) {
+    return res.status(400).json({ message: 'No file uploaded' });
+  }
+
+  // File info is in req.file
+  console.log('Received file:', req.file.originalname);
+
+  // Respond with success message
+  res.json({ message: `File ${req.file.originalname} uploaded successfully` });
 });
 
-const PORT = process.env.PORT || 5001;
-app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
+// Start the server
+app.listen(5001, () => {
+  console.log('Backend running on port 5001');
 });

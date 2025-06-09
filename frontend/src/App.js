@@ -20,7 +20,7 @@ function App() {
       setLoading(true);
       setStatus('');
 
-      const res = await fetch('/upload', {
+      const res = await fetch('http://localhost:5001/upload', {
         method: 'POST',
         body: formData,
       });
