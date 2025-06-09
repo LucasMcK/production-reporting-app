@@ -1,6 +1,6 @@
 const express = require('express');
 const dotenv = require('dotenv');
-const uploadRoutes = require('./routes/uploadRoutes');
+const uploadRoutes = require('./routes/uploadRoutes.js');
 
 dotenv.config();
 const app = express();
