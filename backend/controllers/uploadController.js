@@ -1,6 +1,10 @@
-const handleFileUpload = (req, res) => {
-    console.log("File received:", req.file);
-    res.status(200).json({ message: 'File uploaded successfully' });
-  };
+exports.handleFileUpload = (req, res) => {
+    if (!req.file) {
+      return res.status(400).json({ message: 'No file uploaded.' });
+    }
   
-module.exports = { handleFileUpload };
+    res.status(200).json({
+      message: 'File uploaded successfully.',
+      file: req.file,
+    });
+};  
