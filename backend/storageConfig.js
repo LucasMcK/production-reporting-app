@@ -1,9 +1,8 @@
-// middleware/multerConfig.js
 const multer = require('multer');
 const path = require('path');
 const fs = require('fs');
 
-const allowedExtensions = ['.xls']; // Add more extensions if needed
+const allowedExtensions = ['.xls'];
 
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {

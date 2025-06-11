@@ -1,13 +1,14 @@
+const path = require('path');
+const fs = require('fs');
+
 exports.handleFileUpload = (req, res) => {
   if (!req.file) {
     return res.status(400).json({ message: 'No file uploaded.' });
   }
 
-  console.log('File received:', req.file);
-
   res.status(200).json({
     message: 'File uploaded successfully.',
-    file: req.file,
+    file: req.file.originalname,
   });
 };
 
@@ -16,16 +17,9 @@ exports.listUploadedFiles = (req, res) => {
 
   fs.readdir(uploadDir, (err, files) => {
     if (err) {
-      console.error('Error reading upload directory:', err);
-      return res.status(500).json({ message: 'Unable to read upload directory' });
+      return res.status(500).json({ message: 'Unable to list files.' });
     }
 
-    // Create full URLs to serve the files
-    const fileUrls = files.map((filename) => ({
-      filename,
-      url: `${req.protocol}://${req.get('host')}/uploads/${filename}`,
-    }));
-
-    res.json(fileUrls);
+    res.status(200).json({ files });
   });
 };

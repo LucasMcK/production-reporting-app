@@ -1,10 +1,16 @@
 const express = require('express');
-const upload = require('../storageConfig');
+const multer = require('multer');
+const path = require('path');
+const { handleFileUpload } = require('../controllers/uploadController');
+
 const router = express.Router();
-const { handleFileUpload, listUploadedFiles } = require('../controllers/uploadController');
+
+const storage = multer.diskStorage({
+  destination: (req, file, cb) => cb(null, path.join(__dirname, '..', 'uploads')),
+  filename: (req, file, cb) => cb(null, file.originalname),
+});
+const upload = multer({ storage });
 
 router.post('/', upload.single('file'), handleFileUpload);
-  
-router.get('/files', listUploadedFiles);
-  
+
 module.exports = router;
