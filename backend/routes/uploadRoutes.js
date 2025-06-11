@@ -1,7 +1,7 @@
 // routes/uploadRoutes.js
 
 const express = require('express');
-const upload = require('../middleware/multerConfig'); // use custom config
+const upload = require('../storageConfig'); // use custom config
 const router = express.Router();
 
 // POST /upload - single file upload
@@ -17,5 +17,20 @@ router.post('/', (req, res) => {
     res.json({ message: 'File uploaded successfully', file: req.file });
   });
 });
+
+app.use('/files', express.static(path.join(__dirname, 'uploads')));
+
+app.get('/uploads', (req, res) => {
+    const uploadDir = path.join(__dirname, 'uploads');
+  
+    fs.readdir(uploadDir, (err, files) => {
+      if (err) {
+        console.error('Error reading uploads directory:', err);
+        return res.status(500).json({ message: 'Error reading uploads directory' });
+      }
+  
+      res.json({ files });
+    });
+  });
 
 module.exports = router;
