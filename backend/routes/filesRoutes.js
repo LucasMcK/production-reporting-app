@@ -13,9 +13,13 @@ router.get('/', (req, res) => {
       return res.status(500).json({ message: 'Failed to read files' });
     }
 
-    const fileUrls = files.map(file => `http://localhost:5001/uploads/${file}`);
+    const filteredFiles = files.filter(file => !file.startsWith('.'));
+
+    const fileUrls = filteredFiles.map(file => `http://localhost:5001/uploads/${file}`);
+
     res.json(fileUrls);
   });
 });
+
 
 module.exports = router;

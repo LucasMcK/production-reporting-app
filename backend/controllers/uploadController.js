@@ -20,6 +20,6 @@ exports.listUploadedFiles = (req, res) => {
       return res.status(500).json({ message: 'Unable to list files.' });
     }
 
-    res.status(200).json({ files });
+    res.status(200).json(files);
   });
 };
