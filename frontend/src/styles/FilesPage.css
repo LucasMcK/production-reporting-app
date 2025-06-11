@@ -13,7 +13,7 @@
     font-weight: 700;
     font-size: 2rem;
     margin-bottom: 1.5rem;
-    color: #374151; /* Gray 700 */
+    color: #374151;
     text-align: center;
   }
   
@@ -24,7 +24,7 @@
   
   .files-list li {
     padding: 0.75rem 1rem;
-    border-bottom: 1px solid #e5e7eb; /* Gray 200 */
+    border-bottom: 1px solid #e5e7eb;
     transition: background-color 0.2s ease;
   }
   
@@ -33,12 +33,13 @@
   }
   
   .files-list li:hover {
-    background-color: #e0e7ff; /* Indigo 100 */
+    background-color: #e0e7ff;
+    border-radius: 6px;
   }
   
   .files-list a {
     text-decoration: none;
-    color: #4f46e5; /* Indigo 600 */
+    color: #4f46e5;
     font-weight: 600;
     font-size: 1.1rem;
     display: block;
@@ -47,5 +48,6 @@
   }
   
   .files-list a:hover {
-    color: #4338ca; /* Indigo 700 */
+    color: #4338ca;
+    border-radius: 45px;
   }

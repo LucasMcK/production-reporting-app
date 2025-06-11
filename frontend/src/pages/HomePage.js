@@ -7,7 +7,7 @@ import Logo from '../components/Logo';
 export default function HomePage() {
   return (
     <div className="home-container">
-      <Logo size={300} />
+      <Logo size={450} />
       <h1>Welcome to the Production Reporting Web Application</h1>
       <p>Upload files and view reports all in one place.</p>
       <div className="button-group">
