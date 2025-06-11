@@ -10,3 +10,22 @@ exports.handleFileUpload = (req, res) => {
     file: req.file,
   });
 };
+
+exports.listUploadedFiles = (req, res) => {
+  const uploadDir = path.join(__dirname, '../uploads');
+
+  fs.readdir(uploadDir, (err, files) => {
+    if (err) {
+      console.error('Error reading upload directory:', err);
+      return res.status(500).json({ message: 'Unable to read upload directory' });
+    }
+
+    // Create full URLs to serve the files
+    const fileUrls = files.map((filename) => ({
+      filename,
+      url: `${req.protocol}://${req.get('host')}/uploads/${filename}`,
+    }));
+
+    res.json(fileUrls);
+  });
+};
