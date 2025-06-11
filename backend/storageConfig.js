@@ -10,11 +10,8 @@ const storage = multer.diskStorage({
     cb(null, 'uploads/'); // store in /uploads
   },
   filename: function (req, file, cb) {
-    // Keep the original name with a timestamp to avoid conflicts
-    const timestamp = Date.now();
-    const ext = path.extname(file.originalname);
-    const baseName = path.basename(file.originalname, ext);
-    cb(null, `${baseName}-${timestamp}${ext}`);
+    const baseName = path.basename(file.originalname);
+    cb(null, `${baseName}`);
   },
 });
 
