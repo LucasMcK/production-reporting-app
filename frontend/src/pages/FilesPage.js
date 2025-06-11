@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import '../styles/FilesPage.css';
+import Button from '../components/Button';
 
 function FilesPage() {
   const [files, setFiles] = useState([]);
@@ -39,6 +41,11 @@ function FilesPage() {
           </li>
         ))}
       </ul>
+      <div className="home-buttons">
+        <Link to="/upload">
+          <Button type="primary">Upload Files</Button>
+        </Link>
+      </div>
     </div>
   );
 }

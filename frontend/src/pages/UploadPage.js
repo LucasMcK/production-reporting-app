@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import '../styles/UploadPage.css';
+import Button from '../components/Button';
+import { Link } from 'react-router-dom';
 
 function UploadForm() {
   const [file, setFile] = useState(null);
@@ -40,9 +42,15 @@ function UploadForm() {
           type="file"
           onChange={e => setFile(e.target.files[0])}
         />
-        <button type="submit" disabled={loading}>
-          {loading ? 'Uploading...' : 'Upload'}
-        </button>
+    <div className="button-group">
+      <Button type="primary" disabled={loading} as="button" htmlType="submit">
+        {loading ? 'Uploading...' : 'Upload'}
+      </Button>
+      <Link to="/files">
+        <Button type="secondary">View Files</Button>
+      </Link>
+    </div>
+
       </form>
       {status && <p className="status-message">{status}</p>}
     </div>
