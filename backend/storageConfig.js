@@ -6,7 +6,7 @@ const allowedExtensions = ['.xls'];
 
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
-    cb(null, 'uploads/'); // store in /uploads
+    cb(null, 'uploads/');
   },
   filename: function (req, file, cb) {
     const baseName = path.basename(file.originalname);

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-//import '../styles/UploadPage';
+import '../styles/UploadPage.css';
 
 function UploadForm() {
   const [file, setFile] = useState(null);
@@ -35,13 +35,16 @@ function UploadForm() {
 
   return (
     <div className="upload-container">
-      <form onSubmit={handleSubmit}>
-        <input type="file" onChange={e => setFile(e.target.files[0])} />
+      <form className="upload-form" onSubmit={handleSubmit}>
+        <input
+          type="file"
+          onChange={e => setFile(e.target.files[0])}
+        />
         <button type="submit" disabled={loading}>
           {loading ? 'Uploading...' : 'Upload'}
         </button>
       </form>
-      {status && <p>{status}</p>}
+      {status && <p className="status-message">{status}</p>}
     </div>
   );
 }

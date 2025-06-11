@@ -1,0 +1,54 @@
+/* FilesPage.css */
+
+.files-container {
+    max-width: 600px;
+    margin: 3rem auto;
+    padding: 2rem;
+    border-radius: 10px;
+    background-color: #f9fafb;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    font-family: 'Inter', sans-serif;
+    color: #222;
+  }
+  
+  .files-container h2 {
+    font-weight: 700;
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+    color: #374151; /* Gray 700 */
+    text-align: center;
+  }
+  
+  .files-list {
+    list-style-type: none;
+    padding-left: 0;
+  }
+  
+  .files-list li {
+    padding: 0.75rem 1rem;
+    border-bottom: 1px solid #e5e7eb; /* Gray 200 */
+    transition: background-color 0.2s ease;
+  }
+  
+  .files-list li:last-child {
+    border-bottom: none;
+  }
+  
+  .files-list li:hover {
+    background-color: #e0e7ff; /* Indigo 100 */
+  }
+  
+  .files-list a {
+    text-decoration: none;
+    color: #4f46e5; /* Indigo 600 */
+    font-weight: 600;
+    font-size: 1.1rem;
+    display: block;
+    word-break: break-word;
+    transition: color 0.3s ease;
+  }
+  
+  .files-list a:hover {
+    color: #4338ca; /* Indigo 700 */
+  }
+  

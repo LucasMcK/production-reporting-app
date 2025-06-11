@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import '../styles/FilesPage.css';
 
 function FilesPage() {
   const [files, setFiles] = useState([]);
@@ -17,20 +18,21 @@ function FilesPage() {
       });
   }, []);
 
-  if (loading) return <p>Loading files...</p>;
-  if (!files.length) return <p>No files found</p>;
+  if (loading) return <p className="loading-message">Loading files...</p>;
+  if (!files.length) return <p className="no-files-message">No files found</p>;
 
   return (
-    <div>
-      <h2>Files</h2>
-      <ul>
+    <div className="files-container">
+      <h2 className="files-heading">Files</h2>
+      <ul className="files-list">
         {files.map((url, idx) => (
-          <li key={idx}>
+          <li key={idx} className="file-item">
             <a
               href={url}
               target="_blank"
               rel="noopener noreferrer"
               download
+              className="file-link"
             >
               {decodeURIComponent(url.split('/').pop())}
             </a>
@@ -38,7 +40,7 @@ function FilesPage() {
         ))}
       </ul>
     </div>
-  );  
+  );
 }
 
 export default FilesPage;
