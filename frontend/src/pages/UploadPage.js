@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import '../styles/UploadPage.css';
 import Button from '../components/Button';
 import { Link } from 'react-router-dom';
+import Logo from '../components/Logo';
 
 function UploadForm() {
   const [file, setFile] = useState(null);
@@ -37,6 +38,7 @@ function UploadForm() {
 
   return (
     <div className="upload-container">
+      <Logo size={300} />
       <form className="upload-form" onSubmit={handleSubmit}>
         <input
           type="file"
