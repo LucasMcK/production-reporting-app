@@ -11,21 +11,21 @@
   }
   
   .btn-primary {
-    background-color: #2a9d8f;
+    background-color: #005130;
     color: white;
   }
   
   .btn-primary:hover {
-    background-color: #23867a;
+    background-color: #00695d;
   }
   
   .btn-secondary {
-    background-color: #e76f51;
+    background-color: #000000;
     color: white;
   }
   
   .btn-secondary:hover {
-    background-color: #c85d44;
+    background-color: #414141;
   }
 
   .button-group {
@@ -33,4 +33,10 @@
     justify-content: center;
     gap: 1rem;
     margin-top: 1rem;
+  }
+
+  .button-wrapper {
+    display: flex;
+    justify-content: center;
+    margin-top: 2rem;
   }
