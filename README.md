@@ -2,7 +2,9 @@
 
 ## Notice
 > **This repository is read-only.**
+
 It is not accepting contributions, pull requests, or issues at this time.
+
 Please feel free to fork or clone for personal use, but note that changes will not be merged into this repository.
 ## Description
 A centralized production reporting platform for Avalon Oil & Gas Ltd. This application empowers both field workers and executives to securely upload and download production spreadsheets—even in offline environments. It also generates concise summaries of each report to support informed decision-making.
