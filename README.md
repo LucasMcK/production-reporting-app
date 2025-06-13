@@ -91,10 +91,16 @@ Once you’ve installed all of the prerequisites, follow these steps to get the 
 ## API Endpoints
 
 ## Technologies Used
+Since this is a web application, the project leverages a range of technologies to deliver its functionality:
+
+- **Frontend:** React and CSS
+- **Backend:** Node.js and Express
+- **File handling:** Multer
+- **Deployment:** AWS EC2
+
+> **Note:** This list is subject to change as the project progresses.
 
 ## Project Structure
-
-## Testing
 
 ## Known Issues / Limitations
 N/A
