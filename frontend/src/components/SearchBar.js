@@ -1,7 +1,7 @@
 import React from 'react';
 import '../styles/SearchBar.css';
 
-const SearchBar = ({ value, onChange, placeholder = "Search..." }) => {
+const SearchBar = ({ value, onChange, placeholder = "Search files..." }) => {
   return (
     <input
       className="search-bar"
