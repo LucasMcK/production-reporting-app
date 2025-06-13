@@ -94,14 +94,17 @@ Once you’ve installed all of the prerequisites, follow these steps to get the 
 
 ## Project Structure
 
-## Contributing
-
 ## Testing
 
 ## Known Issues / Limitations
-
+N/A
 ## Future Improvements
 
 ## License
 This project is licensed under the [MIT License](./LICENSE).
 ## Contact / Author
+**Author:** Lucas McKenzie
+**Email:** lucasmck14@gmail.com
+**LinkedIn:** https://www.linkedin.com/in/lucas-mckenzie/
+
+> Feel free to reach out with questions, feedback, or ideas!
