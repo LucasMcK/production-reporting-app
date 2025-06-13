@@ -22,11 +22,9 @@ Currently, this application allows users to:
 
 > **Note:** This list is subject to change as the project progresses.
 
-## Demo / Screenshots
+## Setup Guide
 
-## Installation
-
-### Prerequisites
+### Environment Setup
 
 Before using this project, you’ll need a code editor. I recommend Visual Studio Code (VSCode) because it’s beginner-friendly, free, works across all major operating systems, and includes a built-in terminal. This tutorial assumes you’re using VSCode. To install VSCode:
 
@@ -56,7 +54,7 @@ This tutorial uses GitHub Desktop to clone the project repository. I recommend i
 4. After installation, open GitHub Desktop.
 5. Sign in to your GitHub account when prompted. If you don’t have an account yet, you can create one [here](https://github.com/signup).
 
-### Steps
+### Running the Project Locally
 
 Once you’ve installed all of the prerequisites, follow these steps to get the project running on your computer.
 
@@ -94,9 +92,7 @@ Once you’ve installed all of the prerequisites, follow these steps to get the 
 
 > **Note:** The launch may take a minute or two, especially if it's your first time running the project.
 
-## Usage
-
-> After installing the prerequisites and cloning the repository, click [here](#steps) to view the steps of getting the project to run locally.
+## Application Routes & Pages
 
 Key API endpoints and their function:
 
@@ -119,6 +115,43 @@ Since this is a web application, the project leverages a range of technologies t
 
 ## Project Structure
 
+Below is a complete overview of the file structure:
+
+production-reporting-app/
+│
+├── backend/
+│   ├── controllers/
+│   │   └── uploadController.js         # Handles file upload and listing logic
+│   ├── routes/
+│   │   ├── filesRoutes.js              # Route to list uploaded files
+│   │   └── uploadRoutes.js             # Route to handle file uploads
+│   ├── uploads/                        # Stores uploaded spreadsheet files
+│   ├── index.js                        # Entry point for the backend server
+│   ├── storageConfig.js                # Multer storage configuration
+│   ├── package.json
+│   └── package-lock.json
+│
+├── frontend/
+│   ├── build/                          # Production build output
+│   ├── public/
+│   │   ├── images/                     # Public assets (e.g., logos)
+│   │   └── index.html                  # Root HTML file
+│   ├── src/
+│   │   ├── components/                 # Reusable UI components
+│   │   ├── pages/                      # Page-level React components
+│   │   ├── styles/                     # CSS stylesheets
+│   │   ├── App.js                      # Main React app component
+│   │   ├── index.js                    # React DOM rendering entry point
+│   │   └── reportWebVitals.js          # Performance monitoring with Web Vitals
+│   ├── .gitignore
+│   ├── package.json
+│   └── package-lock.json
+│
+├── LICENSE                        # MIT license for the project
+└── README.md                      # Project overview, setup, and usage documentation
+
+> **Note:** This structure is subject to change as the project progresses.
+
 ## Known Issues / Limitations
 
 N/A
@@ -138,7 +171,9 @@ Various features and improvements are planned to be made based on Avalons requir
 ## License
 
 This project is licensed under the [MIT License](./LICENSE).
+
 ## Contact / Author
+
 **Author:** Lucas McKenzie  
 **Email:** lucasmck14@gmail.com  
 **LinkedIn:** https://www.linkedin.com/in/lucas-mckenzie/
