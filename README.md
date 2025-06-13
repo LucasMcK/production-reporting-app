@@ -127,11 +127,11 @@ N/A
 
 Various features and improvements are planned to be made based on Avalons requirements:
 
-***Form-Based Data Entry:** Field workers will be able to manually input data into a structured form, which will automatically generate and upload the corresponding spreadsheet to the centralized database.
-***Well Management:** Executives will have the ability to add or remove wells as they are drilled, decommissioned, or stop producing.
-***Summary View:** A summary section will highlight key metrics from each spreadsheet, based on Avalon’s definition of the most relevant data.
-***Sheet Navigation:** Users will be able to seamlessly switch between multiple uploaded spreadsheets.
-***Filtering Capabilities:** Uploaded sheets will be filterable based on search criteria, allowing users to quickly locate specific spreadsheets.
+- **Form-Based Data Entry:** Field workers will be able to manually input data into a structured form, which will automatically generate and upload the corresponding spreadsheet to the centralized database.
+- **Well Management:** Executives will have the ability to add or remove wells as they are drilled, decommissioned, or stop producing.
+- **Summary View:** A summary section will highlight key metrics from each spreadsheet, based on Avalon’s definition of the most relevant data.
+- **Sheet Navigation:** Users will be able to seamlessly switch between multiple uploaded spreadsheets.
+- **Filtering Capabilities:** Uploaded sheets will be filterable based on search criteria, allowing users to quickly locate specific spreadsheets.
 
 > **Note:** This list is subject to change as the project progresses.
 
