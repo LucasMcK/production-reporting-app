@@ -1,4 +1,5 @@
 const path = require('path');
+const upload = require('../storageConfig');
 const fs = require('fs');
 
 exports.handleFileUpload = (req, res) => {
@@ -6,7 +7,7 @@ exports.handleFileUpload = (req, res) => {
     return res.status(400).json({ message: 'No file uploaded.' });
   }
 
-  res.status(200).json({
+  return res.status(200).json({
     message: 'File uploaded successfully.',
     file: req.file.originalname,
   });

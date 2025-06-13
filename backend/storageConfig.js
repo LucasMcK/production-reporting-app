@@ -1,17 +1,11 @@
 const multer = require('multer');
 const path = require('path');
-const fs = require('fs');
 
 const allowedExtensions = ['.xls'];
 
 const storage = multer.diskStorage({
-  destination: function (req, file, cb) {
-    cb(null, 'uploads/');
-  },
-  filename: function (req, file, cb) {
-    const baseName = path.basename(file.originalname);
-    cb(null, `${baseName}`);
-  },
+  destination: (req, file, cb) => cb(null, 'uploads/'),
+  filename: (req, file, cb) => cb(null, file.originalname),
 });
 
 const fileFilter = (req, file, cb) => {
