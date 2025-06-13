@@ -1,7 +1,7 @@
 # Production Reporting Web Application
 
 ## Notice
-**This repository is read-only.**
+> **This repository is read-only.**
 It is not accepting contributions, pull requests, or issues at this time.
 Please feel free to fork or clone for personal use, but note that changes will not be merged into this repository.
 ## Description
