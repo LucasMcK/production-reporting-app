@@ -6,19 +6,25 @@
 It is not accepting contributions, pull requests, or issues at this time.
 
 Please feel free to fork or clone for personal use, but note that changes will not be merged into this repository.
+
 ## Description
 A centralized production reporting platform for Avalon Oil & Gas Ltd. This application empowers both field workers and executives to securely upload and download production spreadsheets—even in offline environments. It also generates concise summaries of each report to support informed decision-making.
+
 ## Features
 Currently, this application allows users to:
 
 * Securely view all production spreadsheet files stored in the database.
 * Download any stored file easily for offline access.
 * Upload new production reports from the field or office.
+
+> **Note:** This list is subject to change as the project progresses.
+
 ## Demo / Screenshots
 
 ## Installation
 
 ### Prerequisites
+
 Before using this project, you’ll need a code editor. I recommend Visual Studio Code (VSCode) because it’s beginner-friendly, free, works across all major operating systems, and includes a built-in terminal. This tutorial assumes you’re using VSCode. To install VSCode:
 
 1. Go to the [Visual Studio Code website](https://code.visualstudio.com/).
@@ -48,6 +54,7 @@ This tutorial uses GitHub Desktop to clone the project repository. I recommend i
 5. Sign in to your GitHub account when prompted. If you don’t have an account yet, you can create one [here](https://github.com/signup).
 
 ### Steps
+
 Once you’ve installed all of the prerequisites, follow these steps to get the project running on your computer.
 
 1. Clone the repository  
@@ -91,6 +98,7 @@ Once you’ve installed all of the prerequisites, follow these steps to get the 
 ## API Endpoints
 
 ## Technologies Used
+
 Since this is a web application, the project leverages a range of technologies to deliver its functionality:
 
 - **Frontend:** React and CSS
@@ -103,10 +111,13 @@ Since this is a web application, the project leverages a range of technologies t
 ## Project Structure
 
 ## Known Issues / Limitations
+
 N/A
+
 ## Future Improvements
 
 ## License
+
 This project is licensed under the [MIT License](./LICENSE).
 ## Contact / Author
 **Author:** Lucas McKenzie  
