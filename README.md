@@ -96,7 +96,7 @@ Once you’ve installed all of the prerequisites, follow these steps to get the 
 
 ## Usage
 
-> After installing the prerequisites and cloning the repository, click [here](#steps) to view the steps of running the project locally.
+> After installing the prerequisites and cloning the repository, click [here](#steps) to view the steps of getting the project to run locally.
 
 Key API endpoints and their function:
 
@@ -105,10 +105,6 @@ Key API endpoints and their function:
 * `/files` — **Files Page:** Displays a list of previously uploaded spreadsheets. Users can download individual files and easily navigate back to the Upload page.
 
 > **Note:** Items in these lists are subject to change as the project progresses.
-
-## Configuration
-
-## API Endpoints
 
 ## Technologies Used
 
@@ -127,7 +123,17 @@ Since this is a web application, the project leverages a range of technologies t
 
 N/A
 
-## Future Improvements
+## Future Improvements / Features
+
+Various features and improvements are planned to be made based on Avalons requirements:
+
+***Form-Based Data Entry:** Field workers will be able to manually input data into a structured form, which will automatically generate and upload the corresponding spreadsheet to the centralized database.
+***Well Management:** Executives will have the ability to add or remove wells as they are drilled, decommissioned, or stop producing.
+***Summary View:** A summary section will highlight key metrics from each spreadsheet, based on Avalon’s definition of the most relevant data.
+***Sheet Navigation:** Users will be able to seamlessly switch between multiple uploaded spreadsheets.
+***Filtering Capabilities:** Uploaded sheets will be filterable based on search criteria, allowing users to quickly locate specific spreadsheets.
+
+> **Note:** This list is subject to change as the project progresses.
 
 ## License
 
