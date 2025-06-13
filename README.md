@@ -117,35 +117,37 @@ Since this is a web application, the project leverages a range of technologies t
 
 Below is a complete overview of the file structure:
 
+```
 production-reporting-app/
 ├── backend/
-│ ├── controllers/
-│ │ └── uploadController.js # Handles file upload and listing logic
-│ ├── routes/
-│ │ ├── filesRoutes.js # Route to list uploaded files
-│ │ └── uploadRoutes.js # Route to handle file uploads
-│ ├── uploads/ # Stores uploaded spreadsheet files
-│ ├── index.js # Entry point for the backend server
-│ ├── storageConfig.js # Multer storage configuration
-│ ├── package.json
-│ └── package-lock.json
+│   ├── controllers/
+│   │   └── uploadController.js     # Handles file upload and listing logic
+│   ├── routes/
+│   │   ├── filesRoutes.js          # Route to list uploaded files
+│   │   └── uploadRoutes.js         # Route to handle file uploads
+│   ├── uploads/                    # Stores uploaded spreadsheet files
+│   ├── index.js                   # Entry point for the backend server
+│   ├── storageConfig.js            # Multer storage configuration
+│   ├── package.json
+│   └── package-lock.json
 ├── frontend/
-│ ├── build/ # Production build output
-│ ├── public/
-│ │ ├── images/ # Public assets (e.g., logos)
-│ │ └── index.html # Root HTML file
-│ ├── src/
-│ │ ├── components/ # Reusable UI components
-│ │ ├── pages/ # Page-level React components
-│ │ ├── styles/ # CSS stylesheets
-│ │ ├── App.js # Main React app component
-│ │ ├── index.js # React DOM rendering entry point
-│ │ └── reportWebVitals.js # Performance monitoring with Web Vitals
-│ ├── .gitignore
-│ ├── package.json
-│ └── package-lock.json
-├── LICENSE # MIT license for the project
-└── README.md # Project overview, setup, and usage documentation
+│   ├── build/                     # Production build output
+│   ├── public/
+│   │   ├── images/                # Public assets (e.g., logos)
+│   │   └── index.html             # Root HTML file
+│   ├── src/
+│   │   ├── components/            # Reusable UI components
+│   │   ├── pages/                 # Page-level React components
+│   │   ├── styles/                # CSS stylesheets
+│   │   ├── App.js                 # Main React app component
+│   │   ├── index.js               # React DOM rendering entry point
+│   │   └── reportWebVitals.js     # Performance monitoring with Web Vitals
+│   ├── .gitignore
+│   ├── package.json
+│   └── package-lock.json
+├── LICENSE                       # MIT license for the project
+└── README.md                     # Project overview, setup, and usage documentation
+```
 
 > **Note:** This structure is subject to change as the project progresses.
 
