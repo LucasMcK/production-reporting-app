@@ -3,10 +3,12 @@ import { Link } from 'react-router-dom';
 import '../styles/FilesPage.css';
 import Button from '../components/Button';
 //import Logo from '../components/Logo';
+import SearchBar from '../components/SearchBar';
 
 function FilesPage() {
   const [files, setFiles] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [query, setQuery] = useState('');
 
   useEffect(() => {
     fetch('http://localhost:5001/files')
@@ -24,11 +26,18 @@ function FilesPage() {
   if (loading) return <p className="loading-message">Loading files...</p>;
   if (!files.length) return <p className="no-files-message">No files found</p>;
 
+  const filteredFiles = files.filter(file =>
+    file.toLowerCase().includes(query.toLowerCase())
+  );
+
   return (
     <div className="files-container">
       <h2 className="files-heading">Files</h2>
+      <div className="search-bar-wrapper">
+        <SearchBar value={query} onChange={(e) => setQuery(e.target.value)} />
+      </div>
       <ul className="files-list">
-        {files.map((url, idx) => (
+        {filteredFiles.map((url, idx) => (
           <li key={idx} className="file-item">
             <a
               href={url}

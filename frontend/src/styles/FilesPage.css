@@ -13,6 +13,7 @@
     font-weight: 700;
     font-size: 2rem;
     margin-bottom: 1.5rem;
+    align-items: center;
     color: #374151;
     text-align: center;
   }
@@ -50,4 +51,11 @@
   .files-list a:hover {
     color: #4338ca;
     border-radius: 45px;
+  }
+
+  .search-bar-wrapper {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin: 1rem 0;
   }
