@@ -91,6 +91,16 @@ Once you’ve installed all of the prerequisites, follow these steps to get the 
 
 > **Note:** The launch may take a minute or two, especially if it's your first time running the project.
 
+### Keeping Your Local Project Up to Date
+
+Changes made to the project will not automatically appear on your local copy. To fetch the latest updates:
+
+1. Open Github Desktop.
+2. In the top-left corner, click the **Current Repository** dropdown and select `production-reporting-app`.
+3. In the top-right corner, click **Fetch origin** to pull in any new changes.
+
+It’s a good habit to fetch updates before running the application to ensure you're working with the latest version.
+
 ## Application Routes & Pages
 
 Key API endpoints and their function:
