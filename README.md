@@ -1,5 +1,9 @@
 # Production Reporting Web Application
 
+## Notice
+**This repository is read-only.**
+It is not accepting contributions, pull requests, or issues at this time.
+Please feel free to fork or clone for personal use, but note that changes will not be merged into this repository.
 ## Description
 A centralized production reporting platform for Avalon Oil & Gas Ltd. This application empowers both field workers and executives to securely upload and download production spreadsheets—even in offline environments. It also generates concise summaries of each report to support informed decision-making.
 ## Features
@@ -24,6 +28,8 @@ Before using this project, you’ll need a code editor. I recommend Visual Studi
 4. Once installed, open VSCode — you'll use it to view and edit this project’s files.
 
 In addition to VSCode, this project requires Node.js and npm (Node Package Manager). These tools allow you to run and manage the application. To download and install Node.JS and npm:
+
+> **Note:** Following these steps will download both Node.JS and npm.
 
 1. Go to their [official website](https://nodejs.org).
 2. Download the packages for your operating system.
