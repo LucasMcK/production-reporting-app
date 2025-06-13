@@ -74,7 +74,7 @@ Once you’ve installed all of the prerequisites, follow these steps to get the 
     - Once all necessary dependencies have been installed, start the frontend using `npm start`.  
     - After a few moments, you should see the message `Starting the development server...`, followed by the app opening automatically in your web browser at `https://localhost:3000`.  
 
-   > **Note:** The launch may take a minute or two, especially if it's your first time running the project.
+> **Note:** The launch may take a minute or two, especially if it's your first time running the project.
 
 ## Usage
 
