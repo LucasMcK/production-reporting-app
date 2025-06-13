@@ -99,7 +99,7 @@ Changes made to the project will not automatically appear on your local copy. To
 2. In the top-left corner, click the **Current Repository** dropdown and select `production-reporting-app`.
 3. In the top-right corner, click **Fetch origin** to pull in any new changes.
 
-It’s a good habit to fetch updates before running the application to ensure you're working with the latest version.
+> **Note:** It’s a good habit to fetch updates before running the application to ensure you're working with the latest version.
 
 ## Application Routes & Pages
 
