@@ -96,6 +96,16 @@ Once you’ve installed all of the prerequisites, follow these steps to get the 
 
 ## Usage
 
+> After installing the prerequisites and cloning the repository, click [here](#steps) to view the steps of running the project locally.
+
+Key API endpoints and their function:
+
+* `/` —  **Home Page:** Displays a welcome message, a brief overview of the application, and navigation links to other key sections.
+* `/upload` — **Upload Page:** Allows users to upload spreadsheets to the centralized database and provides a link to navigate to the Files page.
+* `/files` — **Files Page:** Displays a list of previously uploaded spreadsheets. Users can download individual files and easily navigate back to the Upload page.
+
+> **Note:** Items in these lists are subject to change as the project progresses.
+
 ## Configuration
 
 ## API Endpoints
