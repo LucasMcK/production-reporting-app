@@ -75,8 +75,8 @@ Once you’ve installed all of the prerequisites, follow these steps to get the 
 
     - In the new terminal pane, navigate to the frontend folder:  
 
-      - Option 1: If you see `backend` to the left of the command prompt symbol, first return to the root folder using `cd ..`, then navigate into the frontend folder using `cd frontend`.  
-      - Option 2: If you see `production-reporting-app` to the left of the command prompt symbol, navigate to frontend folder using `cd frontend`. 
+      - Option 1: If you see `backend` to the left of the command prompt symbol *(most commonly $, #, %, >)*, first return to the root folder using `cd ..`, then navigate into the frontend folder using `cd frontend`.  
+      - Option 2: If you see `production-reporting-app` to the left of the command prompt symbol *(most commonly $, #, %, >)*, navigate to frontend folder using `cd frontend`. 
 
     - Install the frontend dependencies using `npm install`. This command will take some time to execute.  
     - Once all necessary dependencies have been installed, start the frontend using `npm start`.  
