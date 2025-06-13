@@ -31,10 +31,9 @@ Before using this project, you’ll need a code editor. I recommend Visual Studi
 1. Go to the [Visual Studio Code website](https://code.visualstudio.com/).
 2. Download the installer for your operating system.
 3. Run the installer and follow the on-screen instructions.
-
-   > **Note:** You can choose where to install VSCode or any other application downloaded in this tutorial, but the default locations work just fine.
-
 4. Once installed, open VSCode — you'll use it to view and edit this project’s files.
+
+> **Note:** You can choose where to install VSCode or any other application downloaded in this tutorial, but the default locations work just fine.
 
 In addition to VSCode, this project requires Node.js and npm (Node Package Manager). These tools allow you to run and manage the application. To download and install Node.JS and npm:
 
