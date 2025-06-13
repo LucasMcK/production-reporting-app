@@ -35,9 +35,9 @@ Before using this project, you’ll need a code editor. I recommend Visual Studi
 
 > **Note:** You can choose where to install VSCode or any other application downloaded in this tutorial, but the default locations work just fine.
 
-In addition to VSCode, this project requires Node.js and npm (Node Package Manager). These tools allow you to run and manage the application. To download and install Node.JS and npm:
+In addition to VSCode, this project requires Node.js and npm (Node Package Manager). These tools allow you to run and manage the application. To download and install Node.js and npm:
 
-> **Note:** Following these steps will download both Node.JS and npm.
+> **Note:** Following these steps will download both Node.js and npm.
 
 1. Go to their [official website](https://nodejs.org).
 2. Download the packages for your operating system.
