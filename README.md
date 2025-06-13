@@ -3,7 +3,10 @@
 ## Description
 A centralized production reporting platform for Avalon Oil & Gas Ltd. This application empowers both field workers and executives to securely upload and download production spreadsheets—even in offline environments. It also generates concise summaries of each report to support informed decision-making.
 ## Features
-
+Currently, this application allows users to:
+    * Securely view all production spreadsheet files stored in the database.
+    * Download any stored file easily for offline access.
+    * Upload new production reports from the field or office.
 ## Demo / Screenshots
 
 ## Installation
