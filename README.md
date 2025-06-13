@@ -75,8 +75,8 @@ Once you’ve installed all of the prerequisites, follow these steps to get the 
 
     - In the new terminal pane, navigate to the frontend folder:  
 
-      - Option 1: If you're still in the backend folder *(which you most likely are)*, first return to the root folder using `cd ..`, then navigate into the frontend folder using `cd frontend`.  
-      - Option 2: If you are already in the root folder *(unlikely)*, navigate to frontend folder using `cd frontend`. 
+      - Option 1: If you see `backend` to the left of the command prompt symbol, first return to the root folder using `cd ..`, then navigate into the frontend folder using `cd frontend`.  
+      - Option 2: If you see `production-reporting-app` to the left of the command prompt symbol, navigate to frontend folder using `cd frontend`. 
 
     - Install the frontend dependencies using `npm install`. This command will take some time to execute.  
     - Once all necessary dependencies have been installed, start the frontend using `npm start`.  
@@ -103,8 +103,8 @@ N/A
 ## License
 This project is licensed under the [MIT License](./LICENSE).
 ## Contact / Author
-**Author:** Lucas McKenzie
-**Email:** lucasmck14@gmail.com
+**Author:** Lucas McKenzie  
+**Email:** lucasmck14@gmail.com  
 **LinkedIn:** https://www.linkedin.com/in/lucas-mckenzie/
 
 > Feel free to reach out with questions, feedback, or ideas!
