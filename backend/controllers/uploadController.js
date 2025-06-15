@@ -1,10 +1,10 @@
 // files general purpose: define functions that handle logic related to file uploads
 
-// imports Node.js' built-in path module for working with file and directory paths
+// import Node.js' built-in path module for working with file and directory paths
 const path = require("path");
-// imports storage configuration from seperate file
+// import storage configuration from seperate file
 const upload = require("../storageConfig");
-// imports Node.js' built-in fs module to interact with the file system (e.g., check if file exists)
+// import Node.js' built-in fs module to interact with the file system (e.g., check if file exists)
 const fs = require("fs");
 
 // handleFileUpload purpose overview:
