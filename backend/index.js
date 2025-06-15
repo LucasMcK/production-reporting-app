@@ -16,8 +16,6 @@ app.use('/', uploadRoutes);
 
 app.use('/', filesRoutes);
 
-app.use(express.json());
-
 app.use('/', formRoutes);
 
 app.listen(PORT, () => {
