@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import UploadPage from './pages/UploadPage';
 import FilesPage from './pages/FilesPage';
 import HomePage from './pages/HomePage';
+import FormSubmissionPage from '../src/pages/FormPage';
 
 function App() {
   return (
@@ -11,6 +12,7 @@ function App() {
         <Route path="/" element={<HomePage />} />
         <Route path="/upload" element={<UploadPage />} />
         <Route path="/files" element={<FilesPage />} />
+        <Route path="/form" element={<FormSubmissionPage />} />
       </Routes>
     </Router>
   );
