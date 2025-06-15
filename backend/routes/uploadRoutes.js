@@ -1,8 +1,7 @@
 const express = require('express');
+const router = express.Router();
 const { handleFileUpload } = require('../controllers/uploadController');
 const upload = require('../storageConfig');
-
-const router = express.Router();
 
 router.post('/upload', upload.single('file'), handleFileUpload);
 
