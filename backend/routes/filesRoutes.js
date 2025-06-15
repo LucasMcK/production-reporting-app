@@ -7,8 +7,8 @@ const router = express.Router();
 // import function for handling file list
 const { listUploadedFiles } = require('../controllers/fileController');
 
-// return files - mounted on endpoint /files
-router.get('/', listUploadedFiles);
+// return files
+router.get('/files', listUploadedFiles);
 
 // export router object for use in other files
 module.exports = router;

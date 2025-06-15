@@ -1,3 +1,5 @@
+// files general purpose: main entry point for backend server
+
 const express = require('express');
 const cors = require('cors');
 const uploadRoutes = require('./routes/uploadRoutes');
@@ -12,7 +14,7 @@ app.use(express.json());
 
 app.use('/', uploadRoutes);
 
-app.use('/files', filesRoutes);
+app.use('/', filesRoutes);
 
 app.use(express.json());
 
