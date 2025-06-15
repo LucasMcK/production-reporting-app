@@ -1,11 +1,11 @@
 // files general purpose: define functions that handle logic related to form submissions
 
-// import xlsx library for reading and writing Excel files
-const XLSX = require('xlsx');
 // import Node.js' built-in path module for working with file and directory paths
 const path = require('path');
 // import Node.js' built-in fs module to interact with the file system (e.g., check if file exists)
 const fs = require('fs');
+// import xlsx library for reading and writing Excel files
+const XLSX = require('xlsx');
 
 // handleFormSubmission purpose overview:
     // accepts form data from a POST request

@@ -1,11 +1,11 @@
 // files general purpose: define functions that handle logic related to file uploads
 
 // import Node.js' built-in path module for working with file and directory paths
-const path = require("path");
-// import storage configuration from seperate file
-const upload = require("../storageConfig");
+const path = require('path');
 // import Node.js' built-in fs module to interact with the file system (e.g., check if file exists)
-const fs = require("fs");
+const fs = require('fs');
+// import storage configuration from seperate file
+const upload = require('../storageConfig');
 
 // handleFileUpload purpose overview:
     // check if a file was included in upload request
@@ -14,12 +14,12 @@ const fs = require("fs");
 exports.handleFileUpload = (req, res) => {
     // return error message if no file is included in upload request
     if (!req.file) {
-        return res.status(400).json({ message: "No file uploaded." });
+        return res.status(400).json({ message: 'No file uploaded.' });
     }
 
     // upload file using original name and return success message if file is included in upload request
     return res.status(200).json({
-        message: "File uploaded successfully.",
+        message: 'File uploaded successfully.',
         file: req.file.originalname,
     });
 };
