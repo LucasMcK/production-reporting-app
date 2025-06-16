@@ -1,6 +1,6 @@
 .search-bar {
     width: 100%;
-    max-width: 400px;
+    max-width: 475px;
     padding: 10px 12px;
     font-size: 16px;
     border: 1px solid #ccc;
@@ -23,5 +23,4 @@
     font-size: 1rem;
     border-radius: 6px;
     border: 1px solid #ccc;
-  }
-  
+  }  

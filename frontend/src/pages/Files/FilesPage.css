@@ -1,61 +1,31 @@
-.files-container {
-    max-width: 600px;
-    margin: 3rem auto;
-    padding: 2rem;
-    border-radius: 10px;
-    background-color: #f9fafb;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    font-family: 'Inter', sans-serif;
-    color: #222;
-  }
-  
-  .files-container h2 {
-    font-weight: 700;
-    font-size: 2rem;
-    margin-bottom: 1.5rem;
-    align-items: center;
-    color: #374151;
-    text-align: center;
-  }
-  
-  .files-list {
-    list-style-type: none;
-    padding-left: 0;
-  }
-  
-  .files-list li {
-    padding: 0.75rem 1rem;
-    border-bottom: 1px solid #e5e7eb;
-    transition: background-color 0.2s ease;
-  }
-  
-  .files-list li:last-child {
-    border-bottom: none;
-  }
-  
-  .files-list li:hover {
-    background-color: #e0e7ff;
-    border-radius: 6px;
-  }
-  
-  .files-list a {
-    text-decoration: none;
-    color: #4f46e5;
-    font-weight: 600;
-    font-size: 1.1rem;
-    display: block;
-    word-break: break-word;
-    transition: color 0.3s ease;
-  }
-  
-  .files-list a:hover {
-    color: #4338ca;
-    border-radius: 45px;
-  }
+/* files general purpose: define styling specific to files page */
 
-  .search-bar-wrapper {
-    display: flex;
-    justify-content: center;
-    width: 100%;
-    margin: 1rem 0;
-  }
+/* Remove default list styling */
+.files-list {
+    width: 100%;                 /* List takes up full width of its container */
+    max-width: 500px;            /* But does not exceed 500px for readability */
+    padding-left: 0;             /* Removes default left padding from <ul> */
+    margin: 0;                   /* Removes default top and bottom margin from <ul> */
+}
+
+/* Style each list item as a card-like container */
+.files-list li {
+    padding: 1rem;               /* Adds inner spacing to each item */
+    margin-bottom: 0.5rem;       /* Adds space below each list item */
+    border: 1px solid #e5e7eb; /* Draws a light border around each item */
+    border-radius: 8px;          /* Slightly rounds the corners of the border */
+    text-align: center;          /* Centers the text inside the list item */
+    background-color: #ffffff; /* Sets a white background for contrast */
+    transition: background-color 0.2s ease, border-color 0.2s ease;  /* Smooth transition on hover effects */
+}
+
+/* Applies only to the last list item */
+.files-list li:last-child {
+    margin-bottom: 1rem;         /* Adds extra space below the final item */
+}
+
+/* Hover effect: fill the background and keep border color consistent */
+.files-list li:hover {
+    background-color: #e0e7ff; /* Light blue background when hovered */
+    border-color: #e0e7ff;     /* Matches border to background on hover */
+}
