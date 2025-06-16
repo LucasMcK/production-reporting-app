@@ -53,6 +53,10 @@ label {
     display: inline-block;            /* Enables margin/padding */
     margin: 0.25rem;                  /* Space around label */
 }
+
+input {
+    text-align: center;               /* Centers both input text and placeholder text */
+}  
   
 /* Link styling */
 a {
