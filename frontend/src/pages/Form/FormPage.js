@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import './FormPage.css';
 import Button from '../../components/Button/Button.js';
+import '../../index.css';
+import './FormPage.css';
 
 function FormSubmissionPage() {
   const [reportName, setReportName] = useState('');

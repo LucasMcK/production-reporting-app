@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import Button from '../../components/Button/Button.js';
 import SearchBar from '../../components/SearchBar/SearchBar.js';
+import '../../index.css';
 import './FilesPage.css';
 
 
@@ -31,31 +32,26 @@ function FilesPage() {
   );
 
   return (
-    <div className="files-container">
-      <h2 className="files-heading">Files</h2>
-      <div className="search-bar-wrapper">
-        <SearchBar value={query} onChange={(e) => setQuery(e.target.value)} />
-      </div>
+    <div className="container" style={{ width: '600px' }}>
+      <h2>Files</h2>
+      <SearchBar value={query} onChange={(e) => setQuery(e.target.value)} />
       <ul className="files-list">
         {filteredFiles.map((url, idx) => (
-          <li key={idx} className="file-item">
+          <li key={idx}>
             <a
               href={url}
               target="_blank"
               rel="noopener noreferrer"
               download
-              className="file-link"
             >
               {decodeURIComponent(url.split('/').pop())}
             </a>
           </li>
         ))}
       </ul>
-      <div className="button-wrapper">
         <Link to="/upload">
           <Button type="primary">Upload Files</Button>
         </Link>
-      </div>
     </div>
   );
 }

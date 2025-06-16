@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import Button from '../../components/Button/Button.js';
 import Logo from '../../components/Logo/Logo.js';
+import '../../index.css';
 import './HomePage.css';
 
 export default function HomePage() {
