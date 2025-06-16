@@ -1,5 +1,7 @@
+/* files general purpose: define styling specific to button component */
+
 .logo {
-    display: block;
-    margin: 0 auto;
-    padding: 0;
+    display: block;         /* Ensures the logo behaves like a block element (so margin auto works) */
+    margin: 0 auto;         /* Horizontally centers the logo within its container */
+    padding: 0;             /* Removes any default padding around the logo */
 }
