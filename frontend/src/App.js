@@ -1,9 +1,9 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import UploadPage from './pages/UploadPage';
-import FilesPage from './pages/FilesPage';
-import HomePage from './pages/HomePage';
-import FormSubmissionPage from '../src/pages/FormPage';
+import UploadPage from './pages/Upload/UploadPage';
+import FilesPage from './pages/Files/FilesPage';
+import HomePage from './pages/Home/HomePage';
+import FormSubmissionPage from './pages/Form/FormPage';
 
 function App() {
   return (

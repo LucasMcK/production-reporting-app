@@ -1,8 +1,8 @@
 import React from 'react';
-import '../styles/HomePage.css';
-import Button from '../components/Button';
 import { Link } from 'react-router-dom';
-import Logo from '../components/Logo';
+import Button from '../../components/Button/Button.js';
+import Logo from '../../components/Logo/Logo.js';
+import './HomePage.css';
 
 export default function HomePage() {
   return (

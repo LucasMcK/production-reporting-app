@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import '../styles/FilesPage.css';
-import Button from '../components/Button';
-//import Logo from '../components/Logo';
-import SearchBar from '../components/SearchBar';
+import Button from '../../components/Button/Button.js';
+import SearchBar from '../../components/SearchBar/SearchBar.js';
+import './FilesPage.css';
+
 
 function FilesPage() {
   const [files, setFiles] = useState([]);

@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import '../styles/UploadPage.css';
-import Button from '../components/Button';
 import { Link } from 'react-router-dom';
-import Logo from '../components/Logo';
+import Button from '../../components/Button/Button.js';
+import Logo from '../../components/Logo/Logo.js';
+import './UploadPage.css';
 
 function UploadForm() {
   const [file, setFile] = useState(null);

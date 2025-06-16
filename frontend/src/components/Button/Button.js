@@ -3,7 +3,7 @@
 // import React to define component
 import React from 'react';
 // import styling for react component
-import '../styles/Button.css';
+import './Button.css';
 
 // define functional button component:
     // type: defaults to primary if not explicitly specified

@@ -3,7 +3,7 @@
 // import React to define component
 import React from 'react';
 // import styling for react component
-import '../styles/Logo.css';
+import './Logo.css';
 
 // define functional logo component:
     // default size value: 100

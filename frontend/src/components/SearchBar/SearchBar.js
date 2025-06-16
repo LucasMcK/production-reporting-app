@@ -3,7 +3,7 @@
 // import React to define component
 import React from 'react';
 // import styling for react component
-import '../styles/SearchBar.css';
+import './SearchBar.css';
 
 // define functional searchBar component:
     // value: current text in the search bar
