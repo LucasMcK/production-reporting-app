@@ -1,26 +1,18 @@
-.search-bar {
-    width: 100%;
-    max-width: 475px;
-    padding: 10px 12px;
-    font-size: 16px;
-    border: 1px solid #ccc;
-    border-radius: 6px;
-    margin-bottom: 20px;
-    box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.05);
-    transition: border-color 0.3s ease;
-    justify-content: center;
-  }
-  
-  .search-bar:focus {
-    outline: none;
-    border-color: #007bff;
-  }
+/* files general purpose: define styling specific to button component */
 
-  .search-bar input {
-    width: 50%;
-    max-width: 500px;
-    padding: 0.5rem 1rem;
-    font-size: 1rem;
-    border-radius: 6px;
-    border: 1px solid #ccc;
-  }  
+.search-bar {
+    width: 100%;                            /* Makes the search bar span the full width of its container */
+    max-width: 475px;                       /* Restricts the maximum width for better readability/layout */
+    padding: 10px 12px;                     /* Adds vertical (10px) and horizontal (12px) inner spacing */
+    font-size: 16px;                        /* Sets the size of the input text */
+    border: 1px solid #ccc;               /* Applies a light gray border */
+    border-radius: 6px;                     /* Rounds the corners slightly */
+    margin-bottom: 20px;                    /* Adds space below the search bar */
+    box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.05); /* Subtle shadow for depth */
+    transition: border-color 0.3s ease;     /* Smooth transition for border color changes on interaction */
+}
+
+.search-bar:focus {
+    outline: none;                          /* Removes the default blue outline when focused */
+    border-color: #007bff;                /* Highlights the border with blue on focus */
+}
