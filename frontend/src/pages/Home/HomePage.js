@@ -7,7 +7,7 @@ import './HomePage.css';
 
 export default function HomePage() {
   return (
-    <div className="container">
+    <div className="container" style={{ width: '750px' }}>
       <Logo size={450} />
       <h1>Welcome to the Production Reporting Web Application</h1>
       <p>Upload files and view reports all in one place.</p>
