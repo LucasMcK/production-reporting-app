@@ -74,3 +74,36 @@ li {
     margin-bottom: 0.5rem;             /* Space between list items */
     list-style: none;                  /* Removes bullet points */
 }
+
+/* General status message block */
+.status-message {
+    padding: 0.75rem 1rem;             /* Padding inside the message box */
+    margin: 1rem 0;                    /* Space above and below message */
+    border-radius: 6px;                /* Rounded corners */
+    font-size: 1rem;                   /* Readable font size */
+    font-weight: 500;                  /* Slightly bold for visibility */
+    width: 100%;                       /* Full width of container */
+    max-width: 600px;                  /* But no wider than this */
+    text-align: center;                /* Center the text */
+}
+
+/* Success message (green) */
+.status-success {
+    background-color: #e6ffed;       /* Light green background */
+    color: #256029;                  /* Dark green text */
+    border: 1px solid #a4d4ae;       /* Border with medium green */
+}
+
+/* Error message (red) */
+.status-error {
+    background-color: #ffe6e6;       /* Light red background */
+    color: #b00020;                  /* Dark red text */
+    border: 1px solid #f5a4a4;       /* Border with soft red */
+}
+
+/* Info message (blue) */
+.status-info {
+    background-color: #e6f0ff;       /* Light blue background */
+    color: #1a4fa3;                  /* Dark blue text */
+    border: 1px solid #9dbde5;       /* Medium blue border */
+}
