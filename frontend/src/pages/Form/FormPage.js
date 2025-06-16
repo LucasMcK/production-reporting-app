@@ -1,4 +1,4 @@
-// files general purpose: page for manual data entry form submission
+// files general purpose: define page for manual data entry form submission
 
 // import React and hook useState to manage local state
 import React, { useState } from 'react';

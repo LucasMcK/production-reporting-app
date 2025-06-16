@@ -1,4 +1,4 @@
-// files general purpose: page for viewing and downloading files
+// files general purpose: define page for viewing and downloading files
 
 // import React and two hooks:
     // useEffect: to perform side effects like fetching data
