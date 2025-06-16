@@ -51,7 +51,7 @@ label {
     font-size: 0.9rem;                /* Slightly smaller than normal text */
     color: #555555;                 /* Grey tone for clarity */
     display: inline-block;            /* Enables margin/padding */
-    margin-bottom: 0.25rem;           /* Space below label */
+    margin: 0.25rem;                  /* Space around label */
 }
   
 /* Link styling */

@@ -33,13 +33,11 @@ function FormSubmissionPage() {
   };  
 
   return (
-    <div className="form-container">
-      <h2 className="form-heading">Manual Data Entry Form</h2>
-  
+    <div className="container" style={{ width: '1000px' }}>
+      <h2>Manual Data Entry Form</h2>
       <form onSubmit={handleFormSubmit}>
-        <div className="form-groups-row">
-          <div className="form-group">
-            <label className="form-label" htmlFor="reportName">Report Name</label>
+        <div className="form-row">
+            <label htmlFor="reportName">Report Name</label>
             <input
               id="reportName"
               className="form-input"
@@ -48,10 +46,8 @@ function FormSubmissionPage() {
               onChange={(e) => setReportName(e.target.value)}
               required
             />
-          </div>
   
-          <div className="form-group">
-            <label className="form-label" htmlFor="reportDate">Report Date</label>
+            <label htmlFor="reportDate">Report Date</label>
             <input
               id="reportDate"
               className="form-input"
@@ -60,20 +56,17 @@ function FormSubmissionPage() {
               onChange={(e) => setReportDate(e.target.value)}
               required
             />
-          </div>
         </div>
   
-        <div className="form-group">
-          <label className="form-label" htmlFor="volume">Volume</label>
+          <label htmlFor="volume">Volume</label>
           <input
             id="volume"
             className="form-input"
-            type="number"
+            type="text"
             value={volume}
             onChange={(e) => setVolume(e.target.value)}
             required
           />
-        </div>
   
         <Button type="primary">Submit Form</Button>
   
