@@ -12,6 +12,38 @@
     transition: border-color 0.3s ease;     /* Smooth transition for border color changes on interaction */
 }
 
+.search-bar-container {
+    display: flex;                          /* Use flexbox layout to arrange child elements in a row */
+    align-items: top;                       /* Vertically center the child elements within the container */
+  }  
+
+.date-input {
+    max-height: 35px;                       /* Limits height */
+    max-width: 75px;                        /* Limits the width */
+    padding: 10px 10px;                     /* Slightly smaller padding than the main input for balance */
+    font-size: 14px;                        /* Slightly smaller font size for a neat, compact look */
+    margin: 10px;                           /* Adds spacing between inputs horizontally */
+    box-sizing: border-box;                 /* Ensures padding is included inside width */
+}
+
+.default-text {
+    display: inline-flex;                   /* flex container that stays inline */
+    align-items: center;                    /* vertically center dash with inputs */         
+    margin: 0px 8px;                        /* some horizontal spacing around dash */
+    font-size: 16px;
+    user-select: none;                      /* prevent user from accidentally selecting dash */
+}
+
+.location-input {
+    max-height: 35px;                       /* Limits height */
+    max-width: 200px;                       /* Limits the width */
+    padding: 10px 10px;                     /* Slightly smaller padding than the main input for balance */
+    font-size: 14px;                        /* Slightly smaller font size for a neat, compact look */
+    margin: 10px;                           /* Adds spacing between inputs horizontally */
+    box-sizing: border-box;                 /* Ensures padding is included inside width */
+    line-height: 36px;
+}
+
 .search-bar:focus {
     outline: none;                          /* Removes the default blue outline when focused */
     border-color: #007bff;                /* Highlights the border with blue on focus */
