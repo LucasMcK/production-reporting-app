@@ -28,6 +28,3 @@ export default Button;
         // import Button from '../components/Button';
     // 2. implement the Button component using this statement:
         // <Button type="className" props>children</Button>
-        // className (REQUIRED): either primary or secondary
-        // props: can define as many as you want, handles appearance/behavior
-        // children: text the button will display

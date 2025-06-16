@@ -31,6 +31,4 @@ export default Logo;
         // import Logo from '../components/Logo';
     // 2. implement the Logo component using this statement:
         // <Logo size={width size} />
-        // size: px value that controls width of image
-        // height is dynamically updated as the width is changed
-        // the logo has the following dimensions: 800 × 456
+        // NOTE: the logo has the following dimensions: 800 × 456
