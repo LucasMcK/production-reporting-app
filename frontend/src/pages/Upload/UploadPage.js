@@ -38,7 +38,7 @@ function UploadForm() {
   };
 
   return (
-    <div className="upload-container">
+    <div className="container" style={{ width: "600px" }}>
       <Logo size={300} />
       <form className="upload-form" onSubmit={handleSubmit}>
         <input
