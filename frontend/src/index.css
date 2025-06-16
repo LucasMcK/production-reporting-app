@@ -1,1 +1,63 @@
-/* files general purpose: global styling*/
+/* files general purpose: global styling */
+
+/* Global container for consistent page layout */
+.container {                                       /* Defines a reusable container class */
+    max-width: 1200px;                             /* Limits container width to 1200px */
+    margin-left: auto;                             /* Centers container horizontally */
+    margin-right: auto;                            /* Centers container horizontally */
+    padding-left: 1rem;                            /* Adds left padding inside container */
+    padding-right: 1rem;                           /* Adds right padding inside container */
+}
+  
+/* Global text styles for consistent typography */
+.text {                                            /* Defines reusable text styling class */
+    font-family: 'Inter', sans-serif;              /* Sets font family globally */
+    font-size: 1rem;                               /* Sets base font size */
+    color: #333333;                              /* Sets default text color */
+    line-height: 1.5;                              /* Sets line height for readability */
+}
+  
+/* Headings */
+h1 {                                               /* Styles for all <h1> elements */
+    font-size: 2.5rem;                             /* Sets large font size for main headings */
+    font-weight: 700;                              /* Sets font weight to bold */
+    margin-bottom: 1rem;                           /* Adds space below heading */
+    color: #222222;                              /* Sets heading text color */
+}
+  
+h2 {                                               /* Styles for all <h2> elements */
+    font-size: 2rem;                               /* Sets slightly smaller font size */
+    font-weight: 600;                              /* Semi-bold font weight */
+    margin-bottom: 0.75rem;                        /* Adds spacing below the heading */
+    color: #333333;                              /* Sets heading text color */
+}
+  
+/* Paragraph text */
+p {                                                /* Styles for all <p> elements */
+    font-size: 1rem;                               /* Sets normal font size for paragraphs */
+    line-height: 1.6;                              /* Sets line height for better readability */
+    margin-bottom: 1rem;                           /* Adds space below paragraphs */
+    color: #444444;                              /* Paragraph text color */
+}
+  
+/* Form labels */
+label {                                            /* Styles for all <label> elements */
+    font-weight: 600;                              /* Semi-bold text for labels */
+    font-size: 0.9rem;                             /* Slightly smaller font size than body */
+    color: #555555;                              /* Label text color */
+    display: inline-block;                         /* Allows margin and padding */
+    margin-bottom: 0.25rem;                        /* Small space below label */
+}
+  
+/* Links */
+a {                                                /* Styles for all <a> (anchor/link) elements */
+    color: #007bff;                              /* Sets link color (blue) */
+    text-decoration: none;                         /* Removes underline by default */
+    cursor: pointer;                               /* Changes cursor to pointer on hover */
+}
+  
+a:hover,                                           /* On mouse hover for links */
+a:focus {                                          /* On keyboard focus for accessibility */
+    text-decoration: underline;                    /* Underlines link when hovered or focused */
+    outline: none;                                 /* Removes default focus outline */
+} 
