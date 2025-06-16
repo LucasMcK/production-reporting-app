@@ -4,11 +4,11 @@
     // useEffect: to perform side effects like fetching data
     // useState: to manage local state
 import React, { useEffect, useState } from 'react';
-// imports Link for client-side navigation without page reload
+// import Link for client-side navigation without page reload
 import { Link } from 'react-router-dom';
-// imports custom reusable Button component
+// import custom reusable Button component
 import Button from '../../components/Button/Button.js';
-// imports custom reusable SearchBar component
+// import custom reusable SearchBar component
 import SearchBar from '../../components/SearchBar/SearchBar.js';
 // import global stylesheet
 import '../../index.css';
@@ -83,4 +83,5 @@ function FilesPage() {
     );      
 }
 
+// export component to be used elsewhere
 export default FilesPage;
