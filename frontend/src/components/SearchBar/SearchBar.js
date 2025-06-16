@@ -26,7 +26,7 @@ const SearchBar = ({
     onLocationChange,
     yearPlaceholder = "YY",
     monthPlaceholder = "MM",
-    locationPlaceholder = "Search files..."
+    locationPlaceholder = "Location..."
 }) => {
     // initialize references to control input box focus
     const yearRef = useRef(null);
@@ -151,6 +151,6 @@ export default SearchBar;
         // onYearChange={setYear}
         // monthValue={month}
         // onMonthChange={setMonth}
-        // searchValue={search}
+        // searchValue={location}
         // onLocationChange={setSearch}
     // />
