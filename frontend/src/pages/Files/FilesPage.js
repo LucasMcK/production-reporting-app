@@ -1,59 +1,86 @@
+// files general purpose: page for viewing and downloading files
+
+// import React and two hooks:
+    // useEffect: to perform side effects like fetching data
+    // useState: to manage local state
 import React, { useEffect, useState } from 'react';
+// imports Link for client-side navigation without page reload
 import { Link } from 'react-router-dom';
+// imports custom reusable Button component
 import Button from '../../components/Button/Button.js';
+// imports custom reusable SearchBar component
 import SearchBar from '../../components/SearchBar/SearchBar.js';
+// import global stylesheet
 import '../../index.css';
+// import page specific stylesheet
 import './FilesPage.css';
 
-
+// declares functional component FilesPage
 function FilesPage() {
-  const [files, setFiles] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [query, setQuery] = useState('');
+    // initialize state files to hold array of file URLs fetched from the backend
+    const [files, setFiles] = useState([]);
+    // initialize loading state to indicate if files are still being fetched
+    const [loading, setLoading] = useState(true);
+    // initialize query state to store search input text from user
+    const [query, setQuery] = useState('');
 
-  useEffect(() => {
-    fetch('http://localhost:5001/files')
-      .then((res) => res.json())
-      .then((data) => {
-        setFiles(data);
-        setLoading(false);
-      })
-      .catch((err) => {
-        console.error('Error fetching files:', err);
-        setLoading(false);
-      });
-  }, []);
+    // run the following code once the component mounts
+    useEffect(() => {
+        // send GET request to backend to fetch list of files
+        fetch('http://localhost:5001/files')
+        // parse JSON response
+        .then((res) => res.json())
+        // update files state with received data and set loading state to false
+        .then((data) => {
+            setFiles(data);
+            setLoading(false);
+        })
+        // log erros and set loading state to false to prevent infinite loading
+        .catch((err) => {
+            console.error('Error fetching files:', err);
+            setLoading(false);
+        });
+    // empty dependency array to ensure effect only runs once on mount
+    }, []);
 
-  if (loading) return <p className="loading-message">Loading files...</p>;
-  if (!files.length) return <p className="no-files-message">No files found</p>;
+    // display loading message while files are being fetched
+    if (loading) return <p className="status-message status-info">Loading files...</p>;
+    if (!files.length) return <p className="status-message status-error">No files found</p>;
 
-  const filteredFiles = files.filter(file =>
-    file.toLowerCase().includes(query.toLowerCase())
-  );
+    // filter files to only include those matching search query
+    const filteredFiles = files.filter(file =>
+        file.toLowerCase().includes(query.toLowerCase())
+    );
 
-  return (
-    <div className="container" style={{ width: '600px' }}>
-      <h2>Files</h2>
-      <SearchBar value={query} onChange={(e) => setQuery(e.target.value)} />
-      <ul className="files-list">
-        {filteredFiles.map((url, idx) => (
-          <li key={idx}>
-            <a
-              href={url}
-              target="_blank"
-              rel="noopener noreferrer"
-              download
-            >
-              {decodeURIComponent(url.split('/').pop())}
-            </a>
-          </li>
-        ))}
-      </ul>
-        <Link to="/upload">
-          <Button type="primary">Upload Files</Button>
-        </Link>
-    </div>
-  );
+    return (
+        <div className="container" style={{ width: '600px' }}>
+            <h2>Files</h2>
+            <SearchBar value={query} onChange={(e) => setQuery(e.target.value)} />
+          
+            {!filteredFiles.length ? (
+                <p className="status-message status-error">No files found</p>
+            ) : (
+                <ul className="files-list">
+                    {filteredFiles.map((url, idx) => (
+                    <li key={idx}>
+                        <a
+                            href={url}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            download
+                        >
+                            {decodeURIComponent(url.split('/').pop())}
+                        </a>
+                    </li>
+                    ))}
+                </ul>
+            )}
+      
+            <Link to="/upload">
+                <Button type="primary">Upload Files</Button>
+            </Link>
+        </div>
+    );      
 }
 
 export default FilesPage;
