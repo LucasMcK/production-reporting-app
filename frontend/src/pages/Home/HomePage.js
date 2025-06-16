@@ -8,8 +8,6 @@ import { Link } from 'react-router-dom';
 import Button from '../../components/Button/Button.js';
 // import custom reusable Logo component
 import Logo from '../../components/Logo/Logo.js';
-// import global stylesheet
-import '../../index.css';
 // import page specific stylesheet
 import './HomePage.css';
 

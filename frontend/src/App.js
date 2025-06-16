@@ -4,6 +4,7 @@ import UploadPage from './pages/Upload/UploadPage';
 import FilesPage from './pages/Files/FilesPage';
 import HomePage from './pages/Home/HomePage';
 import FormSubmissionPage from './pages/Form/FormPage';
+import './index.css';
 
 function App() {
   return (

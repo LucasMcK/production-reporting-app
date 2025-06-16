@@ -10,8 +10,6 @@ import { Link } from 'react-router-dom';
 import Button from '../../components/Button/Button.js';
 // import custom reusable SearchBar component
 import SearchBar from '../../components/SearchBar/SearchBar.js';
-// import global stylesheet
-import '../../index.css';
 // import page specific stylesheet
 import './FilesPage.css';
 

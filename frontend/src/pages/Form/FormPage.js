@@ -4,8 +4,6 @@
 import React, { useState } from 'react';
 // import custom reusable Button component
 import Button from '../../components/Button/Button.js';
-// import global stylesheet
-import '../../index.css';
 // import page specific stylesheet
 import './FormPage.css';
 
