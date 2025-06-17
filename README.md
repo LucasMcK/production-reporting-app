@@ -19,6 +19,7 @@ Currently, this application allows users to:
 * Securely view all production spreadsheet files stored in the database.
 * Download any stored file easily for offline access.
 * Upload new production reports from the field or office.
+* Filter stored files based on year, month, and location.
 
 > **Note:** This list is subject to change as the project progresses.
 
@@ -108,6 +109,7 @@ Key API endpoints and their function:
 * `/` —  **Home Page:** Displays a welcome message, a brief overview of the application, and navigation links to other key sections.
 * `/upload` — **Upload Page:** Allows users to upload spreadsheets to the centralized database and provides a link to navigate to the Files page.
 * `/files` — **Files Page:** Displays a list of previously uploaded spreadsheets. Users can download individual files and easily navigate back to the Upload page.
+* `/form` — **Form Page:** Allows field workers to manually input data into a form that automatically populates the proper workbook.
 
 > **Note:** Items in these lists are subject to change as the project progresses.
 
@@ -130,32 +132,37 @@ Below is a complete overview of the file structure:
 production-reporting-app/
 ├── backend/
 │   ├── controllers/
-│   │   └── uploadController.js     # Handles file upload and listing logic
+│   │   ├── fileController.js       # Handles file listing logic
+│   │   ├── formController.js       # Handles form upload logic
+│   │   └── uploadController.js     # Handles file upload logic
+│   ├── node_modules/
 │   ├── routes/
 │   │   ├── filesRoutes.js          # Route to list uploaded files
+│   │   ├── formRoutes.js           # Route to handle manual data entry 
 │   │   └── uploadRoutes.js         # Route to handle file uploads
 │   ├── uploads/                    # Stores uploaded spreadsheet files
-│   ├── index.js                   # Entry point for the backend server
+│   ├── index.js                    # Entry point for the backend server
 │   ├── storageConfig.js            # Multer storage configuration
 │   ├── package.json
 │   └── package-lock.json
 ├── frontend/
-│   ├── build/                     # Production build output
+│   ├── build/                      # Production build output
+│   ├── node_modules
 │   ├── public/
-│   │   ├── images/                # Public assets (e.g., logos)
-│   │   └── index.html             # Root HTML file
+│   │   ├── images/                 # Public assets (e.g., logos)
+│   │   └── index.html              # Root HTML file
 │   ├── src/
-│   │   ├── components/            # Reusable UI components
-│   │   ├── pages/                 # Page-level React components
-│   │   ├── styles/                # CSS stylesheets
-│   │   ├── App.js                 # Main React app component
-│   │   ├── index.js               # React DOM rendering entry point
-│   │   └── reportWebVitals.js     # Performance monitoring with Web Vitals
+│   │   ├── components/             # Reusable UI components with independent style sheets
+│   │   ├── pages/                  # Page-level React components with independent style sheets
+│   │   ├── App.js                  # Main React app component
+│   │   ├── index.css               # Gloabal style sheet
+│   │   ├── index.js                # React DOM rendering entry point
+│   │   └── reportWebVitals.js      # Performance monitoring with Web Vitals
 │   ├── .gitignore
 │   ├── package.json
 │   └── package-lock.json
-├── LICENSE                       # MIT license for the project
-└── README.md                     # Project overview, setup, and usage documentation
+├── LICENSE                         # MIT license for the project
+└── README.md                       # Project overview, setup, and usage documentation
 ```
 
 > **Note:** This structure is subject to change as the project progresses.
@@ -172,7 +179,6 @@ Various features and improvements are planned to be made based on Avalons requir
 - **Well Management:** Executives will have the ability to add or remove wells as they are drilled, decommissioned, or stop producing.
 - **Summary View:** A summary section will highlight key metrics from each spreadsheet, based on Avalon’s definition of the most relevant data.
 - **Sheet Navigation:** Users will be able to seamlessly switch between multiple uploaded spreadsheets.
-- **Filtering Capabilities:** Uploaded sheets will be filterable based on search criteria, allowing users to quickly locate specific spreadsheets.
 
 > **Note:** This list is subject to change as the project progresses.
 
