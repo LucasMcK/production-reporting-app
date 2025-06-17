@@ -1,20 +1,19 @@
 import React from 'react';
+import './InputField.css';
 
 export default function InputField({ label, type = "text", value, onChange, disabled, step, name }) {
-  return (
-    <div style={{ marginBottom: '1rem' }}>
-      <label>
-        {label}
-        <input
-          name={name}
-          type={type}
-          value={value}
-          onChange={onChange}
-          disabled={disabled}
-          step={step}
-          style={{ marginLeft: '1rem' }}
-        />
-      </label>
-    </div>
-  );
+    return (
+        <div className="input-wrapper">
+            <label className="input-label">{label}</label>
+            <input
+                className="input-field"
+                name={name}
+                type={type}
+                value={value}
+                onChange={onChange}
+                disabled={disabled}
+                step={step}
+            />
+        </div>
+    );
 }

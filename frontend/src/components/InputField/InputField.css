@@ -1,0 +1,30 @@
+.input-wrapper {
+    margin-bottom: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.input-label {
+    margin-bottom: 0.5rem;
+    text-align: center;
+    font-weight: 500;
+}
+
+.input-field {
+    width: 100%;
+    max-width: 475px;
+    padding: 10px 12px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    margin-bottom: 20px;
+    box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.05);
+    transition: border-color 0.3s ease;
+    box-sizing: border-box;
+}
+
+.input-field:focus {
+    outline: none;
+    border-color: #007bff;
+}
