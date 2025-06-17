@@ -1,0 +1,32 @@
+legend {
+    padding: 0 0.5rem;
+    margin-left: 0;
+    font-weight: bold;
+    line-height: 1;
+    text-align: center;
+    width: auto; /* don't force full width here */
+    display: inline-block; /* don't use flex for legend */
+    background: white; /* same as fieldset background */
+    padding: 0 0.5rem;
+    border-radius: 4px; /* optional: soften corners */
+    /* margin to position legend properly */
+    margin-bottom: 0.5rem;
+  }
+  
+  fieldset {
+    padding: 1rem;
+    margin-bottom: 1rem;
+    border: 1px solid #ccc;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  fieldset > div {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100%;
+  }
+  
