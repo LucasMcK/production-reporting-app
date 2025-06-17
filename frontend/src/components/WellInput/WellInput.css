@@ -1,0 +1,68 @@
+/* files general purpose: define styling specific to search bar component */
+
+.well-input {
+    width: 100%;
+    max-width: 475px;
+    padding: 10px 12px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    margin-bottom: 20px;
+    box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.05);
+    transition: border-color 0.3s ease;
+}
+
+.well-input-label {
+    margin-bottom: 0.5rem;
+    text-align: center;
+    font-weight: 500;
+}
+
+.well-input-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.date-input {
+    height: 35px;
+    max-width: 75px;
+    padding: 10px;
+    font-size: 14px;
+    margin: 0.5rem;
+    box-sizing: border-box;
+}
+
+.default-text {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 35px;
+    margin-left: 8px;
+    font-size: 16px;
+    user-select: none;
+    white-space: nowrap;
+}
+
+.location-input {
+    height: 35px;
+    max-width: 200px;
+    padding: 10px;
+    font-size: 14px;
+    margin: 0.5rem;
+    box-sizing: border-box;
+    line-height: 35px;
+}
+
+.search-bar:focus {
+    outline: none;
+    border-color: #007bff;
+}
+
+.search-inputs-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: nowrap;
+}
