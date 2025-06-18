@@ -8,6 +8,7 @@ import Workbook from '../../components/WorkbookInput/WorkbookInput.js';
 import WellInput from '../../components/WellInput/WellInput.js';
 
 function ProductionFormPage() {
+    const [dayOfMonth, setDayOfMonth] = useState('');
     const [hoursOn, setHoursOn] = useState('');
     const hoursDown = hoursOn !== '' ? 24 - Number(hoursOn) : '';
     const [reason, setReason] = useState('');
@@ -98,6 +99,7 @@ function ProductionFormPage() {
         const workbookName = `${year}-${month} ${location}.xlsx`;
 
         const formData = {
+            dayOfMonth,
             hoursOn,
             hoursDown,
             reason,
@@ -184,6 +186,20 @@ function ProductionFormPage() {
                         onRangeChange={handleRangeChange}
                         meridianValue={meridian}
                         onMeridianChange={handleMeridianChange}
+                    />
+                    <InputField
+                        label="Day"
+                        type="number"
+                        step="1"
+                        min="1"
+                        max="31"
+                        value={dayOfMonth}
+                        onChange={(e) =>
+                            setDayOfMonth(
+                                Math.min(31, Math.max(1, e.target.value))
+                            )
+                        }
+                        width="100px"
                     />
                 </Fieldset>
 

@@ -2,9 +2,33 @@ const ExcelJS = require('exceljs');
 const fs = require('fs-extra');
 const path = require('path');
 
+function cloneWorksheet(sourceSheet, targetSheet) {
+    targetSheet.columns = sourceSheet.columns.map((col) => ({
+        header: col.header,
+        key: col.key,
+        width: col.width,
+        style: col.style,
+    }));
+
+    sourceSheet.eachRow({ includeEmpty: true }, (row, rowNumber) => {
+        const targetRow = targetSheet.getRow(rowNumber);
+        row.eachCell({ includeEmpty: true }, (cell, colNumber) => {
+            const targetCell = targetRow.getCell(colNumber);
+            targetCell.value = cell.value;
+            if (cell.style) {
+                targetCell.style = { ...cell.style };
+            }
+            if (sourceSheet._merges && sourceSheet._merges[cell.address]) {
+                targetSheet.mergeCells(cell.address);
+            }
+        });
+        targetRow.commit();
+    });
+}
+
 exports.handleFormSubmission = async (req, res) => {
     try {
-        const { workbookName, formData, targetRow } = req.body;
+        const { workbookName, formData } = req.body;
 
         if (!workbookName || !formData) {
             return res
@@ -21,21 +45,19 @@ exports.handleFormSubmission = async (req, res) => {
             township,
             range,
             meridian,
+            dayOfMonth,
         } = formData;
 
-        if (
-            !year ||
-            !month ||
-            !location ||
-            !quadrantLSD ||
-            !section ||
-            !township ||
-            !range ||
-            !meridian
-        ) {
+        if (!workbookName) {
             return res
                 .status(400)
-                .json({ message: 'Missing mandatory fields in formData' });
+                .json({ message: 'workbookName is mandatory' });
+        }
+
+        if (!quadrantLSD || !section || !township || !range || !meridian) {
+            return res
+                .status(400)
+                .json({ message: 'Missing mandatory fields for sheet name' });
         }
 
         const sheetName = `${quadrantLSD}-${section}-${township}-${range}-${meridian}`;
@@ -68,47 +90,40 @@ exports.handleFormSubmission = async (req, res) => {
                     });
             }
 
-            const columns = templateSheet.columns.map((col) => ({
-                header: col.header,
-                key: col.key,
-                style: {
-                    font: col.style?.font || { name: 'Arial', size: 10 },
-                    alignment: col.style?.alignment || {
-                        vertical: 'middle',
-                        horizontal: 'left',
-                    },
-                },
-                width: col.width,
-            }));
-
-            workbook.removeWorksheet(templateSheet.id);
-            console.log('Removed "Well Template" sheet');
+            const existingSheet = workbook.getWorksheet(sheetName);
+            if (existingSheet) {
+                workbook.removeWorksheet(existingSheet.id);
+            }
 
             worksheet = workbook.addWorksheet(sheetName);
-            worksheet.columns = columns;
+            cloneWorksheet(templateSheet, worksheet);
+
+            workbook.removeWorksheet(templateSheet.id);
 
             console.log(
-                `Created new worksheet: ${sheetName} with template structure`
+                `Created new worksheet: ${sheetName} with full template copy`
             );
         }
 
-        const insertAt =
-            parseInt(targetRow, 10) || worksheet.actualRowCount + 1;
+        const baseRow = parseInt(dayOfMonth, 10);
+        const insertAtRow = Number.isInteger(baseRow)
+            ? baseRow + 6
+            : worksheet.actualRowCount + 1;
 
-        const row = worksheet.getRow(insertAt);
-        const values = [];
+        const row = worksheet.getRow(insertAtRow);
+        const keys = Object.keys(formData);
 
-        Object.keys(formData).forEach((key, i) => {
-            values[i + 1] = formData[key];
+        // Start writing at column B (column 2)
+        keys.forEach((key, i) => {
+            const colIndex = i + 2; // B = 2, C = 3, ...
+            row.getCell(colIndex).value = formData[key];
         });
 
-        row.values = values;
         row.commit();
-
         await workbook.xlsx.writeFile(uploadsPath);
 
         res.status(200).json({
-            message: `Form saved to ${sheetName} at row ${insertAt}`,
+            message: `Form saved to ${sheetName} at row ${insertAtRow}, starting at column B`,
         });
     } catch (error) {
         console.error('Submission error:', error);
