@@ -9,7 +9,7 @@ import { Link } from 'react-router-dom';
 // import custom reusable Button component
 import Button from '../../components/Button/Button.js';
 // import custom reusable SearchBar component
-import SearchBar from '../../components/LocationInput/LocationInput.js';
+import Workbook from '../../components/WorkbookInput/WorkbookInput.js';
 // import page specific stylesheet
 import './FilesPage.css';
 
@@ -64,7 +64,7 @@ function FilesPage() {
     return (
         <div className="container" style={{ width: '600px' }}>
             <h2>Files</h2>
-            <SearchBar
+            <Workbook
                 yearValue={year}
                 onYearChange={handleYearChange}
                 monthValue={month}

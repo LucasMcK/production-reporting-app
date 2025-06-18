@@ -5,7 +5,7 @@
 // useState: to manage local state
 import React, { useRef, useState } from 'react';
 // import styling for react component
-import './LocationInput.css';
+import './WorkbookInput.css';
 
 // define functional searchBar component with the following props:
 // yearValue: holds current value of year input field
@@ -17,7 +17,7 @@ import './LocationInput.css';
 // yearPlaceholder: placeholder text of the year input
 // monthPlaceholder: placeholder text of the month input
 // searchPlaceholder: placeholder text of the search input
-const SearchBar = ({
+const Workbook = ({
     yearValue,
     onYearChange,
     monthValue,
@@ -108,12 +108,12 @@ const SearchBar = ({
         setLocationPlaceholderText(locationPlaceholder);
 
     return (
-        <div className="search-bar-container">
-            <label className="search-bar-label">Workbook Name</label>
-            <div className="search-inputs-row">
+        <div className="workbook-input-container">
+            <label className="label">Workbook Name</label>
+            <div className="workbook-inputs input-fields-row">
                 <input
                     ref={yearRef}
-                    className="search-bar date-input"
+                    className="workbook-input date-input"
                     type="text"
                     maxLength={2}
                     value={yearValue}
@@ -122,10 +122,10 @@ const SearchBar = ({
                     onFocus={onYearFocus}
                     onBlur={onYearBlur}
                 />
-                <span className="default-text">—</span>
+                <span className="non-input-text">—</span>
                 <input
                     ref={monthRef}
-                    className="search-bar date-input"
+                    className="workbook-input date-input"
                     type="text"
                     maxLength={2}
                     value={monthValue}
@@ -137,7 +137,7 @@ const SearchBar = ({
                 />
                 <input
                     ref={locationRef}
-                    className="search-bar location-input"
+                    className="workbook-input location-input"
                     type="text"
                     value={searchValue}
                     onChange={handleLocationInput}
@@ -146,20 +146,20 @@ const SearchBar = ({
                     onFocus={onLocationFocus}
                     onBlur={onLocationBlur}
                 />
-                <span className="default-text">.xls</span> {/* moved here */}
+                <span className="non-input-text">.xls</span>
             </div>
         </div>
     );
 };
 
 // export component so it can be used in other files
-export default SearchBar;
+export default Workbook;
 
 // NOTE: to use this component in other files, you must do two things:
 // 1. add the following import to the top of the file you wish to add it to:
-// import SearchBar from '../components/SearchBar';
+// import Workbook from '../components/WorkbookInput/WorkbookInput.js';
 // 2. implement the SearchBar component using this statement:
-// <SearchBar
+// <Woorkbook
 // yearValue={year}
 // onYearChange={setYear}
 // monthValue={month}

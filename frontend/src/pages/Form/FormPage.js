@@ -4,7 +4,7 @@ import '../../index.css';
 import InputField from '../../components/InputField/InputField.js';
 import Fieldset from '../../components/Fieldset/Fieldset.js';
 import Button from '../../components/Button/Button.js';
-import SearchBar from '../../components/LocationInput/LocationInput.js';
+import Workbook from '../../components/WorkbookInput/WorkbookInput.js';
 import WellInput from '../../components/WellInput/WellInput.js';
 
 function ProductionFormPage() {
@@ -115,7 +115,7 @@ function ProductionFormPage() {
             <h1>Production Form</h1>
             <form onSubmit={handleSubmit}>
                 <Fieldset title="PROPERTY & WELL INFORMATION">
-                    <SearchBar
+                    <Workbook
                         yearValue={year}
                         onYearChange={handleYearChange}
                         monthValue={month}
