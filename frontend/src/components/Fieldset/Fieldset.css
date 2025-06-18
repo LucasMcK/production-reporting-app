@@ -11,22 +11,22 @@ legend {
     border-radius: 4px; /* optional: soften corners */
     /* margin to position legend properly */
     margin-bottom: 0.5rem;
-  }
-  
-  fieldset {
+}
+
+fieldset {
     padding: 1rem;
     margin-bottom: 1rem;
     border: 1px solid #ccc;
     display: flex;
     flex-direction: column;
+    justify-content: center;
     align-items: center;
-  }
-  
-  fieldset > div {
+}
+
+fieldset > div {
     display: flex;
     gap: 1rem;
     flex-wrap: wrap;
     justify-content: center;
     width: 100%;
-  }
-  
+}

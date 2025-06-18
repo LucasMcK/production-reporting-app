@@ -2,23 +2,32 @@
 
 /* Form row: layout two inputs side by side */
 .form-row {
-  display: flex;              /* Use flexbox for layout */
-  gap: 1rem;                 /* Space between the two inputs */
-  flex-wrap: wrap;           /* Wrap inputs on smaller screens */
-  align-items: center;       /* Vertically center inputs if different heights */
-  margin-bottom: 1rem;       /* Space below the row */
+    display: flex; /* Use flexbox for layout */
+    gap: 1rem; /* Space between the two inputs */
+    flex-wrap: wrap; /* Wrap inputs on smaller screens */
+    align-items: center; /* Vertically center inputs if different heights */
+    margin-bottom: 1rem; /* Space below the row */
 }
 
 /* Example for inputs inside the row to take equal width */
 .form-row > input,
-.form-row > select,
+.form-row > select {
+    flex: 1 1 0; /* Grow/shrink equally to fill row */
+    min-width: 0; /* Prevent overflow */
+}
+
 .form-row > textarea {
-  flex: 1 1 0;               /* Grow/shrink equally to fill row */
-  min-width: 0;              /* Prevent overflow */
+    height: 100px;
 }
 
 .button-container {
-  display: flex;
-  justify-content: center; /* centers horizontally */
-  margin-top: 1rem;         /* optional spacing above button */
+    display: flex;
+    justify-content: center; /* centers horizontally */
+    margin-top: 1rem; /* optional spacing above button */
+}
+
+.text-area-label {
+    margin-bottom: 0.1rem;
+    text-align: center;
+    font-weight: 500;
 }
