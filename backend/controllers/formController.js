@@ -59,27 +59,45 @@ exports.handleFormSubmission = async (req, res) => {
         let worksheet = workbook.getWorksheet(sheetName);
 
         if (!worksheet) {
-            worksheet = workbook.addWorksheet(sheetName);
-            worksheet.columns = Object.keys(formData).map((key) => ({
-                header: key,
-                key: key,
+            const templateSheet = workbook.getWorksheet('Well Template');
+            if (!templateSheet) {
+                return res
+                    .status(500)
+                    .json({
+                        error: '"Well Template" sheet is missing in the workbook',
+                    });
+            }
+
+            const columns = templateSheet.columns.map((col) => ({
+                header: col.header,
+                key: col.key,
                 style: {
-                    font: { name: 'Arial', size: 10 },
-                    alignment: { vertical: 'middle', horizontal: 'left' },
+                    font: col.style?.font || { name: 'Arial', size: 10 },
+                    alignment: col.style?.alignment || {
+                        vertical: 'middle',
+                        horizontal: 'left',
+                    },
                 },
+                width: col.width,
             }));
-            console.log(`Created new worksheet: ${sheetName}`);
+
+            workbook.removeWorksheet(templateSheet.id);
+            console.log('Removed "Well Template" sheet');
+
+            worksheet = workbook.addWorksheet(sheetName);
+            worksheet.columns = columns;
+
+            console.log(
+                `Created new worksheet: ${sheetName} with template structure`
+            );
         }
 
-        // Determine the target row (default to next empty row)
         const insertAt =
             parseInt(targetRow, 10) || worksheet.actualRowCount + 1;
 
-        // Write formData at the specific row
         const row = worksheet.getRow(insertAt);
         const values = [];
 
-        // NOTE: ExcelJS uses 1-based column indexes
         Object.keys(formData).forEach((key, i) => {
             values[i + 1] = formData[key];
         });

@@ -95,7 +95,7 @@ function ProductionFormPage() {
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        const workbookName = `${year}-${month} ${location}.xls`;
+        const workbookName = `${year}-${month} ${location}.xlsx`;
 
         const formData = {
             hoursOn,
