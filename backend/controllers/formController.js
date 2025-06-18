@@ -1,11 +1,10 @@
-const fsExtra = require('fs-extra');
-const fs = require('fs');
+const ExcelJS = require('exceljs');
+const fs = require('fs-extra');
 const path = require('path');
-const XLSX = require('xlsx');
 
 exports.handleFormSubmission = async (req, res) => {
     try {
-        const { workbookName, formData } = req.body;
+        const { workbookName, formData, targetRow } = req.body;
 
         if (!workbookName || !formData) {
             return res
@@ -39,47 +38,60 @@ exports.handleFormSubmission = async (req, res) => {
                 .json({ message: 'Missing mandatory fields in formData' });
         }
 
-        const uploadPath = path.join(__dirname, '../uploads', workbookName);
+        const sheetName = `${quadrantLSD}-${section}-${township}-${range}-${meridian}`;
+        const uploadsPath = path.join(__dirname, '../uploads', workbookName);
         const templatePath = path.join(
             __dirname,
-            '../templates/base_template.xls'
+            '../templates/base_template.xlsx'
         );
 
-        // Copy template if workbook doesn't exist
-        if (!fs.existsSync(uploadPath)) {
-            await fsExtra.copy(templatePath, uploadPath);
-            console.log('Template copied to uploads folder');
+        const workbook = new ExcelJS.Workbook();
+
+        if (fs.existsSync(uploadsPath)) {
+            await workbook.xlsx.readFile(uploadsPath);
+            console.log('Loaded existing workbook');
+        } else {
+            await fs.copy(templatePath, uploadsPath);
+            await workbook.xlsx.readFile(uploadsPath);
+            console.log('Copied and loaded base template');
         }
 
-        // Read the workbook
-        const workbook = XLSX.readFile(uploadPath);
-
-        // Construct the worksheet name using the naming convention
-        const sheetName = `${quadrantLSD}-${section}-${township}-${range}-${meridian}`;
-
-        let worksheet = workbook.Sheets[sheetName];
+        let worksheet = workbook.getWorksheet(sheetName);
 
         if (!worksheet) {
-            // Create new worksheet with header row + first row of data
-            const data = [Object.keys(formData), Object.values(formData)];
-            worksheet = XLSX.utils.aoa_to_sheet(data);
-            XLSX.utils.book_append_sheet(workbook, worksheet, sheetName);
-            console.log(`Worksheet '${sheetName}' created.`);
-        } else {
-            // Append data to existing worksheet
-            const sheetData = XLSX.utils.sheet_to_json(worksheet, {
-                header: 1,
-            });
-            sheetData.push(Object.values(formData));
-            const newWorksheet = XLSX.utils.aoa_to_sheet(sheetData);
-            workbook.Sheets[sheetName] = newWorksheet;
-            console.log(`Worksheet '${sheetName}' updated.`);
+            worksheet = workbook.addWorksheet(sheetName);
+            worksheet.columns = Object.keys(formData).map((key) => ({
+                header: key,
+                key: key,
+                style: {
+                    font: { name: 'Arial', size: 10 },
+                    alignment: { vertical: 'middle', horizontal: 'left' },
+                },
+            }));
+            console.log(`Created new worksheet: ${sheetName}`);
         }
 
-        // Save workbook back to disk
-        XLSX.writeFile(workbook, uploadPath, { bookType: 'biff8' });
+        // Determine the target row (default to next empty row)
+        const insertAt =
+            parseInt(targetRow, 10) || worksheet.actualRowCount + 1;
 
-        res.status(200).json({ message: 'Form submitted and saved to Excel!' });
+        // Write formData at the specific row
+        const row = worksheet.getRow(insertAt);
+        const values = [];
+
+        // NOTE: ExcelJS uses 1-based column indexes
+        Object.keys(formData).forEach((key, i) => {
+            values[i + 1] = formData[key];
+        });
+
+        row.values = values;
+        row.commit();
+
+        await workbook.xlsx.writeFile(uploadsPath);
+
+        res.status(200).json({
+            message: `Form saved to ${sheetName} at row ${insertAt}`,
+        });
     } catch (error) {
         console.error('Submission error:', error);
         res.status(500).json({ error: 'Internal server error.' });
