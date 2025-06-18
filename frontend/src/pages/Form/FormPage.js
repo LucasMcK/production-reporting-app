@@ -24,25 +24,27 @@ function ProductionFormPage() {
 
     const [prodM3, setProdM3] = useState('');
     const netOil =
-        prodM3 && bsw && hoursOn !== '' ? prodM3 * (1 - bsw / 100) : '';
+        prodM3 && bsw && hoursOn !== ''
+            ? Number((prodM3 * (1 - bsw / 100)).toFixed(1))
+            : '';
     const netSand =
         prodM3 && sandPercent && hoursOn !== ''
-            ? (prodM3 * sandPercent) / 100
+            ? Number(((prodM3 * sandPercent) / 100).toFixed(1))
             : '';
     const netWater =
         prodM3 && bsw && sandPercent && hoursOn !== ''
-            ? prodM3 * (bsw / 100 - sandPercent / 100)
+            ? Number((prodM3 * (bsw / 100 - sandPercent / 100)).toFixed(1))
             : '';
 
     const [grossVol, setGrossVol] = useState('');
     const [shipmentBsw, setShipmentBsw] = useState('');
     const shipmentOil =
         grossVol && shipmentBsw && hoursOn !== ''
-            ? grossVol * (1 - shipmentBsw / 100)
+            ? Number((grossVol * (1 - shipmentBsw / 100)).toFixed(1))
             : '';
     const shipmentWater =
         grossVol && shipmentBsw && hoursOn !== ''
-            ? (grossVol * shipmentBsw) / 100
+            ? Number(((grossVol * shipmentBsw) / 100).toFixed(1))
             : '';
 
     const [waterLoads, setWaterLoads] = useState('');
@@ -62,7 +64,9 @@ function ProductionFormPage() {
     const [fluidLevel, setFluidLevel] = useState('');
     const [rpm, setRpm] = useState('');
     const efficiency =
-        prodM3 && netOil && rpm ? prodM3 / (netOil * (rpm / 100)) : '';
+        prodM3 && netOil && rpm
+            ? Number((prodM3 / (netOil * (rpm / 100))).toFixed(1))
+            : '';
     const [psiHyd, setPsiHyd] = useState('');
 
     const [comments, setComments] = useState('');
@@ -159,6 +163,7 @@ function ProductionFormPage() {
                         className="number-input-field"
                         label="Hours On"
                         type="number"
+                        step="any"
                         value={hoursOn}
                         onChange={(e) =>
                             setHoursOn(
@@ -170,6 +175,7 @@ function ProductionFormPage() {
                     <InputField
                         label="Hours Down"
                         type="number"
+                        step="any"
                         value={hoursDown}
                         disabled
                         width="100px"
@@ -198,6 +204,7 @@ function ProductionFormPage() {
                         label="Total BS&W"
                         h6="(%)"
                         type="number"
+                        step="any"
                         value={bsw}
                         onChange={(e) => setBsw(parseFloat(e.target.value))}
                         width="100px"
@@ -206,6 +213,7 @@ function ProductionFormPage() {
                         label="Sand"
                         h6="(%)"
                         type="number"
+                        step="any"
                         value={sandPercent}
                         onChange={(e) =>
                             setSandPercent(parseFloat(e.target.value))
@@ -244,6 +252,8 @@ function ProductionFormPage() {
                     <InputField
                         label="Prod"
                         h6="(m³)"
+                        type="number"
+                        step="any"
                         value={prodM3}
                         onChange={(e) => setProdM3(parseFloat(e.target.value))}
                         width="100px"
@@ -275,6 +285,8 @@ function ProductionFormPage() {
                     <InputField
                         label="Gross"
                         h6="(Vol)"
+                        type="number"
+                        step="any"
                         value={grossVol}
                         onChange={(e) =>
                             setGrossVol(parseFloat(e.target.value))
@@ -284,6 +296,8 @@ function ProductionFormPage() {
                     <InputField
                         label="BS&W"
                         h6="(%)"
+                        type="number"
+                        step="any"
                         value={shipmentBsw}
                         onChange={(e) =>
                             setShipmentBsw(parseFloat(e.target.value))
