@@ -1,104 +1,200 @@
-// files general purpose: create reusable search bar component
-
-// import React and two hooks:
-// useRef: to manage local references
-// useState: to manage local state
-import React, { useRef } from 'react';
-// import styling for react component
+import React, { useRef, useState } from 'react';
 import './WellInput.css';
 
-// define functional searchBar component with the following props:
-// yearValue: holds current value of year input field
-// onYearChange: holds event handler function to call when year input changes
-// monthValue: holds current value of month input field
-// onMonthChange: holds event handler function to call when month input changes
-// searchValue: holds current value of main search input field
-// onLocationChange: holds event handler function to call when search input changes
-// yearPlaceholder: placeholder text of the year input
-// monthPlaceholder: placeholder text of the month input
-// searchPlaceholder: placeholder text of the search input
-const WellInput = ({ yearValue, onYearChange, monthValue, onMonthChange }) => {
-    // initialize references to control input box focus
-    const yearRef = useRef(null);
-    const monthRef = useRef(null);
-    const locationRef = useRef(null);
+const WellInput = ({
+    quadrantLSDValue,
+    onQuadrantLSDChange,
+    sectionValue,
+    onSectionChange,
+    townshipValue,
+    onTownshipChange,
+    rangeValue,
+    onRangeChange,
+    meridianValue,
+    onMeridianChange,
+    quadrantLSDPlaceholder = 'Quadrant/LSD',
+    sectionPlaceholder = 'Section',
+    townshipPlaceholder = 'Township',
+    rangePlaceholder = 'Range',
+    meridianPlaceholder = 'Meridian',
+}) => {
+    const quadrantLSDRef = useRef(null);
+    const sectionRef = useRef(null);
+    const townshipRef = useRef(null);
+    const rangeRef = useRef(null);
+    const meridianRef = useRef(null);
 
-    // update yearValue state via onYearChange
-    const handleYearInput = (e) => {
+    const [quadrantLSDPlaceholderText, setQuadrantLSDPlaceholderText] =
+        useState(quadrantLSDPlaceholder);
+    const [sectionPlaceholderText, setSectionPlaceholderText] =
+        useState(sectionPlaceholder);
+    const [townshipPlaceholderText, setTownshipPlaceholderText] =
+        useState(townshipPlaceholder);
+    const [rangePlaceholderText, setRangePlaceholderText] =
+        useState(rangePlaceholder);
+    const [meridianPlaceholderText, setMeridianPlaceholderText] =
+        useState(meridianPlaceholder);
+
+    const onQuadrantLSDFocus = () => setQuadrantLSDPlaceholderText('');
+    const onQuadrantLSDBlur = () =>
+        setQuadrantLSDPlaceholderText(quadrantLSDPlaceholder);
+    const onSectionFocus = () => setSectionPlaceholderText('');
+    const onSectionBlur = () => setSectionPlaceholderText(sectionPlaceholder);
+    const onTownshipFocus = () => setTownshipPlaceholderText('');
+    const onTownshipBlur = () =>
+        setTownshipPlaceholderText(townshipPlaceholder);
+    const onRangeFocus = () => setRangePlaceholderText('');
+    const onRangeBlur = () => setRangePlaceholderText(rangePlaceholder);
+    const onMeridianFocus = () => setMeridianPlaceholderText('');
+    const onMeridianBlur = () =>
+        setMeridianPlaceholderText(meridianPlaceholder);
+
+    const handleQuadrantLSDInput = (e) => {
         const val = e.target.value;
-        onYearChange(val);
+        onQuadrantLSDChange(val);
 
-        // automatically switch focus to month input when user inputs two digits
         if (val.length === 2) {
-            monthRef.current?.focus();
+            sectionRef.current?.focus();
         }
     };
 
-    // update monthValue state via onMonthChange
-    const handleMonthInput = (e) => {
+    const handleSectionInput = (e) => {
         const val = e.target.value;
-        onMonthChange(val);
+        onSectionChange(val);
 
-        // automatically switch focus to location input when user inputs two digits
         if (val.length === 2) {
-            locationRef.current?.focus();
+            townshipRef.current?.focus();
         }
     };
 
-    // switches focus back to year input when user clicks backspace or delete
-    const handleMonthKeyDown = (e) => {
+    const handleTownshipInput = (e) => {
+        const val = e.target.value;
+        onTownshipChange(val);
+
+        if (val.length === 2) {
+            rangeRef.current?.focus();
+        }
+    };
+
+    const handleRangeInput = (e) => {
+        const val = e.target.value;
+        onRangeChange(val);
+
+        if (val.length === 2) {
+            meridianRef.current?.focus();
+        }
+    };
+
+    const handleMeridianInput = (e) => {
+        const val = e.target.value;
+        onMeridianChange(val);
+    };
+
+    const handleKeyDown = (e) => {
         if (
             (e.key === 'Backspace' || e.key === 'Delete') &&
-            monthValue.length === 0
+            sectionValue.length === 0
         ) {
             e.preventDefault();
-            if (yearValue.length === 2) {
-                // delete tens digit from year
-                onYearChange(yearValue.slice(0, 1));
-            }
-            yearRef.current?.focus();
+            onQuadrantLSDChange(quadrantLSDValue.slice(0, 1));
+            quadrantLSDRef.current?.focus();
+        }
+        if (
+            (e.key === 'Backspace' || e.key === 'Delete') &&
+            townshipValue.length === 0
+        ) {
+            e.preventDefault();
+            onSectionChange(sectionValue.slice(0, 1));
+            sectionRef.current?.focus();
+        }
+        if (
+            (e.key === 'Backspace' || e.key === 'Delete') &&
+            rangeValue.length === 0
+        ) {
+            e.preventDefault();
+            onTownshipChange(townshipValue.slice(0, 1));
+            sectionRef.current?.focus();
+        }
+        if (
+            (e.key === 'Backspace' || e.key === 'Delete') &&
+            meridianValue.length === 0
+        ) {
+            e.preventDefault();
+            onRangeChange(rangeValue.slice(0, 1));
+            rangeRef.current?.focus();
         }
     };
 
     return (
-        <div className="search-bar-container">
-            <label className="search-bar-label">Worksheet Name</label>
-            <div className="search-inputs-row">
+        <div className="well-input-container">
+            <label className="well-input-label">Worksheet Name</label>
+            <div className="well-inputs-row">
                 <input
-                    ref={yearRef}
-                    className="search-bar date-input"
+                    ref={quadrantLSDRef}
+                    className="well-input date-input"
                     type="text"
                     maxLength={2}
-                    value={yearValue}
-                    onChange={handleYearInput}
+                    value={quadrantLSDValue}
+                    onChange={handleQuadrantLSDInput}
+                    placeholder={quadrantLSDPlaceholderText}
+                    onFocus={onQuadrantLSDFocus}
+                    onBlur={onQuadrantLSDBlur}
                 />
-                <span className="default-text">—</span>
+                <span className="non-input-text">—</span>
                 <input
-                    ref={monthRef}
-                    className="search-bar date-input"
+                    ref={sectionRef}
+                    className="well-input date-input"
                     type="text"
-                    maxLength={1}
-                    value={monthValue}
-                    onChange={handleMonthInput}
-                    onKeyDown={handleMonthKeyDown}
+                    maxLength={2}
+                    value={sectionValue}
+                    onChange={handleSectionInput}
+                    onKeyDown={handleKeyDown}
+                    placeholder={sectionPlaceholderText}
+                    onFocus={onSectionFocus}
+                    onBlur={onSectionBlur}
+                />
+                <span className="non-input-text">—</span>
+                <input
+                    ref={townshipRef}
+                    className="well-input date-input"
+                    type="text"
+                    maxLength={2}
+                    value={townshipValue}
+                    onChange={handleTownshipInput}
+                    onKeyDown={handleKeyDown}
+                    placeholder={townshipPlaceholderText}
+                    onFocus={onTownshipFocus}
+                    onBlur={onTownshipBlur}
+                />
+                <span className="non-input-text">—</span>
+                <input
+                    ref={rangeRef}
+                    className="well-input date-input"
+                    type="text"
+                    maxLength={2}
+                    value={rangeValue}
+                    onChange={handleRangeInput}
+                    onKeyDown={handleKeyDown}
+                    placeholder={rangePlaceholderText}
+                    onFocus={onRangeFocus}
+                    onBlur={onRangeBlur}
+                />
+                <span className="non-input-text">—</span>
+                <input
+                    ref={meridianRef}
+                    className="well-input date-input"
+                    type="text"
+                    maxLength={2}
+                    value={meridianValue}
+                    onChange={handleMeridianInput}
+                    onKeyDown={handleKeyDown}
+                    placeholder={meridianPlaceholderText}
+                    onFocus={onMeridianFocus}
+                    onBlur={onMeridianBlur}
                 />
             </div>
         </div>
     );
 };
 
-// export component so it can be used in other files
 export default WellInput;
-
-// NOTE: to use this component in other files, you must do two things:
-// 1. add the following import to the top of the file you wish to add it to:
-// import SearchBar from '../components/SearchBar';
-// 2. implement the SearchBar component using this statement:
-// <SearchBar
-// yearValue={year}
-// onYearChange={setYear}
-// monthValue={month}
-// onMonthChange={setMonth}
-// searchValue={location}
-// onLocationChange={setSearch}
-// />

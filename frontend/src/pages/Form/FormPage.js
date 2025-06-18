@@ -71,6 +71,18 @@ function ProductionFormPage() {
     const handleMonthChange = (val) => setMonth(val);
     const handleLocationChange = (val) => setLocation(val);
 
+    const [quadrantLSD, setQuadrantLSD] = useState('');
+    const [section, setSection] = useState('');
+    const [township, setTownship] = useState('');
+    const [range, setRange] = useState('');
+    const [meridian, setMeridian] = useState('');
+
+    const handleQuadrantLSDChange = (val) => setQuadrantLSD(val);
+    const handleSectionChange = (val) => setSection(val);
+    const handleTownshipChange = (val) => setTownship(val);
+    const handleRangeChange = (val) => setRange(val);
+    const handleMeridianChange = (val) => setMeridian(val);
+
     const handleSubmit = (e) => {
         e.preventDefault();
         console.log({
@@ -124,10 +136,16 @@ function ProductionFormPage() {
                         onLocationChange={handleLocationChange}
                     />
                     <WellInput
-                        yearValue={year}
-                        onYearChange={handleYearChange}
-                        monthValue={month}
-                        onMonthChange={handleMonthChange}
+                        quadrantLSDValue={quadrantLSD}
+                        onQuadrantLSDChange={handleQuadrantLSDChange}
+                        sectionValue={section}
+                        onSectionChange={handleSectionChange}
+                        townshipValue={township}
+                        onTownshipChange={handleTownshipChange}
+                        rangeValue={range}
+                        onRangeChange={handleRangeChange}
+                        meridianValue={meridian}
+                        onMeridianChange={handleMeridianChange}
                     />
                 </Fieldset>
 

@@ -1,4 +1,4 @@
-/* files general purpose: define styling specific to search bar component */
+/* files general purpose: define styling specific to WellInput component */
 
 .well-input {
     width: 100%;
@@ -25,7 +25,7 @@
     margin-bottom: 1rem;
 }
 
-.date-input {
+.quadrant-lsd-input {
     height: 35px;
     max-width: 75px;
     padding: 10px;
@@ -34,7 +34,7 @@
     box-sizing: border-box;
 }
 
-.default-text {
+.non-input-text {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -45,22 +45,12 @@
     white-space: nowrap;
 }
 
-.location-input {
-    height: 35px;
-    max-width: 200px;
-    padding: 10px;
-    font-size: 14px;
-    margin: 0.5rem;
-    box-sizing: border-box;
-    line-height: 35px;
-}
-
-.search-bar:focus {
+.well-input:focus {
     outline: none;
     border-color: #007bff;
 }
 
-.search-inputs-row {
+.well-inputs-row {
     display: flex;
     align-items: center;
     justify-content: center;
