@@ -23,22 +23,27 @@ function ProductionFormPage() {
         : '';
 
     const [prodM3, setProdM3] = useState('');
-    const netOil = prodM3 && bsw && hoursOn !== '' ? prodM3 * (1 - bsw) : '';
+    const netOil =
+        prodM3 && bsw && hoursOn !== '' ? prodM3 * (1 - bsw / 100) : '';
     const netSand =
-        prodM3 && sandPercent && hoursOn !== '' ? prodM3 * sandPercent : '';
+        prodM3 && sandPercent && hoursOn !== ''
+            ? (prodM3 * sandPercent) / 100
+            : '';
     const netWater =
         prodM3 && bsw && sandPercent && hoursOn !== ''
-            ? prodM3 * (bsw - sandPercent)
+            ? prodM3 * (bsw / 100 - sandPercent / 100)
             : '';
 
     const [grossVol, setGrossVol] = useState('');
     const [shipmentBsw, setShipmentBsw] = useState('');
     const shipmentOil =
         grossVol && shipmentBsw && hoursOn !== ''
-            ? grossVol * (1 - shipmentBsw)
+            ? grossVol * (1 - shipmentBsw / 100)
             : '';
     const shipmentWater =
-        grossVol && shipmentBsw && hoursOn !== '' ? grossVol * shipmentBsw : '';
+        grossVol && shipmentBsw && hoursOn !== ''
+            ? (grossVol * shipmentBsw) / 100
+            : '';
 
     const [waterLoads, setWaterLoads] = useState('');
     const [shipmentSand, setShipmentSand] = useState('');
