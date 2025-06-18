@@ -92,9 +92,12 @@ function ProductionFormPage() {
     const handleRangeChange = (val) => setRange(val);
     const handleMeridianChange = (val) => setMeridian(val);
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        console.log({
+
+        const workbookName = `${year}-${month} ${location}.xls`;
+
+        const formData = {
             hoursOn,
             hoursDown,
             reason,
@@ -128,7 +131,33 @@ function ProductionFormPage() {
             psiHyd,
             comments,
             initials,
-        });
+            year,
+            month,
+            location,
+            quadrantLSD,
+            section,
+            township,
+            range,
+            meridian,
+        };
+
+        try {
+            const res = await fetch('http://localhost:5001/form', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ workbookName, formData }),
+            });
+
+            const result = await res.json();
+            if (res.ok) {
+                alert(`Workbook "${workbookName}" updated successfully.`);
+            } else {
+                alert(`Error: ${result.error}`);
+            }
+        } catch (error) {
+            console.error('Submit failed:', error);
+            alert('Failed to submit form.');
+        }
     };
 
     return (
