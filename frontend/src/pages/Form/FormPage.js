@@ -4,7 +4,7 @@ import '../../index.css';
 import InputField from '../../components/InputField/InputField.js';
 import Fieldset from '../../components/Fieldset/Fieldset.js';
 import Button from '../../components/Button/Button.js';
-import Workbook from '../../components/LocationInput/WorkbookInput.js';
+import Workbook from '../../components/WorkbookInput/WorkbookInput.js';
 import WellInput from '../../components/WellInput/WellInput.js';
 
 function ProductionFormPage() {
