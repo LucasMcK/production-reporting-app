@@ -36,6 +36,7 @@ function ProductionFormPage() {
         prodM3 && bsw && sandPercent && hoursOn !== ''
             ? Number((prodM3 * (bsw / 100 - sandPercent / 100)).toFixed(1))
             : '';
+    const [recycleM3, setRecycleM3] = useState('');
 
     const [grossVol, setGrossVol] = useState('');
     const [shipmentBsw, setShipmentBsw] = useState('');
@@ -56,6 +57,20 @@ function ProductionFormPage() {
     const [fluidOut, setFluidOut] = useState('');
     const [fluidIn, setFluidIn] = useState('');
     const [foamLoss, setFoamLoss] = useState('');
+
+    const tankGauge =
+        hoursOn !== ''
+            ? Math.round(
+                  (Number(initialTankGauge || 0) +
+                      Number(prodM3 || 0) -
+                      (Number(grossVol || 0) +
+                          Number(waterLoads || 0) +
+                          Number(shipmentSand || 0) +
+                          (Number(fluidOut || 0) - Number(fluidIn || 0)) +
+                          Number(foamLoss || 0))) *
+                      10
+              ) / 10
+            : '';
 
     const [tbg, setTbg] = useState('');
     const [csg, setCsg] = useState('');
@@ -105,14 +120,16 @@ function ProductionFormPage() {
             reason,
             bsw,
             sandPercent,
+            tankGauge,
+            prodM3,
             oil,
             water,
             sand,
             initialTankGauge,
-            prodM3,
             netOil,
             netSand,
             netWater,
+            recycleM3,
             grossVol,
             shipmentBsw,
             shipmentOil,
@@ -203,6 +220,32 @@ function ProductionFormPage() {
                     />
                 </Fieldset>
 
+                <Fieldset title="INITIAL TANK GAUGE">
+                    <InputField
+                        label="Oil"
+                        value={oil}
+                        onChange={(e) => setOil(e.target.value)}
+                        width="100px"
+                    />
+                    <InputField
+                        label="Water"
+                        value={water}
+                        onChange={(e) => setWater(e.target.value)}
+                        width="100px"
+                    />
+                    <InputField
+                        label="Sand"
+                        value={sand}
+                        onChange={(e) => setSand(e.target.value)}
+                        width="100px"
+                    />
+                    <InputField
+                        label="Initial Tank Gauge"
+                        value={initialTankGauge}
+                        disabled
+                    />
+                </Fieldset>
+
                 <Fieldset title="OPERATIONAL HOURS">
                     <InputField
                         className="number-input-field"
@@ -244,55 +287,6 @@ function ProductionFormPage() {
                     </div>
                 </Fieldset>
 
-                <Fieldset title="FLUID QUALITY METRICS">
-                    <InputField
-                        label="Total BS&W"
-                        h6="(%)"
-                        type="number"
-                        step="any"
-                        value={bsw}
-                        onChange={(e) => setBsw(parseFloat(e.target.value))}
-                        width="100px"
-                    />
-                    <InputField
-                        label="Sand"
-                        h6="(%)"
-                        type="number"
-                        step="any"
-                        value={sandPercent}
-                        onChange={(e) =>
-                            setSandPercent(parseFloat(e.target.value))
-                        }
-                        width="100px"
-                    />
-                </Fieldset>
-
-                <Fieldset title="TANK GAUGE">
-                    <InputField
-                        label="Oil"
-                        value={oil}
-                        onChange={(e) => setOil(e.target.value)}
-                        width="100px"
-                    />
-                    <InputField
-                        label="Water"
-                        value={water}
-                        onChange={(e) => setWater(e.target.value)}
-                        width="100px"
-                    />
-                    <InputField
-                        label="Sand"
-                        value={sand}
-                        onChange={(e) => setSand(e.target.value)}
-                        width="100px"
-                    />
-                    <InputField
-                        label="Initial Tank Gauge"
-                        value={initialTankGauge}
-                        disabled
-                    />
-                </Fieldset>
-
                 <Fieldset title="PRODUCTION VOLUMES">
                     <InputField
                         label="Prod"
@@ -322,6 +316,17 @@ function ProductionFormPage() {
                         h6="(m³)"
                         value={netWater || ''}
                         disabled
+                        width="100px"
+                    />
+                    <InputField
+                        label="Recycle"
+                        h6="(m³)"
+                        type="number"
+                        step="any"
+                        value={recycleM3}
+                        onChange={(e) =>
+                            setRecycleM3(parseFloat(e.target.value))
+                        }
                         width="100px"
                     />
                 </Fieldset>
@@ -365,7 +370,6 @@ function ProductionFormPage() {
                     />
                     <InputField
                         label="Water Loads"
-                        labelMarginTop="1rem"
                         h6={'\u00A0'}
                         value={waterLoads}
                         onChange={(e) => setWaterLoads(e.target.value)}
@@ -408,6 +412,38 @@ function ProductionFormPage() {
                         h6="(m³)"
                         value={foamLoss}
                         onChange={(e) => setFoamLoss(e.target.value)}
+                        width="100px"
+                    />
+                </Fieldset>
+
+                <Fieldset title="FLUID QUALITY METRICS">
+                    <InputField
+                        label="Total BS&W"
+                        h6="(%)"
+                        type="number"
+                        step="any"
+                        value={bsw}
+                        onChange={(e) => setBsw(parseFloat(e.target.value))}
+                        width="100px"
+                    />
+                    <InputField
+                        label="Sand"
+                        h6="(%)"
+                        type="number"
+                        step="any"
+                        value={sandPercent}
+                        onChange={(e) =>
+                            setSandPercent(parseFloat(e.target.value))
+                        }
+                        width="100px"
+                    />
+                    <InputField
+                        label="Tank Gauge"
+                        h6={'\u00A0'}
+                        type="number"
+                        step="any"
+                        value={tankGauge}
+                        disabled
                         width="100px"
                     />
                 </Fieldset>
