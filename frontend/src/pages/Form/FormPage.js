@@ -13,6 +13,23 @@ function ProductionFormPage() {
         const today = new Date().getDate();
         setDayOfMonth(today.toString());
     }, []);
+
+    const handleNumericInput = (e, setter, options = {}) => {
+        const raw = e.target.value;
+        if (raw === '') {
+            setter('');
+            return;
+        }
+
+        let val = parseFloat(raw);
+        if (isNaN(val)) return;
+
+        if (options.min !== undefined) val = Math.max(options.min, val);
+        if (options.max !== undefined) val = Math.min(options.max, val);
+
+        setter(val);
+    };
+
     const [hoursOn, setHoursOn] = useState('');
     const hoursDown = hoursOn !== '' ? 24 - Number(hoursOn) : '';
     const [reason, setReason] = useState('');
@@ -246,9 +263,10 @@ function ProductionFormPage() {
                         step="any"
                         value={hoursOn}
                         onChange={(e) =>
-                            setHoursOn(
-                                Math.min(24, Math.max(0, e.target.value))
-                            )
+                            handleNumericInput(e, setHoursOn, {
+                                min: 0,
+                                max: 24,
+                            })
                         }
                         width="100px"
                     />
