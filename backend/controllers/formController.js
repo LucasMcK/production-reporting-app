@@ -28,6 +28,18 @@ function cloneWorksheet(sourceSheet, targetSheet) {
     });
 }
 
+function columnLetterToNumber(letter) {
+    return letter
+        .toUpperCase()
+        .split('')
+        .reduce(
+            (r, c, i) =>
+                r +
+                (c.charCodeAt(0) - 64) * Math.pow(26, letter.length - i - 1),
+            0
+        );
+}
+
 exports.handleFormSubmission = async (req, res) => {
     try {
         const { workbookName, formData } = req.body;
@@ -147,6 +159,34 @@ exports.handleFormSubmission = async (req, res) => {
         });
 
         row.commit();
+
+        // Add SUM formulas to row 38
+        const sumRow = worksheet.getRow(38);
+        const sumColumns = [
+            'B',
+            'H',
+            'I',
+            'J',
+            'K',
+            'L',
+            'M',
+            'O',
+            'P',
+            'Q',
+            'R',
+            'T',
+            'U',
+            'V',
+        ];
+
+        sumColumns.forEach((colLetter) => {
+            const colNumber = columnLetterToNumber(colLetter);
+            const formula = `SUM(${colLetter}7:${colLetter}37)`;
+            sumRow.getCell(colNumber).value = { formula };
+        });
+
+        sumRow.commit();
+
         await workbook.xlsx.writeFile(uploadsPath);
 
         res.status(200).json({
