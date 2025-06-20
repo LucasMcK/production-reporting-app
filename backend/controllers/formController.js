@@ -22,7 +22,6 @@ function cloneWorksheet(sourceSheet, targetSheet) {
         targetRow.commit();
     });
 
-    // Manually merge these ranges on the target worksheet to preserve formatting
     const mergesToKeep = ['M5:R5', 'W5:X5', 'AF5:AF6', 'AH5:AM5', 'AN5:AS5'];
     mergesToKeep.forEach((range) => {
         targetSheet.mergeCells(range);
@@ -76,11 +75,6 @@ exports.handleFormSubmission = async (req, res) => {
                 });
             }
 
-            const existingSheet = workbook.getWorksheet(sheetName);
-            if (existingSheet) {
-                workbook.removeWorksheet(existingSheet.id);
-            }
-
             worksheet = workbook.addWorksheet(sheetName);
             cloneWorksheet(templateSheet, worksheet);
             workbook.removeWorksheet(templateSheet.id);
@@ -111,21 +105,21 @@ exports.handleFormSubmission = async (req, res) => {
             'initialTankGauge',
         ]);
 
-        // Write oil, water, sand, initialTankGauge to specific rows and column E (5)
+        // === Update tank gauge values (always overwrite)
         worksheet.getRow(40).getCell(5).value = formData.initialTankGauge ?? 0;
         worksheet.getRow(41).getCell(5).value = formData.oil ?? 0;
         worksheet.getRow(42).getCell(5).value = formData.water ?? 0;
         worksheet.getRow(43).getCell(5).value = formData.sand ?? 0;
         worksheet.getRow(44).getCell(5).value = formData.initialTankGauge ?? 0;
 
-        // Write remaining fields starting at row insertAtRow, column B
+        // === Update or write formData values in the insertAtRow
         const row = worksheet.getRow(insertAtRow);
         const keys = Object.keys(formData).filter(
             (key) => !excludedKeys.has(key)
         );
 
         keys.forEach((key, i) => {
-            const colIndex = i + 2; // column B onwards
+            const colIndex = i + 2; // B onwards
             const val = formData[key];
 
             if (
@@ -143,7 +137,7 @@ exports.handleFormSubmission = async (req, res) => {
         await workbook.xlsx.writeFile(uploadsPath);
 
         res.status(200).json({
-            message: `Form saved to ${sheetName}: custom values written to rows 40–44 and additional data to row ${insertAtRow}`,
+            message: `Form saved to ${sheetName}: updated row ${insertAtRow}`,
         });
     } catch (error) {
         console.error('Submission error:', error);
