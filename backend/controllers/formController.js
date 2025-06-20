@@ -105,21 +105,34 @@ exports.handleFormSubmission = async (req, res) => {
             'initialTankGauge',
         ]);
 
-        // === Update tank gauge values (always overwrite)
-        worksheet.getRow(40).getCell(5).value = formData.initialTankGauge ?? 0;
-        worksheet.getRow(41).getCell(5).value = formData.oil ?? 0;
-        worksheet.getRow(42).getCell(5).value = formData.water ?? 0;
-        worksheet.getRow(43).getCell(5).value = formData.sand ?? 0;
-        worksheet.getRow(44).getCell(5).value = formData.initialTankGauge ?? 0;
+        const isFirstDay = parseInt(dayOfMonth, 10) === 1;
 
-        // === Update or write formData values in the insertAtRow
+        const oilRow = worksheet.getRow(41);
+        const waterRow = worksheet.getRow(42);
+        const sandRow = worksheet.getRow(43);
+        const gaugeRow1 = worksheet.getRow(40);
+        const gaugeRow2 = worksheet.getRow(44);
+
+        if (isFirstDay) {
+            gaugeRow1.getCell(5).value = formData.initialTankGauge ?? 0;
+            oilRow.getCell(5).value = formData.oil ?? 0;
+            waterRow.getCell(5).value = formData.water ?? 0;
+            sandRow.getCell(5).value = formData.sand ?? 0;
+            gaugeRow2.getCell(5).value = formData.initialTankGauge ?? 0;
+        } else {
+            formData.initialTankGauge = gaugeRow1.getCell(5).value || 0;
+            formData.oil = oilRow.getCell(5).value || 0;
+            formData.water = waterRow.getCell(5).value || 0;
+            formData.sand = sandRow.getCell(5).value || 0;
+        }
+
         const row = worksheet.getRow(insertAtRow);
         const keys = Object.keys(formData).filter(
             (key) => !excludedKeys.has(key)
         );
 
         keys.forEach((key, i) => {
-            const colIndex = i + 2; // B onwards
+            const colIndex = i + 2;
             const val = formData[key];
 
             if (
