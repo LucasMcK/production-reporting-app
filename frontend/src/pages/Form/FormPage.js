@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './FormPage.css';
 import '../../index.css';
 import InputField from '../../components/InputField/InputField.js';
@@ -9,6 +9,10 @@ import WellInput from '../../components/WellInput/WellInput.js';
 
 function ProductionFormPage() {
     const [dayOfMonth, setDayOfMonth] = useState('');
+    useEffect(() => {
+        const today = new Date().getDate();
+        setDayOfMonth(today.toString());
+    }, []);
     const [hoursOn, setHoursOn] = useState('');
     const hoursDown = hoursOn !== '' ? 24 - Number(hoursOn) : '';
     const [reason, setReason] = useState('');
@@ -205,46 +209,40 @@ function ProductionFormPage() {
                         onMeridianChange={handleMeridianChange}
                     />
                     <InputField
-                        label="Day"
-                        type="number"
-                        step="1"
-                        min="1"
-                        max="31"
+                        label="Day of the Month"
+                        disabled
                         value={dayOfMonth}
-                        onChange={(e) =>
-                            setDayOfMonth(
-                                Math.min(31, Math.max(1, e.target.value))
-                            )
-                        }
-                        width="100px"
+                        width="50px"
                     />
                 </Fieldset>
 
-                <Fieldset title="INITIAL TANK GAUGE">
-                    <InputField
-                        label="Oil"
-                        value={oil}
-                        onChange={(e) => setOil(e.target.value)}
-                        width="100px"
-                    />
-                    <InputField
-                        label="Water"
-                        value={water}
-                        onChange={(e) => setWater(e.target.value)}
-                        width="100px"
-                    />
-                    <InputField
-                        label="Sand"
-                        value={sand}
-                        onChange={(e) => setSand(e.target.value)}
-                        width="100px"
-                    />
-                    <InputField
-                        label="Initial Tank Gauge"
-                        value={initialTankGauge}
-                        disabled
-                    />
-                </Fieldset>
+                {parseInt(dayOfMonth, 10) === 1 && (
+                    <Fieldset title="INITIAL TANK GAUGE">
+                        <InputField
+                            label="Oil"
+                            value={oil}
+                            onChange={(e) => setOil(e.target.value)}
+                            width="100px"
+                        />
+                        <InputField
+                            label="Water"
+                            value={water}
+                            onChange={(e) => setWater(e.target.value)}
+                            width="100px"
+                        />
+                        <InputField
+                            label="Sand"
+                            value={sand}
+                            onChange={(e) => setSand(e.target.value)}
+                            width="100px"
+                        />
+                        <InputField
+                            label="Initial Tank Gauge"
+                            value={initialTankGauge}
+                            disabled
+                        />
+                    </Fieldset>
+                )}
 
                 <Fieldset title="OPERATIONAL HOURS">
                     <InputField
