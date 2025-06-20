@@ -208,12 +208,6 @@ function ProductionFormPage() {
                         meridianValue={meridian}
                         onMeridianChange={handleMeridianChange}
                     />
-                    <InputField
-                        label="Day of the Month"
-                        disabled
-                        value={dayOfMonth}
-                        width="50px"
-                    />
                 </Fieldset>
 
                 {parseInt(dayOfMonth, 10) === 1 && (
