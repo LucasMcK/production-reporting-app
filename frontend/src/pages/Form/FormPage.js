@@ -9,10 +9,10 @@ import WellInput from '../../components/WellInput/WellInput.js';
 
 function ProductionFormPage() {
     const [dayOfMonth, setDayOfMonth] = useState('');
-    // useEffect(() => {
-    // const today = new Date().getDate();
-    // setDayOfMonth(today.toString());
-    // }, []);
+    useEffect(() => {
+        const today = new Date().getDate();
+        setDayOfMonth(today.toString());
+    }, []);
 
     const handleNumericInput = (e, setter, options = {}) => {
         const raw = e.target.value;
@@ -224,12 +224,6 @@ function ProductionFormPage() {
                         onRangeChange={handleRangeChange}
                         meridianValue={meridian}
                         onMeridianChange={handleMeridianChange}
-                    />
-                    <InputField
-                        label="Day of the Month"
-                        value={dayOfMonth}
-                        onChange={(e) => setDayOfMonth(e.target.value)}
-                        width="100px"
                     />
                 </Fieldset>
 
