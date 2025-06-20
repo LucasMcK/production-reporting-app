@@ -18,11 +18,14 @@ function cloneWorksheet(sourceSheet, targetSheet) {
             if (cell.style) {
                 targetCell.style = { ...cell.style };
             }
-            if (sourceSheet._merges && sourceSheet._merges[cell.address]) {
-                targetSheet.mergeCells(cell.address);
-            }
         });
         targetRow.commit();
+    });
+
+    // Manually merge these ranges on the target worksheet to preserve formatting
+    const mergesToKeep = ['M5:R5', 'W5:X5', 'AF5:AF6', 'AH5:AM5', 'AN5:AS5'];
+    mergesToKeep.forEach((range) => {
+        targetSheet.mergeCells(range);
     });
 }
 
@@ -36,23 +39,8 @@ exports.handleFormSubmission = async (req, res) => {
                 .json({ message: 'Missing workbookName or formData' });
         }
 
-        const {
-            year,
-            month,
-            location,
-            quadrantLSD,
-            section,
-            township,
-            range,
-            meridian,
-            dayOfMonth,
-        } = formData;
-
-        if (!workbookName) {
-            return res
-                .status(400)
-                .json({ message: 'workbookName is mandatory' });
-        }
+        const { quadrantLSD, section, township, range, meridian, dayOfMonth } =
+            formData;
 
         if (!quadrantLSD || !section || !township || !range || !meridian) {
             return res
@@ -83,11 +71,9 @@ exports.handleFormSubmission = async (req, res) => {
         if (!worksheet) {
             const templateSheet = workbook.getWorksheet('Well Template');
             if (!templateSheet) {
-                return res
-                    .status(500)
-                    .json({
-                        error: '"Well Template" sheet is missing in the workbook',
-                    });
+                return res.status(500).json({
+                    error: '"Well Template" sheet is missing in the workbook',
+                });
             }
 
             const existingSheet = workbook.getWorksheet(sheetName);
@@ -97,7 +83,6 @@ exports.handleFormSubmission = async (req, res) => {
 
             worksheet = workbook.addWorksheet(sheetName);
             cloneWorksheet(templateSheet, worksheet);
-
             workbook.removeWorksheet(templateSheet.id);
 
             console.log(
@@ -110,20 +95,55 @@ exports.handleFormSubmission = async (req, res) => {
             ? baseRow + 6
             : worksheet.actualRowCount + 1;
 
-        const row = worksheet.getRow(insertAtRow);
-        const keys = Object.keys(formData);
+        const excludedKeys = new Set([
+            'dayOfMonth',
+            'year',
+            'month',
+            'location',
+            'quadrantLSD',
+            'section',
+            'township',
+            'range',
+            'meridian',
+            'oil',
+            'water',
+            'sand',
+            'initialTankGauge',
+        ]);
 
-        // Start writing at column B (column 2)
+        // Write oil, water, sand, initialTankGauge to specific rows and column E (5)
+        worksheet.getRow(40).getCell(5).value = formData.initialTankGauge ?? 0;
+        worksheet.getRow(41).getCell(5).value = formData.oil ?? 0;
+        worksheet.getRow(42).getCell(5).value = formData.water ?? 0;
+        worksheet.getRow(43).getCell(5).value = formData.sand ?? 0;
+        worksheet.getRow(44).getCell(5).value = formData.initialTankGauge ?? 0;
+
+        // Write remaining fields starting at row insertAtRow, column B
+        const row = worksheet.getRow(insertAtRow);
+        const keys = Object.keys(formData).filter(
+            (key) => !excludedKeys.has(key)
+        );
+
         keys.forEach((key, i) => {
-            const colIndex = i + 2; // B = 2, C = 3, ...
-            row.getCell(colIndex).value = formData[key];
+            const colIndex = i + 2; // column B onwards
+            const val = formData[key];
+
+            if (
+                typeof val === 'number' ||
+                key.toLowerCase().includes('rpm') ||
+                key.toLowerCase().includes('psi')
+            ) {
+                row.getCell(colIndex).value = isNaN(val) ? 0 : val;
+            } else {
+                row.getCell(colIndex).value = val ?? '';
+            }
         });
 
         row.commit();
         await workbook.xlsx.writeFile(uploadsPath);
 
         res.status(200).json({
-            message: `Form saved to ${sheetName} at row ${insertAtRow}, starting at column B`,
+            message: `Form saved to ${sheetName}: custom values written to rows 40–44 and additional data to row ${insertAtRow}`,
         });
     } catch (error) {
         console.error('Submission error:', error);
