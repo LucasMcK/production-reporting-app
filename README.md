@@ -16,10 +16,11 @@ A centralized production reporting platform for Avalon Oil & Gas Ltd. This appli
 
 Currently, this application allows users to:
 
-* Securely view all production spreadsheet files stored in the database.
-* Download any stored file easily for offline access.
-* Upload new production reports from the field or office.
-* Filter stored files based on year, month, and location.
+- Securely view all production spreadsheet files stored in the database.
+- Download any stored file easily for offline access.
+- Upload new production reports from the field or office.
+- Filter stored files based on year, month, and location.
+- Manually input data into a structured form, which will automatically generate and upload the corresponding spreadsheet to the centralized database.
 
 > **Note:** This list is subject to change as the project progresses.
 
@@ -58,37 +59,41 @@ This tutorial uses GitHub Desktop to clone the project repository. I recommend i
 
 Once you’ve installed all of the prerequisites, follow these steps to get the project running on your computer.
 
-1. Clone the repository  
-    - Go to the [repository page](https://github.com/LucasMcK/production-reporting-app).  
-    - Click the green **Code** button.  
-    - Under the local tab, select **Open with Github Desktop**.  
+1. Clone the repository
+
+    - Go to the [repository page](https://github.com/LucasMcK/production-reporting-app).
+    - Click the green **Code** button.
+    - Under the local tab, select **Open with Github Desktop**.
     - Choose the folder where you want the project saved on your computer, then click **Clone**. Cloning the repository to the default location works just fine.
 
-2. Open the repository in VSCode  
-    - After the repository is cloned, click “Open in Visual Studio Code” from GitHub Desktop.  
+2. Open the repository in VSCode
+
+    - After the repository is cloned, click “Open in Visual Studio Code” from GitHub Desktop.
     - When prompted, click “Yes, I trust the authors” to allow VSCode to run the project.
 
-3. Run the backend  
-    - In the VSCode terminal, navigate to the backend folder using `cd backend`.  
-    - Verify that Node.js is installed by entering `node -v`. If installed properly, this command will return a version number like `v21.6.2`.  
-    - Start the backend server using `node index.js`.  
+3. Run the backend
+
+    - In the VSCode terminal, navigate to the backend folder using `cd backend`.
+    - Verify that Node.js is installed by entering `node -v`. If installed properly, this command will return a version number like `v21.6.2`.
+    - Start the backend server using `node index.js`.
     - After running this command, you should see `Backend running on http://localhost:5001` in the terminal.
 
-4. Run the frontend  
-    - While the backend is still running, split the terminal so you can run the frontend in parallel. There are three ways to do this:  
+4. Run the frontend
 
-      - Option 1: Click 'Terminal' in the top menu, and select 'Split terminal'.  
-      - Option 2: Use the keyboard shortcut `Ctrl + Shift + 5` while in the terminal.  
-      - Option 3: Click the 'split terminal' icon in the top right corner of the terminal panel *(left of the trash can icon — it looks like two squares side-by-side)*.  
+    - While the backend is still running, split the terminal so you can run the frontend in parallel. There are three ways to do this:
 
-    - In the new terminal pane, navigate to the frontend folder:  
+        - Option 1: Click 'Terminal' in the top menu, and select 'Split terminal'.
+        - Option 2: Use the keyboard shortcut `Ctrl + Shift + 5` while in the terminal.
+        - Option 3: Click the 'split terminal' icon in the top right corner of the terminal panel _(left of the trash can icon — it looks like two squares side-by-side)_.
 
-      - Option 1: If you see `backend` to the left of the command prompt symbol *(most commonly $, #, %, >)*, first return to the root folder using `cd ..`, then navigate into the frontend folder using `cd frontend`.  
-      - Option 2: If you see `production-reporting-app` to the left of the command prompt symbol *(most commonly $, #, %, >)*, navigate to frontend folder using `cd frontend`. 
+    - In the new terminal pane, navigate to the frontend folder:
 
-    - Install the frontend dependencies using `npm install`. This command will take some time to execute.  
-    - Once all necessary dependencies have been installed, start the frontend using `npm start`.  
-    - After a few moments, you should see the message `Starting the development server...`, followed by the app opening automatically in your web browser at `https://localhost:3000`.  
+        - Option 1: If you see `backend` to the left of the command prompt symbol _(most commonly $, #, %, >)_, first return to the root folder using `cd ..`, then navigate into the frontend folder using `cd frontend`.
+        - Option 2: If you see `production-reporting-app` to the left of the command prompt symbol _(most commonly $, #, %, >)_, navigate to frontend folder using `cd frontend`.
+
+    - Install the frontend dependencies using `npm install`. This command will take some time to execute.
+    - Once all necessary dependencies have been installed, start the frontend using `npm start`.
+    - After a few moments, you should see the message `Starting the development server...`, followed by the app opening automatically in your web browser at `https://localhost:3000`.
 
 > **Note:** The launch may take a minute or two, especially if it's your first time running the project.
 
@@ -106,10 +111,10 @@ Changes made to the project will not automatically appear on your local copy. To
 
 Key API endpoints and their function:
 
-* `/` —  **Home Page:** Displays a welcome message, a brief overview of the application, and navigation links to other key sections.
-* `/upload` — **Upload Page:** Allows users to upload spreadsheets to the centralized database and provides a link to navigate to the Files page.
-* `/files` — **Files Page:** Displays a list of previously uploaded spreadsheets. Users can download individual files and easily navigate back to the Upload page.
-* `/form` — **Form Page:** Allows field workers to manually input data into a form that automatically populates the proper workbook.
+- `/` — **Home Page:** Displays a welcome message, a brief overview of the application, and navigation links to other key sections.
+- `/upload` — **Upload Page:** Allows users to upload spreadsheets to the centralized database and provides a link to navigate to the Files page.
+- `/files` — **Files Page:** Displays a list of previously uploaded spreadsheets. Users can download individual files and easily navigate back to the Upload page.
+- `/form` — **Form Page:** Allows field workers to manually input data into a form that automatically populates the proper workbook.
 
 > **Note:** Items in these lists are subject to change as the project progresses.
 
@@ -138,7 +143,7 @@ production-reporting-app/
 │   ├── node_modules/
 │   ├── routes/
 │   │   ├── filesRoutes.js          # Route to list uploaded files
-│   │   ├── formRoutes.js           # Route to handle manual data entry 
+│   │   ├── formRoutes.js           # Route to handle manual data entry
 │   │   └── uploadRoutes.js         # Route to handle file uploads
 │   ├── uploads/                    # Stores uploaded spreadsheet files
 │   ├── index.js                    # Entry point for the backend server
@@ -175,7 +180,6 @@ N/A
 
 Various features and improvements are planned to be made based on Avalons requirements:
 
-- **Form-Based Data Entry:** Field workers will be able to manually input data into a structured form, which will automatically generate and upload the corresponding spreadsheet to the centralized database.
 - **Well Management:** Executives will have the ability to add or remove wells as they are drilled, decommissioned, or stop producing.
 - **Summary View:** A summary section will highlight key metrics from each spreadsheet, based on Avalon’s definition of the most relevant data.
 - **Sheet Navigation:** Users will be able to seamlessly switch between multiple uploaded spreadsheets.
