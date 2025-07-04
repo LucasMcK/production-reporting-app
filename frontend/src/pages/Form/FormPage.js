@@ -8,12 +8,12 @@ import Workbook from '../../components/WorkbookInput/WorkbookInput.js';
 import WellInput from '../../components/WellInput/WellInput.js';
 
 function ProductionFormPage() {
-    const dayOfMonth = 1;
-    // const [dayOfMonth, setDayOfMonth] = useState('');
-    // useEffect(() => {
-    //     const today = new Date().getDate();
-    //     setDayOfMonth(today.toString());
-    // }, []);
+    // const dayOfMonth = 1; // USE THIS FOR TESTING
+    const [dayOfMonth, setDayOfMonth] = useState('');
+    useEffect(() => {
+        const today = new Date().getDate();
+        setDayOfMonth(today.toString());
+    }, []);
 
     const handleNumericInput = (e, setter, options = {}) => {
         const raw = e.target.value;
