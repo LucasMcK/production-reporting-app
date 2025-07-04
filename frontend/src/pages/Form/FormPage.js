@@ -31,9 +31,42 @@ function ProductionFormPage() {
         setter(val);
     };
 
+    const [quadrantLSD, setQuadrantLSD] = useState('');
+    const [section, setSection] = useState('');
+    const [township, setTownship] = useState('');
+    const [range, setRange] = useState('');
+    const [meridian, setMeridian] = useState('');
+
     const [hoursOn, setHoursOn] = useState('');
     const hoursDown = hoursOn !== '' ? 24 - Number(hoursOn) : '';
     const [reason, setReason] = useState('');
+
+    const [joints, setJoints] = useState('');
+    const [makeAndSize, setMakeAndSize] = useState('');
+    const [noTurn, setNoTurn] = useState('');
+    const [zoneDepth, setZoneDepth] = useState('');
+    const configLocation = `${quadrantLSD}-${section}-${township}-${range}-${meridian}`;
+    const [monthYear, setMonthYear] = useState('');
+    useEffect(() => {
+        const date = new Date();
+        const monthNames = [
+            'January',
+            'February',
+            'March',
+            'April',
+            'May',
+            'June',
+            'July',
+            'August',
+            'September',
+            'October',
+            'November',
+            'December',
+        ];
+        const month = monthNames[date.getMonth()];
+        const year = date.getFullYear().toString().slice(-2);
+        setMonthYear(`${month}-${year}`);
+    }, []);
 
     const [bsw, setBsw] = useState('');
     const [sandPercent, setSandPercent] = useState('');
@@ -41,8 +74,6 @@ function ProductionFormPage() {
     const [oil, setOil] = useState('');
     const [water, setWater] = useState('');
     const [sand, setSand] = useState('');
-    const [joints, setJoints] = useState('');
-    const [makeAndSize, setMakeAndSize] = useState('');
     const initialTankGauge = [oil, water, sand].every((v) => v !== '')
         ? Number(oil) + Number(water) + Number(sand)
         : '';
@@ -120,12 +151,6 @@ function ProductionFormPage() {
     const handleMonthChange = (val) => setMonth(val);
     const handleLocationChange = (val) => setLocation(val);
 
-    const [quadrantLSD, setQuadrantLSD] = useState('');
-    const [section, setSection] = useState('');
-    const [township, setTownship] = useState('');
-    const [range, setRange] = useState('');
-    const [meridian, setMeridian] = useState('');
-
     const handleQuadrantLSDChange = (val) => setQuadrantLSD(val);
     const handleSectionChange = (val) => setSection(val);
     const handleTownshipChange = (val) => setTownship(val);
@@ -144,6 +169,10 @@ function ProductionFormPage() {
             reason,
             bsw: bsw ? bsw / 100 : 0,
             sandPercent: sandPercent ? sandPercent / 100 : 0,
+            noTurn,
+            zoneDepth,
+            configLocation,
+            monthYear,
             tankGauge,
             prodM3,
             joints,
@@ -231,50 +260,88 @@ function ProductionFormPage() {
                         onMeridianChange={handleMeridianChange}
                     />
                 </Fieldset>
+
                 {parseInt(dayOfMonth, 10) === 1 && (
-                    <Fieldset title="INITIAL TANK GAUGE">
-                        <InputField
-                            label="Total # of Joints"
-                            value={joints}
-                            onChange={(e) =>
-                                handleNumericInput(e, setJoints, { min: 0 })
-                            }
-                            width="100px"
-                        />
-                        <InputField
-                            label="Pump Make & Size"
-                            value={makeAndSize}
-                            onChange={(e) =>
-                                handleNumericInput(e, setMakeAndSize, {
-                                    min: 0,
-                                })
-                            }
-                            width="100px"
-                        />
-                        <InputField
-                            label="Oil"
-                            value={oil}
-                            onChange={(e) => setOil(e.target.value)}
-                            width="100px"
-                        />
-                        <InputField
-                            label="Water"
-                            value={water}
-                            onChange={(e) => setWater(e.target.value)}
-                            width="100px"
-                        />
-                        <InputField
-                            label="Sand"
-                            value={sand}
-                            onChange={(e) => setSand(e.target.value)}
-                            width="100px"
-                        />
-                        <InputField
-                            label="Initial Tank Gauge"
-                            value={initialTankGauge}
-                            disabled
-                        />
-                    </Fieldset>
+                    <>
+                        <Fieldset title="WELL CONFIGURATION">
+                            <InputField
+                                label="Total # of Joints"
+                                value={joints}
+                                onChange={(e) =>
+                                    handleNumericInput(e, setJoints, { min: 0 })
+                                }
+                                width="100px"
+                            />
+                            <InputField
+                                label="Pump Make & Size"
+                                value={makeAndSize}
+                                onChange={(e) =>
+                                    handleNumericInput(e, setMakeAndSize, {
+                                        min: 0,
+                                    })
+                                }
+                                width="100px"
+                            />
+                            <InputField
+                                label="# of Joints After No-Turn"
+                                value={noTurn}
+                                onChange={(e) =>
+                                    handleNumericInput(e, setNoTurn, {
+                                        min: 0,
+                                    })
+                                }
+                                width="100px"
+                            />
+                            <InputField
+                                label="Zone/Depth"
+                                value={zoneDepth}
+                                onChange={(e) =>
+                                    handleNumericInput(e, setZoneDepth, {
+                                        min: 0,
+                                    })
+                                }
+                                width="100px"
+                            />
+                            <InputField
+                                label="Month/Year"
+                                value={monthYear}
+                                width="100px"
+                                disabled
+                            />
+                            <InputField
+                                label="Location"
+                                value={configLocation}
+                                width="150px"
+                                disabled
+                            />
+                        </Fieldset>
+
+                        <Fieldset title="INITIAL TANK GAUGE">
+                            <InputField
+                                label="Oil"
+                                value={oil}
+                                onChange={(e) => setOil(e.target.value)}
+                                width="100px"
+                            />
+                            <InputField
+                                label="Water"
+                                value={water}
+                                onChange={(e) => setWater(e.target.value)}
+                                width="100px"
+                            />
+                            <InputField
+                                label="Sand"
+                                value={sand}
+                                onChange={(e) => setSand(e.target.value)}
+                                width="100px"
+                            />
+                            <InputField
+                                label="Initial Tank Gauge"
+                                value={initialTankGauge}
+                                disabled
+                            />
+                        </Fieldset>
+                    </>
                 )}
 
                 <Fieldset title="OPERATIONAL HOURS">

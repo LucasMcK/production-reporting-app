@@ -12,7 +12,7 @@ const WellInput = ({
     onRangeChange,
     meridianValue,
     onMeridianChange,
-    quadrantLSDPlaceholder = 'Quadrant/LSD',
+    quadrantLSDPlaceholder = 'LSD',
     sectionPlaceholder = 'Section',
     townshipPlaceholder = 'Township',
     rangePlaceholder = 'Range',

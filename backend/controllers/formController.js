@@ -113,6 +113,10 @@ exports.handleFormSubmission = async (req, res) => {
             'meridian',
             'joints',
             'makeAndSize',
+            'noTurn',
+            'zoneDepth',
+            'configLocation',
+            'monthYear',
             'oil',
             'water',
             'sand',
@@ -128,6 +132,10 @@ exports.handleFormSubmission = async (req, res) => {
         const gaugeRow2 = worksheet.getRow(44);
         const jointsRow = worksheet.getRow(1);
         const makeAndSizeRow = worksheet.getRow(3);
+        const noTurnRow = worksheet.getRow(1);
+        const zoneDepthRow = worksheet.getRow(3);
+        const monthYearRow = worksheet.getRow(3);
+        const configLocationRow = worksheet.getRow(1);
 
         if (isFirstDay) {
             gaugeRow1.getCell(5).value = formData.initialTankGauge ?? 0;
@@ -137,6 +145,10 @@ exports.handleFormSubmission = async (req, res) => {
             gaugeRow2.getCell(5).value = formData.initialTankGauge ?? 0;
             jointsRow.getCell(9).value = formData.joints ?? 0;
             makeAndSizeRow.getCell(9).value = formData.makeAndSize ?? 0;
+            noTurnRow.getCell(18).value = formData.noTurn ?? 0;
+            zoneDepthRow.getCell(18).value = formData.zoneDepth ?? 0;
+            monthYearRow.getCell(31).value = formData.monthYear ?? 0;
+            configLocationRow.getCell(31).value = formData.configLocation ?? 0;
         } else {
             formData.initialTankGauge = gaugeRow1.getCell(5).value || 0;
             formData.oil = oilRow.getCell(5).value || 0;
@@ -144,6 +156,10 @@ exports.handleFormSubmission = async (req, res) => {
             formData.sand = sandRow.getCell(5).value || 0;
             formData.joints = sandRow.getCell(9).value || 0;
             formData.makeAndSize = sandRow.getCell(9).value || 0;
+            formData.noTurn = noTurnRow.getCell(18).value || 0;
+            formData.zoneDepth = zoneDepthRow.getCell(18).value || 0;
+            formData.monthYear = monthYearRow.getCell(31).value || 0;
+            formData.configLocation = configLocationRow.getCell(31).value || 0;
         }
 
         const row = worksheet.getRow(insertAtRow);
