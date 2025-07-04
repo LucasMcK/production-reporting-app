@@ -8,11 +8,12 @@ import Workbook from '../../components/WorkbookInput/WorkbookInput.js';
 import WellInput from '../../components/WellInput/WellInput.js';
 
 function ProductionFormPage() {
-    const [dayOfMonth, setDayOfMonth] = useState('');
-    useEffect(() => {
-        const today = new Date().getDate();
-        setDayOfMonth(today.toString());
-    }, []);
+    const dayOfMonth = 1;
+    // const [dayOfMonth, setDayOfMonth] = useState('');
+    // useEffect(() => {
+    //     const today = new Date().getDate();
+    //     setDayOfMonth(today.toString());
+    // }, []);
 
     const handleNumericInput = (e, setter, options = {}) => {
         const raw = e.target.value;
@@ -40,6 +41,8 @@ function ProductionFormPage() {
     const [oil, setOil] = useState('');
     const [water, setWater] = useState('');
     const [sand, setSand] = useState('');
+    const [joints, setJoints] = useState('');
+    const [makeAndSize, setMakeAndSize] = useState('');
     const initialTankGauge = [oil, water, sand].every((v) => v !== '')
         ? Number(oil) + Number(water) + Number(sand)
         : '';
@@ -143,6 +146,8 @@ function ProductionFormPage() {
             sandPercent,
             tankGauge,
             prodM3,
+            joints,
+            makeAndSize,
             oil,
             water,
             sand,
@@ -226,9 +231,26 @@ function ProductionFormPage() {
                         onMeridianChange={handleMeridianChange}
                     />
                 </Fieldset>
-
                 {parseInt(dayOfMonth, 10) === 1 && (
                     <Fieldset title="INITIAL TANK GAUGE">
+                        <InputField
+                            label="Total # of Joints"
+                            value={joints}
+                            onChange={(e) =>
+                                handleNumericInput(e, setJoints, { min: 0 })
+                            }
+                            width="100px"
+                        />
+                        <InputField
+                            label="Pump Make & Size"
+                            value={makeAndSize}
+                            onChange={(e) =>
+                                handleNumericInput(e, setMakeAndSize, {
+                                    min: 0,
+                                })
+                            }
+                            width="100px"
+                        />
                         <InputField
                             label="Oil"
                             value={oil}

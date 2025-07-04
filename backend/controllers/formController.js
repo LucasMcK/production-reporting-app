@@ -111,6 +111,8 @@ exports.handleFormSubmission = async (req, res) => {
             'township',
             'range',
             'meridian',
+            'joints',
+            'makeAndSize',
             'oil',
             'water',
             'sand',
@@ -124,6 +126,8 @@ exports.handleFormSubmission = async (req, res) => {
         const sandRow = worksheet.getRow(43);
         const gaugeRow1 = worksheet.getRow(40);
         const gaugeRow2 = worksheet.getRow(44);
+        const jointsRow = worksheet.getRow(1);
+        const makeAndSizeRow = worksheet.getRow(3);
 
         if (isFirstDay) {
             gaugeRow1.getCell(5).value = formData.initialTankGauge ?? 0;
@@ -131,11 +135,15 @@ exports.handleFormSubmission = async (req, res) => {
             waterRow.getCell(5).value = formData.water ?? 0;
             sandRow.getCell(5).value = formData.sand ?? 0;
             gaugeRow2.getCell(5).value = formData.initialTankGauge ?? 0;
+            jointsRow.getCell(9).value = formData.joints ?? 0;
+            makeAndSizeRow.getCell(9).value = formData.makeAndSize ?? 0;
         } else {
             formData.initialTankGauge = gaugeRow1.getCell(5).value || 0;
             formData.oil = oilRow.getCell(5).value || 0;
             formData.water = waterRow.getCell(5).value || 0;
             formData.sand = sandRow.getCell(5).value || 0;
+            formData.joints = sandRow.getCell(9).value || 0;
+            formData.makeAndSize = sandRow.getCell(9).value || 0;
         }
 
         const row = worksheet.getRow(insertAtRow);
