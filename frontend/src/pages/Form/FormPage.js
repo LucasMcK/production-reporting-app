@@ -104,8 +104,8 @@ function ProductionFormPage() {
     const [fluidLevel, setFluidLevel] = useState('');
     const [rpm, setRpm] = useState('');
     const efficiency =
-        prodM3 && netOil && rpm
-            ? Number((prodM3 / (netOil * (rpm / 100))).toFixed(1))
+        prodM3 && makeAndSize && rpm
+            ? Number(((prodM3 / (makeAndSize * (rpm / 100))) * 100).toFixed(0))
             : '';
     const [psiHyd, setPsiHyd] = useState('');
 
