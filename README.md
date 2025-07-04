@@ -135,26 +135,30 @@ Below is a complete overview of the file structure:
 
 ```
 production-reporting-app/
+├── .vscode/
+│   ├── settings.json               # Handles configuration settings for overall project consistency
 ├── backend/
 │   ├── controllers/
 │   │   ├── fileController.js       # Handles file listing logic
 │   │   ├── formController.js       # Handles form upload logic
 │   │   └── uploadController.js     # Handles file upload logic
-│   ├── node_modules/
+│   ├── node_modules/               # Contains backend project dependencies
 │   ├── routes/
 │   │   ├── filesRoutes.js          # Route to list uploaded files
 │   │   ├── formRoutes.js           # Route to handle manual data entry
 │   │   └── uploadRoutes.js         # Route to handle file uploads
+│   ├── templates/
+│   │   ├── base_template.xlsx      # Base template for general well workbook/worksheets
 │   ├── uploads/                    # Stores uploaded spreadsheet files
 │   ├── index.js                    # Entry point for the backend server
-│   ├── storageConfig.js            # Multer storage configuration
-│   ├── package.json
-│   └── package-lock.json
+│   ├── package-lock.json           # locks exact dependency versions to ensure consistency
+│   ├── package.json                # Defines project's metadata, scripts, and lists dependencies app needs to run
+│   └── storageConfig.js            # Multer file storage configuration
 ├── frontend/
 │   ├── build/                      # Production build output
-│   ├── node_modules
-│   ├── public/
-│   │   ├── images/                 # Public assets (e.g., logos)
+│   ├── node_modules/               # Contains frontend project dependencies
+│   ├── public/                     # Public assets
+│   │   ├── images/                 # Images used in the project
 │   │   └── index.html              # Root HTML file
 │   ├── src/
 │   │   ├── components/             # Reusable UI components with independent style sheets
@@ -163,10 +167,15 @@ production-reporting-app/
 │   │   ├── index.css               # Gloabal style sheet
 │   │   ├── index.js                # React DOM rendering entry point
 │   │   └── reportWebVitals.js      # Performance monitoring with Web Vitals
-│   ├── .gitignore
-│   ├── package.json
-│   └── package-lock.json
+│   ├── .gitignore                  # Specifies which files or folders to exclude from being committed
+│   ├── package-lock.json
+│   └── package.json
+├── node_modules/                   # Contains general project dependencies
+├── .prettierignore                 # Containes which files are ignored from being formatted
+├── .prettierrc                     # Formatting for files (i.e. indent length)
 ├── LICENSE                         # MIT license for the project
+├── package-lock.json
+├── package.json
 └── README.md                       # Project overview, setup, and usage documentation
 ```
 
