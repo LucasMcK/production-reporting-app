@@ -1,23 +1,17 @@
-/* files general purpose: define styling specific to upload page */
+/* UploadPage.css */
 
+/* Specific styles for the upload form layout */
 .upload-form {
-    display: flex;                      /* Enables Flexbox layout for inner elements */
-    flex-direction: column;             /* Stacks form elements vertically */
-    gap: 1.5rem;                        /* Adds vertical space between each child element */
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    width: 100%;
+    max-width: 500px;
 }
- 
-.upload-form input[type="file"] {
-    padding: 0.5rem;                    /* Adds internal space around the file input */
-    border: 1.5px solid #ddd;         /* Light gray border around the input */
-    border-radius: 6px;                 /* Slightly rounded corners for a softer look */
-    cursor: pointer;                    /* Changes cursor to pointer when hovering over input */
-    font-size: 1rem;                    /* Sets font size of any file name shown */
-    color: #444;                      /* Medium-dark text color */
-    transition: border-color 0.3s ease; /* Smooth transition when border color changes (e.g., on hover) */
-}
- 
-.upload-form input[type="file"]:focus,
-.upload-form input[type="file"]:hover {
-    border-color: #6366f1;            /* Changes border to indigo when focused or hovered */
-    outline: none;                      /* Removes default browser outline for cleaner look */
+
+/* Button group alignment */
+.button-group {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
 }

@@ -1,113 +1,131 @@
-/* Global stylesheet for consistent base styling across the app */
+/* CSS Reset / Normalize */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
 
-/* Global container for consistent centered layout */
+html,
+body {
+    height: 100%;
+    font-family: 'Inter', 'Segoe UI', Roboto, sans-serif;
+    font-size: 16px;
+    line-height: 1.5;
+    color: #1a1a1a;
+    background-color: #f9f9f9;
+}
+
+/* Global Container */
 .container {
-    display: flex;                    /* Enables Flexbox layout */
-    flex-direction: column;           /* Stack children vertically */
-    align-items: center;              /* Center children horizontally */
-    text-align: center;               /* Center text content inside elements */
-    max-width: 1200px;                /* Sets a maximum width for the container */
-    margin: 3rem auto;                /* Adds vertical spacing and centers container horizontally */
-    padding: 1rem;                    /* Adds inner spacing */
-    border-radius: 10px;              /* Rounds the corners slightly */
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Adds subtle shadow */
-    box-sizing: border-box;           /* Ensures padding doesn't increase width */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 1200px;
+    margin: 3rem auto;
+    padding: 1rem;
 }
-  
-/* Global text styles */
-.text {
-    font-family: 'Inter', sans-serif; /* Uses Inter font with fallback */
-    font-size: 1rem;                  /* Sets base font size */
-    color: #333333;                 /* Dark grey text color */
-    line-height: 1.5;                 /* Improves readability */
-}
-  
+
 /* Headings */
 h1 {
-    font-size: 2.5rem;                /* Large title size */
-    font-weight: 700;                 /* Bold */
-    margin-bottom: 1rem;              /* Adds spacing below */
-    color: #222222;                 /* Slightly darker text */
-}
-  
-h2 {
-    font-size: 2rem;                  /* Smaller than h1 */
-    font-weight: 600;                 /* Semi-bold */
-    margin-bottom: 0.75rem;           /* Spacing below */
-    color: #333333;                 /* Standard heading color */
-}
-  
-/* Paragraph text */
-p {
-    font-size: 1rem;                  /* Normal text size */
-    line-height: 1.6;                 /* Comfortable line height */
-    margin-bottom: 1rem;              /* Spacing below paragraph */
-    color: #444444;                 /* Slightly lighter than heading */
-}
-  
-/* Labels for forms */
-label {
-    font-weight: 600;                 /* Semi-bold for emphasis */
-    font-size: 0.9rem;                /* Slightly smaller than normal text */
-    color: #555555;                 /* Grey tone for clarity */
-    display: inline-block;            /* Enables margin/padding */
-    margin: 0.25rem;                  /* Space around label */
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: #222;
 }
 
-input {
-    text-align: center;               /* Centers both input text and placeholder text */
-}  
-  
-/* Link styling */
-a {
-    color: #007bff;                 /* Primary blue for links */
-    text-decoration: none;            /* No underline by default */
-    cursor: pointer;                  /* Pointer cursor on hover */
+h2 {
+    font-size: 2rem;
+    font-weight: 600;
+    margin-bottom: 0.75rem;
+    color: #333;
 }
-  
+
+/* Paragraphs */
+p {
+    font-size: 1rem;
+    line-height: 1.6;
+    margin-bottom: 1rem;
+    color: #444;
+}
+
+/* Labels */
+label {
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: #555;
+    margin: 0.25rem 0;
+    display: inline-block;
+}
+
+/* Inputs */
+input,
+textarea,
+select {
+    font-family: inherit;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    padding: 8px 12px;
+    border-radius: 6px;
+    background-color: #fff;
+    text-align: center;
+    transition: border-color 0.2s;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+    border-color: #01426a;
+    outline: none;
+}
+
+/* Links */
+a {
+    color: #01426a;
+    text-decoration: none;
+}
+
 a:hover,
 a:focus {
-    text-decoration: underline;       /* Underline on hover/focus */
-    outline: none;                    /* Removes default focus outline */
+    text-decoration: underline;
+    outline: none;
 }
-  
-/* List items */
+
+/* Lists */
 li {
-    font-size: 1rem;                  /* Standard font size */
-    color: #333333;                 /* Consistent text color */
-    margin-bottom: 0.5rem;            /* Space between list items */
-    list-style: none;                 /* Removes bullet points */
+    font-size: 1rem;
+    color: #333;
+    margin-bottom: 0.5rem;
+    list-style: none;
 }
 
-/* General status message block */
+/* Status Messages */
 .status-message {
-    padding: 0.75rem 1rem;            /* Padding inside the message box */
-    margin: 1rem 0;                   /* Space above and below message */
-    border-radius: 6px;               /* Rounded corners */
-    font-size: 1rem;                  /* Readable font size */
-    font-weight: 500;                 /* Slightly bold for visibility */
-    width: 100%;                      /* Full width of container */
-    max-width: 600px;                 /* But no wider than this */
-    text-align: center;               /* Center the text */
+    padding: 0.75rem 1rem;
+    margin: 1rem 0;
+    border-radius: 6px;
+    font-size: 1rem;
+    font-weight: 500;
+    width: 100%;
+    max-width: 600px;
+    text-align: center;
 }
 
-/* Success message (green) */
 .status-success {
-    background-color: #e6ffed;      /* Light green background */
-    color: #256029;                 /* Dark green text */
-    border: 1px solid #a4d4ae;      /* Border with medium green */
+    background-color: #e6ffed;
+    color: #256029;
+    border: 1px solid #a4d4ae;
 }
 
-/* Error message (red) */
 .status-error {
-    background-color: #ffe6e6;      /* Light red background */
-    color: #b00020;                 /* Dark red text */
-    border: 1px solid #f5a4a4;      /* Border with soft red */
+    background-color: #ffe6e6;
+    color: #b00020;
+    border: 1px solid #f5a4a4;
 }
 
-/* Info message (blue) */
 .status-info {
-    background-color: #e6f0ff;      /* Light blue background */
-    color: #1a4fa3;                 /* Dark blue text */
-    border: 1px solid #9dbde5;      /* Medium blue border */
+    background-color: #e6f0ff;
+    color: #1a4fa3;
+    border: 1px solid #9dbde5;
 }
