@@ -71,10 +71,17 @@ function FilesPage() {
                     ))}
                 </ul>
             )}
-
-            <Link to="/upload">
-                <Button type="primary">Upload Files</Button>
-            </Link>
+            <div className="button-group">
+                <Link to="/upload">
+                    <Button type="primary">Upload Files</Button>
+                </Link>
+                <Link to="/form">
+                    <Button type="primary">Submit Form</Button>
+                </Link>
+                <Link to="/">
+                    <Button type="primary">Home</Button>
+                </Link>
+            </div>
         </div>
     );
 }

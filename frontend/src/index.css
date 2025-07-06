@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
+
 /* CSS Reset / Normalize */
 *,
 *::before,
@@ -10,7 +12,7 @@
 html,
 body {
     height: 100%;
-    font-family: 'Inter', 'Segoe UI', Roboto, sans-serif;
+    font-family: 'Inter';
     font-size: 16px;
     line-height: 1.5;
     color: #1a1a1a;
@@ -20,11 +22,31 @@ body {
 /* Global Container */
 .container {
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    max-width: 1200px;
-    margin: 3rem auto;
+    flex-direction: row;
+    justify-content: center;
+    gap: 2rem;
+    flex-wrap: wrap;
     padding: 1rem;
+    border-radius: 8px;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 1000px;
+    margin: 1rem auto 0 auto;
+}
+
+.sub-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-width: 950px;
+    height: 350px;
+    margin: 1rem 0;
+    padding: 1rem;
+    border-radius: 12px;
+    border: 1px solid #000;
+    box-shadow: none;
 }
 
 /* Headings */
@@ -128,4 +150,12 @@ li {
     background-color: #e6f0ff;
     color: #1a4fa3;
     border: 1px solid #9dbde5;
+}
+
+.intro-text {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Optional: centers horizontally */
+    text-align: center; /* Optional: centers text inside each div */
+    margin-bottom: 0.5rem;
 }

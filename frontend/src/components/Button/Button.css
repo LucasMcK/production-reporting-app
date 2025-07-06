@@ -1,44 +1,62 @@
-/* files general purpose: define styling specific to button component */
-
 .btn {
-    text-decoration: none;             /* Removes underline (in case button is rendered as a link) */
-    padding: 0.75rem 2rem;             /* Adds vertical and horizontal padding for a balanced button */
-    border-radius: 6px;                /* Rounds the corners of the button */
-    font-weight: 600;                  /* Makes button text semi-bold */
-    font-size: 1.1rem;                 /* Increases font size slightly for visibility */
-    transition: background-color 0.3s ease; /* Smooth background color transition on hover */
-    cursor: pointer;                   /* Shows pointer cursor on hover to indicate it's clickable */
-    border: none;                      /* Removes default border */
-    justify-content: center;           /* Horizontally centers content inside if using flex (e.g., icons) */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.75rem 2rem;
+    border-radius: 20px;
+    font-weight: 600;
+    font-size: 1.1rem;
+    cursor: pointer;
+    border: none;
+    text-align: center;
+    border: 1px #000 solid;
 }
-  
+
 .btn-primary {
-    background-color: #005130;       /* Sets a dark green background for primary buttons */
-    color: white;                    /* Makes text white for contrast */
+    background-color: #005130;
+    color: white;
 }
-  
+
 .btn-primary:hover {
-    background-color: #00695d;       /* Slightly lighter green on hover for interactive feedback */
+    background-color: #00695d;
 }
-  
+
 .btn-secondary {
-    background-color: #000000;       /* Black background for secondary buttons */
-    color: white;                    /* White text for contrast */
+    background-color: #000;
+    color: white;
 }
-  
+
 .btn-secondary:hover {
-    background-color: #414141;       /* Dark gray background on hover to signal interactivity */
+    background-color: #414141;
+}
+
+.btn-tertiary {
+    background-color: white;
+    color: black;
+}
+
+.btn-tertiary:hover {
+    background-color: #a2a2a2;
 }
 
 .button-group {
-    display: flex;                     /* Uses Flexbox layout */
-    justify-content: center;           /* Centers buttons horizontally within the container */
-    gap: 1rem;                         /* Adds horizontal space between buttons */
-    margin-top: 1rem;                  /* Adds spacing above the button group */
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 1rem;
 }
 
 .button-wrapper {
-    display: flex;                     /* Enables Flexbox layout */
-    justify-content: center;           /* Centers content horizontally */
-    margin-top: 2rem;                  /* Adds more vertical spacing above the wrapper */
+    display: flex;
+    justify-content: center;
+    margin-top: 2rem;
+}
+
+.btn-icon {
+    width: 100px;
+    height: 100px;
+    margin-right: 8px;
+    vertical-align: middle;
 }

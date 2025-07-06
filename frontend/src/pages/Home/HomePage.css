@@ -4,3 +4,33 @@
     gap: 1rem;
     margin-top: 2rem;
 }
+.recent-files-list {
+    width: 100%;
+    max-width: 600px;
+    padding-left: 0;
+    list-style: none;
+    margin-top: 1rem;
+}
+
+.recent-files-list li {
+    padding: 0.5rem 1rem;
+    background-color: #f2f2f2;
+    border-radius: 8px;
+    margin-bottom: 0.5rem;
+    text-align: center;
+    transition: background-color 0.2s ease;
+}
+
+.recent-files-list li:hover {
+    background-color: #e0e0e0;
+}
+
+.recent-files-list a {
+    color: #01426a;
+    font-weight: 500;
+    text-decoration: none;
+}
+
+.recent-files-list a:hover {
+    text-decoration: underline;
+}
