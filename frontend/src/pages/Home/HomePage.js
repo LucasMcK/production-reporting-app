@@ -10,7 +10,6 @@ function HomePage() {
         fetch('http://localhost:5001/files')
             .then((res) => res.json())
             .then((data) => {
-                // Optional: Sort if backend doesn't return newest first
                 const sorted = [...data].sort((a, b) => {
                     const dateA = new Date(a.uploadTime || 0);
                     const dateB = new Date(b.uploadTime || 0);
