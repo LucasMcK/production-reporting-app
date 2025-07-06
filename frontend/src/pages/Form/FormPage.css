@@ -16,7 +16,7 @@
 
 /* Textarea styling */
 .form-row > textarea {
-    height: 100px;
+    height: 40px;
 }
 
 /* Button container for centering form submission */
@@ -25,10 +25,27 @@
     justify-content: center;
     margin-top: 1.5rem;
 }
+.text-area {
+    height: 500px;
+    width: 100%; /* Optional: ensures full width in .form-row */
+    padding: 8px 12px;
+    font-size: 1rem;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    resize: vertical; /* or none, or both */
+}
 
 /* Label above textareas */
 .text-area-label {
-    margin-bottom: 0.25rem;
+    margin-bottom: -0.5rem;
     text-align: center;
     font-weight: 500;
+}
+
+textarea:disabled {
+    background-color: #f0f0f0; /* light grey background */
+    color: #888; /* muted grey text */
+    border: 1px solid #ccc;
+    cursor: not-allowed;
+    height: 40px;
 }

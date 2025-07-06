@@ -378,10 +378,10 @@ function ProductionFormPage() {
                             Reason for Downtime
                         </label>
                         <textarea
+                            className="text-area"
                             value={reason}
                             onChange={(e) => setReason(e.target.value)}
                             disabled={hoursDown <= 0}
-                            style={{ height: '34px' }}
                         />
                     </div>
                 </Fieldset>
@@ -619,9 +619,9 @@ function ProductionFormPage() {
                     >
                         <label className="text-area-label">Comments</label>
                         <textarea
+                            className="text-area"
                             value={comments}
                             onChange={(e) => setComments(e.target.value)}
-                            style={{ height: '34px' }}
                         />
                     </div>
 
