@@ -12,17 +12,18 @@
     transition: border-color 0.3s ease;
 }
 
-.label {
+.workbook-input-label {
     margin-bottom: 0.5rem;
     text-align: center;
     font-weight: 500;
+    width: fit-content;
 }
 
-.container {
+.workbook-input-container {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-bottom: 1rem;
+    width: 100%;
 }
 
 .date-input {

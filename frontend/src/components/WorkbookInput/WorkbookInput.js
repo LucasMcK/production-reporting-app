@@ -82,7 +82,7 @@ const Workbook = ({
 
     return (
         <div className="workbook-input-container">
-            <label className="label">Workbook Name</label>
+            <label className="workbook-input-label">Workbook Name</label>
             <div className="workbook-inputs input-fields-row">
                 <input
                     ref={yearRef}
