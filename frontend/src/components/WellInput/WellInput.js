@@ -90,37 +90,54 @@ const WellInput = ({
         onMeridianChange(val);
     };
 
-    const handleKeyDown = (e) => {
+    const handleSectionKeyDown = (e) => {
         if (
             (e.key === 'Backspace' || e.key === 'Delete') &&
             sectionValue.length === 0
         ) {
             e.preventDefault();
-            onQuadrantLSDChange(quadrantLSDValue.slice(0, 1));
+            if (quadrantLSDValue.length === 2) {
+                onQuadrantLSDChange(quadrantLSDValue.slice(0, 1));
+            }
             quadrantLSDRef.current?.focus();
         }
+    };
+
+    const handleTownshipKeyDown = (e) => {
         if (
             (e.key === 'Backspace' || e.key === 'Delete') &&
             townshipValue.length === 0
         ) {
             e.preventDefault();
-            onSectionChange(sectionValue.slice(0, 1));
+            if (sectionValue.length === 2) {
+                onSectionChange(sectionValue.slice(0, 1));
+            }
             sectionRef.current?.focus();
         }
+    };
+
+    const handleRangeKeyDown = (e) => {
         if (
             (e.key === 'Backspace' || e.key === 'Delete') &&
             rangeValue.length === 0
         ) {
             e.preventDefault();
-            onTownshipChange(townshipValue.slice(0, 1));
-            sectionRef.current?.focus();
+            if (townshipValue.length === 2) {
+                onTownshipChange(townshipValue.slice(0, 1));
+            }
+            townshipRef.current?.focus();
         }
+    };
+
+    const handleMeridianKeyDown = (e) => {
         if (
             (e.key === 'Backspace' || e.key === 'Delete') &&
             meridianValue.length === 0
         ) {
             e.preventDefault();
-            onRangeChange(rangeValue.slice(0, 1));
+            if (rangeValue.length === 2) {
+                onRangeChange(rangeValue.slice(0, 1));
+            }
             rangeRef.current?.focus();
         }
     };
@@ -131,7 +148,7 @@ const WellInput = ({
             <div className="well-inputs-row">
                 <input
                     ref={quadrantLSDRef}
-                    className="well-input date-input"
+                    className="well-input"
                     type="text"
                     maxLength={2}
                     value={quadrantLSDValue}
@@ -143,12 +160,12 @@ const WellInput = ({
                 <span className="non-input-text">—</span>
                 <input
                     ref={sectionRef}
-                    className="well-input date-input"
+                    className="well-input"
                     type="text"
                     maxLength={2}
                     value={sectionValue}
                     onChange={handleSectionInput}
-                    onKeyDown={handleKeyDown}
+                    onKeyDown={handleSectionKeyDown}
                     placeholder={sectionPlaceholderText}
                     onFocus={onSectionFocus}
                     onBlur={onSectionBlur}
@@ -156,12 +173,12 @@ const WellInput = ({
                 <span className="non-input-text">—</span>
                 <input
                     ref={townshipRef}
-                    className="well-input date-input"
+                    className="well-input"
                     type="text"
                     maxLength={2}
                     value={townshipValue}
                     onChange={handleTownshipInput}
-                    onKeyDown={handleKeyDown}
+                    onKeyDown={handleTownshipKeyDown}
                     placeholder={townshipPlaceholderText}
                     onFocus={onTownshipFocus}
                     onBlur={onTownshipBlur}
@@ -169,12 +186,12 @@ const WellInput = ({
                 <span className="non-input-text">—</span>
                 <input
                     ref={rangeRef}
-                    className="well-input date-input"
+                    className="well-input"
                     type="text"
                     maxLength={2}
                     value={rangeValue}
                     onChange={handleRangeInput}
-                    onKeyDown={handleKeyDown}
+                    onKeyDown={handleRangeKeyDown}
                     placeholder={rangePlaceholderText}
                     onFocus={onRangeFocus}
                     onBlur={onRangeBlur}
@@ -182,12 +199,12 @@ const WellInput = ({
                 <span className="non-input-text">—</span>
                 <input
                     ref={meridianRef}
-                    className="well-input date-input"
+                    className="well-input"
                     type="text"
                     maxLength={2}
                     value={meridianValue}
                     onChange={handleMeridianInput}
-                    onKeyDown={handleKeyDown}
+                    onKeyDown={handleMeridianKeyDown}
                     placeholder={meridianPlaceholderText}
                     onFocus={onMeridianFocus}
                     onBlur={onMeridianBlur}
