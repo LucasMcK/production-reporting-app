@@ -4,19 +4,19 @@ legend {
     font-weight: bold;
     line-height: 1;
     text-align: center;
-    width: auto; /* don't force full width here */
-    display: inline-block; /* don't use flex for legend */
-    background: white; /* same as fieldset background */
+    width: auto;
+    display: inline-block;
+    background: white;
     padding: 0 0.5rem;
-    border-radius: 4px; /* optional: soften corners */
-    /* margin to position legend properly */
+    border-radius: 4px;
     margin-bottom: 0.5rem;
 }
 
 fieldset {
     padding: 1rem;
     margin-bottom: 1rem;
-    border: 1px solid #ccc;
+    border: 2px solid #01426a;
+    border-radius: 12px;
     display: flex;
     flex-direction: column;
     justify-content: center;

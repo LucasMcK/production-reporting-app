@@ -6,12 +6,14 @@
 }
 
 .input-label {
+    color: black;
     margin-bottom: 0rem;
     text-align: center;
     font-weight: 500;
 }
 
 .input-unit-label {
+    color: black;
     margin-bottom: 0.5rem;
     text-align: center;
     font-weight: 500;
@@ -37,8 +39,8 @@
 }
 
 .input-field:disabled {
-    background-color: #f0f0f0; /* light grey background */
-    color: #888; /* muted grey text */
+    background-color: #f0f0f0;
+    color: #888;
     cursor: not-allowed;
     border-color: #ccc;
 }
