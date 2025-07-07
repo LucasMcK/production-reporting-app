@@ -21,6 +21,8 @@ Currently, this application allows users to:
 - Upload new production reports from the field or office.
 - Filter stored files based on year, month, and location.
 - Manually input data into a structured form, which will automatically generate and upload the corresponding spreadsheet to the centralized database.
+- Add or remove wells as they are drilled, decommissioned, or stop producing.
+- View a summary section will highlight key metrics from each spreadsheet, based on Avalon’s definition of the most relevant data.
 
 > **Note:** This list is subject to change as the project progresses.
 
@@ -189,9 +191,8 @@ N/A
 
 Various features and improvements are planned to be made based on Avalons requirements:
 
-- **Well Management:** Executives will have the ability to add or remove wells as they are drilled, decommissioned, or stop producing.
-- **Summary View:** A summary section will highlight key metrics from each spreadsheet, based on Avalon’s definition of the most relevant data.
 - **Sheet Navigation:** Users will be able to seamlessly switch between multiple uploaded spreadsheets.
+- **AWS EC2 Hosting:** The application will be deployed on an AWS EC2 instance, ensuring reliable, scalable, and remote access for Avalon staff.
 
 > **Note:** This list is subject to change as the project progresses.
 
