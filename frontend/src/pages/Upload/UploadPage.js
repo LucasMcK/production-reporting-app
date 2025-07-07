@@ -101,6 +101,17 @@ function UploadForm() {
                     <Link to="/files">
                         <Button type="tertiary">View Files</Button>
                     </Link>
+                    <Link to="/form">
+                        <Button type="tertiary">Submit a Form</Button>
+                    </Link>
+                </div>
+                <div className="home-button-group">
+                    <Link to="/">
+                        <Button
+                            type="home"
+                            imgSrc="/images/home-icon.png"
+                        ></Button>
+                    </Link>
                 </div>
             </form>
             {status && <p className="status-message">{status}</p>}

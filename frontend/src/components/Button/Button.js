@@ -7,7 +7,9 @@ function Button({ type = 'primary', children, imgSrc, imgAlt = '', ...props }) {
             ? 'btn btn-tertiary'
             : type === 'secondary'
               ? 'btn btn-secondary'
-              : 'btn btn-primary';
+              : type === 'home'
+                ? 'btn btn-home'
+                : 'btn btn-primary';
 
     return (
         <button className={className} {...props}>

@@ -52,7 +52,7 @@ function FilesPage() {
     );
 
     return (
-        <div className="container" style={{ width: '600px', height: '850px' }}>
+        <div className="container" style={{ width: '600px' }}>
             <h2>Files</h2>
             <Workbook
                 yearValue={year}
@@ -121,13 +121,16 @@ function FilesPage() {
 
             <div className="button-group">
                 <Link to="/upload">
-                    <Button type="primary">Upload Files</Button>
+                    <Button type="tertiary">Upload Files</Button>
                 </Link>
                 <Link to="/form">
-                    <Button type="primary">Submit Form</Button>
+                    <Button type="tertiary">Submit Form</Button>
                 </Link>
+            </div>
+
+            <div className="home-button-group">
                 <Link to="/">
-                    <Button type="primary">Home</Button>
+                    <Button type="home" imgSrc="/images/home-icon.png" />
                 </Link>
             </div>
         </div>

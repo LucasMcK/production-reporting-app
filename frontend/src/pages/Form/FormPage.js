@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import './FormPage.css';
 import '../../index.css';
 import InputField from '../../components/InputField/InputField.js';
@@ -635,8 +636,27 @@ function ProductionFormPage() {
                         width="100px"
                     />
                 </Fieldset>
+                <div className="button-group">
+                    <Button type="tertiary">Submit</Button>
+                </div>
 
-                <Button type="primary">Submit</Button>
+                <div className="button-group">
+                    <Link to="/upload">
+                        <Button type="tertiary">Upload Files</Button>
+                    </Link>
+                    <Link to="/files">
+                        <Button type="tertiary">View Files</Button>
+                    </Link>
+                </div>
+
+                <div
+                    className="home-button-group"
+                    style={{ marginTop: '1rem' }}
+                >
+                    <Link to="/">
+                        <Button type="home" imgSrc="/images/home-icon.png" />
+                    </Link>
+                </div>
             </form>
         </div>
     );
