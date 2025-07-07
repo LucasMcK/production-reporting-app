@@ -1,5 +1,3 @@
-/* files general purpose: define styling specific to search bar component */
-
 .workbook-input {
     width: 100%;
     max-width: 475px;
@@ -13,6 +11,7 @@
 }
 
 .workbook-input-label {
+    color: black;
     margin-bottom: 0.5rem;
     text-align: center;
     font-weight: 500;
@@ -26,8 +25,9 @@
     width: 100%;
 }
 
-.date-input {
-    height: 35px;
+.workbook-date-input {
+    vertical-align: middle;
+    height: 40px;
     max-width: 75px;
     padding: 10px;
     font-size: 14px;
@@ -35,19 +35,19 @@
     box-sizing: border-box;
 }
 
-.non-input-text {
-    display: flex;
+.workbook-non-input-text {
     align-items: center;
     justify-content: center;
-    height: 35px;
+    height: 20px;
     margin-left: 8px;
+    margin-right: 8px;
     font-size: 16px;
     user-select: none;
     white-space: nowrap;
 }
 
-.location-input {
-    height: 35px;
+.workbook-location-input {
+    height: 40px;
     max-width: 200px;
     padding: 10px;
     font-size: 14px;
@@ -61,7 +61,7 @@
     border-color: #007bff;
 }
 
-.input-fields-row {
+.workbook-input-fields-row {
     display: flex;
     align-items: center;
     justify-content: center;

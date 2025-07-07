@@ -86,10 +86,10 @@ const Workbook = ({
         <div className="workbook-input-container" style={style}>
             {heading && <h2>{heading}</h2>}
             <label className="workbook-input-label">Workbook Name</label>
-            <div className="workbook-inputs input-fields-row">
+            <div className="workbook-input-fields-row">
                 <input
                     ref={yearRef}
-                    className="workbook-input date-input"
+                    className="workbook-date-input"
                     type="text"
                     maxLength={2}
                     value={yearValue}
@@ -98,10 +98,10 @@ const Workbook = ({
                     onFocus={onYearFocus}
                     onBlur={onYearBlur}
                 />
-                <span className="non-input-text">—</span>
+                <span className="workbook-non-input-text">—</span>
                 <input
                     ref={monthRef}
-                    className="workbook-input date-input"
+                    className="workbook-date-input"
                     type="text"
                     maxLength={2}
                     value={monthValue}
@@ -113,7 +113,7 @@ const Workbook = ({
                 />
                 <input
                     ref={locationRef}
-                    className="workbook-input location-input"
+                    className="workbook-location-input"
                     type="text"
                     value={searchValue}
                     onChange={handleLocationInput}
@@ -122,7 +122,7 @@ const Workbook = ({
                     onFocus={onLocationFocus}
                     onBlur={onLocationBlur}
                 />
-                <span className="non-input-text">.xls</span>
+                <span className="workbook-non-input-text">.xls</span>
             </div>
         </div>
     );
