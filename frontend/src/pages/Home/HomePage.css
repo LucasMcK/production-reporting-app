@@ -61,6 +61,7 @@
 
 .summary-results li strong {
     font-weight: 600;
+    white-space: pre-line;
     margin-bottom: 0.3rem;
     font-size: 0.9rem;
     color: #333;

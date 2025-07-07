@@ -5,20 +5,20 @@ const XLSX = require('xlsx');
 const uploadsDir = path.join(__dirname, '../uploads');
 
 const COLUMN_MAP = {
-    B: 'Hours On',
-    C: 'Hours Down',
-    D: 'Gross Prod m3',
-    E: 'Oil Production m3',
-    F: 'Oil Production BBLS',
-    G: 'Sand Production m3',
-    H: 'Water Production m3',
-    I: 'Recycle m3',
-    J: 'Oil Shipments m3',
-    K: 'Water Shipments m3',
-    L: 'Sand Shipments m3',
-    M: 'Fluid Out m3',
-    N: 'Fluid In m3',
-    O: 'Foam Loss',
+    B: 'Hours On\n\n',
+    C: 'Hours Down\n\n',
+    D: 'Gross Prod\n(m3)\n',
+    E: 'Oil Production\n(m3)\n',
+    F: 'Oil Production\n(BBLS)\n',
+    G: 'Sand Production\n(m3)\n',
+    H: 'Water Production\n(m3)\n',
+    I: 'Recycle\n(m3)\n\n',
+    J: 'Oil Shipments\n(m3)\n',
+    K: 'Water Shipments\n(m3)\n',
+    L: 'Sand Shipments\n(m3)\n',
+    M: 'Fluid Out\n(m3)\n\n',
+    N: 'Fluid In\n(m3)\n\n',
+    O: 'Foam\nLoss\n\n',
 };
 const ROW = 39;
 
@@ -72,6 +72,11 @@ async function calculateSummaryTotal() {
                 totals[name] += value;
             }
         }
+    }
+
+    // Round all totals to 1 decimal place
+    for (const key in totals) {
+        totals[key] = parseFloat(totals[key].toFixed(1));
     }
 
     return totals;
