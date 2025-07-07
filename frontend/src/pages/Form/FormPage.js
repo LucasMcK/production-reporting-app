@@ -237,7 +237,14 @@ function ProductionFormPage() {
 
     return (
         <div className="container" style={{ width: '1000px' }}>
-            <h1>Production Form</h1>
+            <div className="intro-text">
+                <h1>Production Form</h1>
+                <p>
+                    Manually input data to populate the specified workbook and
+                    worksheet.
+                </p>
+            </div>
+
             <form onSubmit={handleSubmit}>
                 <Fieldset title="PROPERTY & WELL INFORMATION">
                     <Workbook
@@ -345,47 +352,72 @@ function ProductionFormPage() {
                     </>
                 )}
 
-                <Fieldset title="OPERATIONAL HOURS">
-                    <InputField
-                        className="number-input-field"
-                        label="Hours On"
-                        type="number"
-                        step="any"
-                        value={hoursOn}
-                        onChange={(e) =>
-                            handleNumericInput(e, setHoursOn, {
-                                min: 0,
-                                max: 24,
-                            })
-                        }
-                        width="100px"
-                    />
-                    <InputField
-                        label="Hours Down"
-                        type="number"
-                        step="any"
-                        value={hoursDown}
-                        disabled
-                        width="100px"
-                    />
-                    <div
-                        className="form-row"
-                        style={{
-                            flexDirection: 'column',
-                            alignItems: 'center',
-                        }}
-                    >
-                        <label className="text-area-label">
-                            Reason for Downtime
-                        </label>
-                        <textarea
-                            className="text-area"
-                            value={reason}
-                            onChange={(e) => setReason(e.target.value)}
-                            disabled={hoursDown <= 0}
+                <div className="fieldset-row">
+                    <Fieldset title="OPERATIONAL HOURS">
+                        <InputField
+                            className="number-input-field"
+                            label="Hours On"
+                            type="number"
+                            step="any"
+                            value={hoursOn}
+                            onChange={(e) =>
+                                handleNumericInput(e, setHoursOn, {
+                                    min: 0,
+                                    max: 24,
+                                })
+                            }
+                            width="100px"
                         />
-                    </div>
-                </Fieldset>
+                        <InputField
+                            label="Hours Down"
+                            type="number"
+                            step="any"
+                            value={hoursDown}
+                            disabled
+                            width="100px"
+                        />
+                        <div
+                            className="form-row"
+                            style={{
+                                flexDirection: 'column',
+                                alignItems: 'center',
+                            }}
+                        >
+                            <label className="text-area-label">
+                                Reason for Downtime
+                            </label>
+                            <textarea
+                                className="text-area"
+                                value={reason}
+                                onChange={(e) => setReason(e.target.value)}
+                                disabled={hoursDown <= 0}
+                            />
+                        </div>
+                    </Fieldset>
+
+                    <Fieldset title="FLUID QUALITY METRICS">
+                        <InputField
+                            label="Total BS&W"
+                            h6="(%)"
+                            type="number"
+                            step="any"
+                            value={bsw}
+                            onChange={(e) => setBsw(parseFloat(e.target.value))}
+                            width="100px"
+                        />
+                        <InputField
+                            label="Sand"
+                            h6="(%)"
+                            type="number"
+                            step="any"
+                            value={sandPercent}
+                            onChange={(e) =>
+                                setSandPercent(parseFloat(e.target.value))
+                            }
+                            width="100px"
+                        />
+                    </Fieldset>
+                </div>
 
                 <Fieldset title="PRODUCTION VOLUMES">
                     <InputField
@@ -484,14 +516,6 @@ function ProductionFormPage() {
                     />
                 </Fieldset>
 
-                <Fieldset title="TICKET NUMBER">
-                    <InputField
-                        label="Ticket Number"
-                        value={ticketNumber}
-                        onChange={(e) => setTicketNumber(e.target.value)}
-                    />
-                </Fieldset>
-
                 <Fieldset title="FLUID">
                     <InputField
                         label="Fluid Out"
@@ -514,29 +538,6 @@ function ProductionFormPage() {
                         onChange={(e) => setFoamLoss(e.target.value)}
                         width="100px"
                     />
-                </Fieldset>
-
-                <Fieldset title="FLUID QUALITY METRICS">
-                    <InputField
-                        label="Total BS&W"
-                        h6="(%)"
-                        type="number"
-                        step="any"
-                        value={bsw}
-                        onChange={(e) => setBsw(parseFloat(e.target.value))}
-                        width="100px"
-                    />
-                    <InputField
-                        label="Sand"
-                        h6="(%)"
-                        type="number"
-                        step="any"
-                        value={sandPercent}
-                        onChange={(e) =>
-                            setSandPercent(parseFloat(e.target.value))
-                        }
-                        width="100px"
-                    />
                     <InputField
                         label="Tank Gauge"
                         h6={'\u00A0'}
@@ -544,23 +545,6 @@ function ProductionFormPage() {
                         step="any"
                         value={tankGauge}
                         disabled
-                        width="100px"
-                    />
-                </Fieldset>
-
-                <Fieldset title="PRESSURE">
-                    <InputField
-                        label="Tbg"
-                        h6="(kPa)"
-                        value={tbg}
-                        onChange={(e) => setTbg(e.target.value)}
-                        width="100px"
-                    />
-                    <InputField
-                        label="Csg"
-                        h6="(kPa)"
-                        value={csg}
-                        onChange={(e) => setCsg(e.target.value)}
                         width="100px"
                     />
                 </Fieldset>
@@ -610,34 +594,59 @@ function ProductionFormPage() {
                     />
                 </Fieldset>
 
-                <Fieldset title="CLOSING SECTION">
-                    <div
-                        className="form-row"
-                        style={{
-                            flexDirection: 'column',
-                            alignItems: 'center',
-                        }}
-                    >
-                        <label className="text-area-label">Comments</label>
-                        <textarea
-                            className="text-area"
-                            value={comments}
-                            onChange={(e) => setComments(e.target.value)}
+                <div className="fieldset-row">
+                    <Fieldset title="PRESSURE">
+                        <InputField
+                            label="Tbg"
+                            h6="(kPa)"
+                            value={tbg}
+                            onChange={(e) => setTbg(e.target.value)}
+                            width="100px"
                         />
-                    </div>
+                        <InputField
+                            label="Csg"
+                            h6="(kPa)"
+                            value={csg}
+                            onChange={(e) => setCsg(e.target.value)}
+                            width="100px"
+                        />
+                    </Fieldset>
 
-                    <InputField
-                        label="Operators Initials"
-                        value={initials}
-                        maxLength={2}
-                        onChange={(e) =>
-                            setInitials(e.target.value.toUpperCase())
-                        }
-                        width="100px"
-                    />
-                </Fieldset>
+                    <Fieldset title="CLOSING SECTION">
+                        <InputField
+                            label="Ticket Number"
+                            value={ticketNumber}
+                            onChange={(e) => setTicketNumber(e.target.value)}
+                        />
+                        <div
+                            className="form-row"
+                            style={{
+                                flexDirection: 'column',
+                                alignItems: 'center',
+                            }}
+                        >
+                            <label className="text-area-label">Comments</label>
+                            <textarea
+                                className="text-area"
+                                value={comments}
+                                onChange={(e) => setComments(e.target.value)}
+                            />
+                        </div>
+
+                        <InputField
+                            label="Operators Initials"
+                            value={initials}
+                            maxLength={2}
+                            onChange={(e) =>
+                                setInitials(e.target.value.toUpperCase())
+                            }
+                            width="100px"
+                        />
+                    </Fieldset>
+                </div>
+
                 <div className="button-group">
-                    <Button type="tertiary">Submit</Button>
+                    <Button type="primary">Submit</Button>
                 </div>
 
                 <div className="button-group">

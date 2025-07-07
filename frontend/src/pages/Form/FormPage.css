@@ -32,6 +32,7 @@
 }
 
 .text-area-label {
+    color: black;
     margin-bottom: -0.5rem;
     text-align: center;
     font-weight: 500;
@@ -43,4 +44,15 @@ textarea:disabled {
     border: 1px solid #ccc;
     cursor: not-allowed;
     height: 40px;
+}
+
+.fieldset-row {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.fieldset-row fieldset {
+    flex: 1;
+    min-width: 400px;
 }

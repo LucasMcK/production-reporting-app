@@ -33,12 +33,8 @@ function HomePage() {
     return (
         <div className="container">
             <div className="intro-text">
-                <div>
-                    <h2>Production Reporting Application</h2>
-                </div>
-                <div>
-                    <p>Track, export, and manage production data</p>
-                </div>
+                <h2>Production Reporting Application</h2>
+                <p>Track, export, and manage production data</p>
             </div>
 
             <div className="sub-container">

@@ -184,7 +184,6 @@ exports.handleFormSubmission = async (req, res) => {
 
         row.commit();
 
-        // Add SUM formulas to row 38
         const sumRow = worksheet.getRow(38);
         const sumColumns = [
             'B',
