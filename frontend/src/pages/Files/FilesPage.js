@@ -18,7 +18,6 @@ function FilesPage() {
     const handleMonthChange = (val) => setMonth(val);
     const handleLocationChange = (val) => setLocation(val);
 
-    // Load all files on mount
     useEffect(() => {
         fetch('http://localhost:5001/files')
             .then((res) => res.json())
@@ -32,7 +31,6 @@ function FilesPage() {
             });
     }, []);
 
-    // Reset to page 1 when filters change
     useEffect(() => {
         setCurrentPage(1);
     }, [year, month, location]);
@@ -51,18 +49,61 @@ function FilesPage() {
         startIndex + filesPerPage
     );
 
+    const handleDelete = async (filename) => {
+        const confirmed = window.confirm(
+            `Are you sure you want to delete "${filename}"?`
+        );
+        if (!confirmed) return;
+
+        try {
+            const res = await fetch(
+                `http://localhost:5001/delete/${filename}`,
+                {
+                    method: 'DELETE',
+                }
+            );
+
+            if (res.ok) {
+                setFiles((prev) =>
+                    prev.filter((file) => !file.includes(filename))
+                );
+            } else {
+                alert('Failed to delete file.');
+            }
+        } catch (err) {
+            console.error('Error deleting file:', err);
+            alert('Error deleting file.');
+        }
+    };
+
     return (
         <div className="container" style={{ width: '600px' }}>
             <h2>Files</h2>
+            <p style={{ textAlign: 'center' }}>
+                View all workbooks in the database or search for workbooks based
+                on their year, month, or location.
+            </p>
             <Workbook
+                heading="Search Workbooks"
                 yearValue={year}
                 onYearChange={handleYearChange}
                 monthValue={month}
                 onMonthChange={handleMonthChange}
                 searchValue={location}
                 onLocationChange={handleLocationChange}
+                style={{
+                    border: '2px solid #01426a',
+                    borderRadius: '12px',
+                    padding: '2rem',
+                    textAlign: 'center',
+                    cursor: 'pointer',
+                    backgroundColor: '#f9f9f9',
+                    color: '#333',
+                    marginBottom: '0rem',
+                    transition:
+                        'background-color 0.2s ease, border-color 0.2s ease',
+                }}
             />
-
             {loading ? (
                 <p className="status-message status-info">Loading files...</p>
             ) : !filteredFiles.length ? (
@@ -70,18 +111,57 @@ function FilesPage() {
             ) : (
                 <>
                     <ul className="files-list">
-                        {currentFiles.map((url, idx) => (
-                            <li key={idx}>
-                                <a
-                                    href={url}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    download
-                                >
-                                    {decodeURIComponent(url.split('/').pop())}
-                                </a>
-                            </li>
-                        ))}
+                        <h2 style={{ marginTop: '1rem' }}>File list</h2>
+                        {currentFiles.map((url, idx) => {
+                            const fileName = decodeURIComponent(
+                                url.split('/').pop()
+                            );
+
+                            return (
+                                <li key={idx} className="file-item">
+                                    <div className="file-content">
+                                        <span className="file-name">
+                                            <a
+                                                href={url}
+                                                target="_blank"
+                                                rel="noopener noreferrer"
+                                                download
+                                            >
+                                                {fileName}
+                                            </a>
+                                        </span>
+                                        <div className="file-actions">
+                                            <button
+                                                className="icon-btn download-btn"
+                                                onClick={() =>
+                                                    window.open(url, '_blank')
+                                                }
+                                                title="Download"
+                                            >
+                                                <img
+                                                    src="/images/download-icon.png"
+                                                    alt="Download"
+                                                    className="icon-img"
+                                                />
+                                            </button>
+                                            <button
+                                                className="icon-btn delete-btn"
+                                                onClick={() =>
+                                                    handleDelete(fileName)
+                                                }
+                                                title="Delete"
+                                            >
+                                                <img
+                                                    src="/images/trash-icon.png"
+                                                    alt="Delete"
+                                                    className="icon-img"
+                                                />
+                                            </button>
+                                        </div>
+                                    </div>
+                                </li>
+                            );
+                        })}
                     </ul>
 
                     <div

@@ -1,22 +1,22 @@
-/* FilesPage.css — updated for global styling consistency */
-
-/* List container */
 .files-list {
+    text-align: center;
     width: 100%;
-    max-width: 100%; /* Full width under container */
+    max-width: 100%;
     padding-left: 0;
     margin: 1.5rem 0;
     list-style: none;
+    border: 2px solid #01426a;
+    border-radius: 12px;
 }
 
-/* Individual file item */
 .files-list li {
     padding: 0.75rem 1rem;
     margin-bottom: 1rem;
+    margin-left: 1rem;
+    margin-right: 1rem;
     border: 1px solid var(--border-color, #e5e7eb);
     border-radius: 12px;
     background-color: var(--background-light, #ffffff);
-    text-align: left;
     font-size: 1rem;
     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
     transition:
@@ -25,19 +25,20 @@
         transform 0.2s ease;
 }
 
-/* Last list item gets a little extra margin */
-.files-list li:last-child {
-    margin-bottom: 2rem;
+.files-list li:first-child {
+    margin-top: 1rem;
 }
 
-/* Hover effects: soft background and elevation */
+.files-list li:last-child {
+    margin-bottom: 1rem;
+}
+
 .files-list li:hover {
     background-color: var(--hover-light, #f0f4ff);
     border-color: var(--hover-light, #f0f4ff);
     transform: translateY(-1px);
 }
 
-/* Link inside each file item */
 .files-list li a {
     text-decoration: none;
     color: var(--text-primary, #1f2937);
@@ -75,4 +76,34 @@
 .pagination button:disabled {
     opacity: 0.5;
     cursor: not-allowed;
+}
+
+.icon-img {
+    height: 25px;
+    width: 25px;
+    margin: 0.1rem;
+    background: none;
+    font-size: 1.25rem;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+    padding: 0.25rem;
+    border-radius: 6px;
+}
+
+.file-item .file-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    gap: 1rem;
+}
+
+.file-name {
+    text-align: center;
+    word-break: break-word;
+}
+
+.file-actions {
+    display: flex;
+    gap: 0.5rem;
 }

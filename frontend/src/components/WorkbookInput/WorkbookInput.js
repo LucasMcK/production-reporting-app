@@ -11,6 +11,8 @@ const Workbook = ({
     yearPlaceholder = 'YY',
     monthPlaceholder = 'MM',
     locationPlaceholder = 'Location...',
+    style = {},
+    heading = null,
 }) => {
     const yearRef = useRef(null);
     const monthRef = useRef(null);
@@ -81,7 +83,8 @@ const Workbook = ({
     };
 
     return (
-        <div className="workbook-input-container">
+        <div className="workbook-input-container" style={style}>
+            {heading && <h2>{heading}</h2>}
             <label className="workbook-input-label">Workbook Name</label>
             <div className="workbook-inputs input-fields-row">
                 <input
