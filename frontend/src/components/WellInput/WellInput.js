@@ -157,7 +157,7 @@ const WellInput = ({
                     onFocus={onQuadrantLSDFocus}
                     onBlur={onQuadrantLSDBlur}
                 />
-                <span className="non-input-text">—</span>
+                <span className="well-non-input-text">—</span>
                 <input
                     ref={sectionRef}
                     className="well-input"
@@ -170,7 +170,7 @@ const WellInput = ({
                     onFocus={onSectionFocus}
                     onBlur={onSectionBlur}
                 />
-                <span className="non-input-text">—</span>
+                <span className="well-non-input-text">—</span>
                 <input
                     ref={townshipRef}
                     className="well-input"
@@ -183,7 +183,7 @@ const WellInput = ({
                     onFocus={onTownshipFocus}
                     onBlur={onTownshipBlur}
                 />
-                <span className="non-input-text">—</span>
+                <span className="well-non-input-text">—</span>
                 <input
                     ref={rangeRef}
                     className="well-input"
@@ -196,7 +196,7 @@ const WellInput = ({
                     onFocus={onRangeFocus}
                     onBlur={onRangeBlur}
                 />
-                <span className="non-input-text">—</span>
+                <span className="well-non-input-text">—</span>
                 <input
                     ref={meridianRef}
                     className="well-input"
