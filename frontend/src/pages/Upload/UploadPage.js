@@ -1,13 +1,14 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import Button from '../../components/Button/Button.js';
-import Logo from '../../components/Logo/Logo.js';
 import './UploadPage.css';
 
 function UploadForm() {
     const [file, setFile] = useState(null);
     const [status, setStatus] = useState('');
     const [loading, setLoading] = useState(false);
+    const [dragActive, setDragActive] = useState(false);
+    const inputRef = useRef(null);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -38,17 +39,59 @@ function UploadForm() {
         }
     };
 
+    const handleDrag = (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        if (e.type === 'dragenter' || e.type === 'dragover') {
+            setDragActive(true);
+        } else if (e.type === 'dragleave') {
+            setDragActive(false);
+        }
+    };
+
+    const handleDrop = (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        setDragActive(false);
+        if (e.dataTransfer.files && e.dataTransfer.files[0]) {
+            setFile(e.dataTransfer.files[0]);
+        }
+    };
+
+    const handleChange = (e) => {
+        setFile(e.target.files[0]);
+    };
+
     return (
-        <div className="container">
-            <Logo size={300} />
+        <div
+            className={`container ${dragActive ? 'drag-active' : ''}`}
+            onDragEnter={handleDrag}
+            onDragOver={handleDrag}
+            onDragLeave={handleDrag}
+            onDrop={handleDrop}
+        >
             <form className="upload-form" onSubmit={handleSubmit}>
-                <input
-                    type="file"
-                    onChange={(e) => setFile(e.target.files[0])}
-                />
+                <div
+                    className={`drop-zone ${dragActive ? 'active' : ''}`}
+                    onClick={() => inputRef.current.click()}
+                >
+                    <p>
+                        {file
+                            ? file.name
+                            : 'Drag and drop a file here, or click to select one'}
+                    </p>
+                    <input
+                        ref={inputRef}
+                        type="file"
+                        accept=".xlsx,.xls"
+                        onChange={handleChange}
+                        style={{ display: 'none' }}
+                    />
+                </div>
+
                 <div className="button-group">
                     <Button
-                        type="primary"
+                        type="tertiary"
                         disabled={loading}
                         as="button"
                         htmlType="submit"
@@ -56,7 +99,7 @@ function UploadForm() {
                         {loading ? 'Uploading...' : 'Upload'}
                     </Button>
                     <Link to="/files">
-                        <Button type="secondary">View Files</Button>
+                        <Button type="tertiary">View Files</Button>
                     </Link>
                 </div>
             </form>
