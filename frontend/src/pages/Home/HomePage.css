@@ -34,3 +34,39 @@
 .recent-files-list a:hover {
     text-decoration: underline;
 }
+
+.summary-results {
+    height: auto;
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    grid-template-rows: repeat(2, auto);
+    gap: 1.5rem 2rem;
+    max-width: 100%;
+    margin-top: 1rem;
+    padding-left: 0;
+    list-style: none;
+}
+
+.summary-results li {
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    padding: 1rem;
+    text-align: center;
+    box-shadow: 0 1px 3px rgb(0 0 0 / 0.1);
+    font-weight: 500;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.summary-results li strong {
+    font-weight: 600;
+    margin-bottom: 0.3rem;
+    font-size: 0.9rem;
+    color: #333;
+}
+
+.summary-results li span {
+    font-size: 1.2rem;
+    color: #01426a;
+}

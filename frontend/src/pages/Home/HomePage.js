@@ -5,6 +5,7 @@ import './HomePage.css';
 
 function HomePage() {
     const [recentFiles, setRecentFiles] = useState([]);
+    const [summaryData, setSummaryData] = useState(null);
 
     useEffect(() => {
         fetch('http://localhost:5001/files')
@@ -19,6 +20,13 @@ function HomePage() {
             })
             .catch((err) => {
                 console.error('Error fetching recent files:', err);
+            });
+
+        fetch('http://localhost:5001/summary-total')
+            .then((res) => res.json())
+            .then((data) => setSummaryData(data))
+            .catch((err) => {
+                console.error('Error fetching summary data:', err);
             });
     }, []);
 
@@ -62,21 +70,40 @@ function HomePage() {
                     </Link>
                 </div>
             </div>
+
+            <div className="sub-container">
+                <h2>Summary Results</h2>
+                {!summaryData ? (
+                    <p>Loading summary data...</p>
+                ) : Object.keys(summaryData).length > 0 ? (
+                    <ul className="summary-results">
+                        {Object.entries(summaryData).map(([name, value]) => (
+                            <li key={name}>
+                                <strong>{name}</strong>
+                                <span>{value.toLocaleString()}</span>
+                            </li>
+                        ))}
+                    </ul>
+                ) : (
+                    <p>No summary data available.</p>
+                )}
+            </div>
+
             <div className="sub-container">
                 <h2>Recently Uploaded Files</h2>
                 {recentFiles.length === 0 ? (
                     <p>No recent files found.</p>
                 ) : (
                     <ul className="recent-files-list">
-                        {recentFiles.map((fileUrl, idx) => (
+                        {recentFiles.map((file, idx) => (
                             <li key={idx}>
                                 <a
-                                    href={fileUrl}
+                                    href={file.url || file}
                                     target="_blank"
                                     rel="noopener noreferrer"
                                 >
                                     {decodeURIComponent(
-                                        fileUrl.split('/').pop()
+                                        (file.url || file).split('/').pop()
                                     )}
                                 </a>
                             </li>

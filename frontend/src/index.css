@@ -37,11 +37,10 @@ body {
 .sub-container {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
     width: 100%;
     max-width: 950px;
-    height: 350px;
     margin: 1rem 0;
     padding: 1rem;
     border-radius: 12px;
