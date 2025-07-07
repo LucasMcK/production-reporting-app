@@ -34,7 +34,7 @@ function HomePage() {
         <div className="container">
             <div className="intro-text">
                 <div>
-                    <h1>Production Reporting Application</h1>
+                    <h2>Production Reporting Application</h2>
                 </div>
                 <div>
                     <p>Track, export, and manage production data</p>

@@ -13,6 +13,20 @@
     border: 1px #000 solid;
 }
 
+.btn:disabled {
+    background-color: #d3d3d3;
+    color: #888888;
+    cursor: not-allowed;
+    box-shadow: none;
+}
+
+.btn:disabled:hover {
+    background-color: #d3d3d3;
+    color: #888888;
+    cursor: not-allowed;
+    box-shadow: none;
+}
+
 .btn-primary {
     background-color: #005130;
     color: white;

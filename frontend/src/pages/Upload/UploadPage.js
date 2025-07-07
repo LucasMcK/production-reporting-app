@@ -64,12 +64,14 @@ function UploadForm() {
 
     return (
         <div
-            className={`container ${dragActive ? 'drag-active' : ''}`}
+            className={`upload-container ${dragActive ? 'drag-active' : ''}`}
             onDragEnter={handleDrag}
             onDragOver={handleDrag}
             onDragLeave={handleDrag}
             onDrop={handleDrop}
         >
+            <h2>Upload Files</h2>
+            <p>Note: only .xls and .xlsx files are accepted.</p>
             <form className="upload-form" onSubmit={handleSubmit}>
                 <div
                     className={`drop-zone ${dragActive ? 'active' : ''}`}
@@ -92,7 +94,7 @@ function UploadForm() {
                 <div className="button-group">
                     <Button
                         type="tertiary"
-                        disabled={loading}
+                        disabled={loading || !file}
                         as="button"
                         htmlType="submit"
                     >
